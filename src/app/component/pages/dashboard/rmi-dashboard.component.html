@@ -1,38 +1,52 @@
+<div class="row">
+  <app-sales-purchase></app-sales-purchase>
+</div>
 <div class="container-fluid">
-  <div class="row">
-    <app-sales-purchase></app-sales-purchase>
-  </div>
-  <div class="container-fluid crm_dashboard">
+  <!-- <div class="container-fluid crm_dashboard">
     <div class="row widget-grid">
       <div class="col-xl-12">
         <div class="row">
           <div class="col-xl-12">
-            <div class="col-xl-9">
+            <div class="col-xl-12">
               <app-common-analyics></app-common-analyics>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div>-->
+</div>
 
     <div class="container-fluid dashboard_default">
       <div class="row widget-grid">
         <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4">
-          <app-sales-summary></app-sales-summary>
+          <app-sales-summary name="Stock Chart"></app-sales-summary>
         </div>
-        <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4"></div>
-        <div class="col-xl-4 col-lg-3 col-sm-12 box-col-2">app-visitors</div>
+        
+        <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4">
+          <app-sales-summary name="Stock Chart"></app-sales-summary>
+        </div>
 
-        <div class="col-xl-6">app-recent-orders</div>
-        <div class="col-xl-3 col-md-6 col-lg-6 box-col-3">app-top-seller</div>
-        <div class="col-xl-3 col-md-6 box-col-3">app-new-product</div>
-        <div class="col-xxl-3 col-xl-4 col-md-6 box-col-4">app-top-countries</div>
-        <div class="col-xxl-3 col-xl-4 col-md-6 box-col-4 notification">app-activity-timeline</div>
-        <div class="col-xxl-6 col-xl-4 col-md-12 box-col-4">app-sales-summary</div>
-        app-sale-offer
-        <div class="col-xl-8 col-sm-12 box-col-8e order-xl-1 order-md-2">app-invoice</div>
-        <div class="col-xl-4 col-md-6 col-sm-12 box-col-4 order-xl-1">app-sale-product</div>
-      </div>
+       <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4">
+          <app-sales-summary name="Pending Order"></app-sales-summary>
+       </div>
+
+    <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4">
+      <app-sales-summary name="RM Receipt"></app-sales-summary>
+    </div>
+
+    <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4">
+      <app-sales-summary name="Mixwise Consumption"></app-sales-summary>
+    </div>
+
+    <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4">
+      <app-sales-summary name="Top 10 Suppliers"></app-sales-summary>
+    </div>
+
+    <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4">
+      <app-sales-summary name="Value in Lakhs"></app-sales-summary>
+    </div>
+
+    <div class="col-xl-4 col-lg-3 col-sm-12 box-col-4">
+      <app-sales-summary name="Avg. Consumption Bales/Day"></app-sales-summary>
     </div>
   </div>
 </div>

@@ -1,3 +1,6 @@
+
+import { themeSales } from './../../shared/data/component/forms/form-controls/mega-options';
+import { barChart } from './../../shared/data/component/charts/charts';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PagesRoutingModule } from "./pages-routing.module";
@@ -9,6 +12,10 @@ import { SalesSummaryComponent } from "./dashboard/sales-summary/sales-summary.c
 import { CommonAnalyicsComponent } from "./dashboard/common-analyics/common-analyics.component";
 import { CoursesComponent } from "./dashboard/courses/courses.component";
 import { SalesPurchaseComponent } from "./dashboard/sales-purchase/sales-purchase.component";
+//import { PendingOrderComponent } from "./dashboard/pending-order/pending-order.component";
+import { ChartistModule } from "ng-chartist";
+
+
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, CommonAnalyicsComponent, SalesPurchaseComponent, CoursesComponent],

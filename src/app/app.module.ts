@@ -12,6 +12,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { NgApexchartsModule } from "ng-apexcharts";
+import { ChartistModule } from "ng-chartist";
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -27,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
