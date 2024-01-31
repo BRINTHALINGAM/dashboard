@@ -17,7 +17,7 @@ export class SalesSummaryComponent {
     public salesChartdata :any = {
       chart: {
           height: 385,
-          type: 'area',
+          type: 'bar',
           toolbar: {
               show: false
           }
