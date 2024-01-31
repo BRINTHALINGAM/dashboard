@@ -12,13 +12,13 @@ import { SalesSummaryComponent } from "./dashboard/sales-summary/sales-summary.c
 import { CommonAnalyicsComponent } from "./dashboard/common-analyics/common-analyics.component";
 import { CoursesComponent } from "./dashboard/courses/courses.component";
 import { SalesPurchaseComponent } from "./dashboard/sales-purchase/sales-purchase.component";
-import { PendingOrderComponent } from "./dashboard/pending-order/pending-order.component";
+//import { PendingOrderComponent } from "./dashboard/pending-order/pending-order.component";
 import { ChartistModule } from "ng-chartist";
 
 
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, CommonAnalyicsComponent, SalesPurchaseComponent, CoursesComponent],
-  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, PendingOrderComponent],
+  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule],
 })
 export class PagesModule {}
