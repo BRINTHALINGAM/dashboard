@@ -9,6 +9,9 @@ import { SalesSummaryComponent } from "./dashboard/sales-summary/sales-summary.c
 import { CommonAnalyicsComponent } from "./dashboard/common-analyics/common-analyics.component";
 import { CoursesComponent } from "./dashboard/courses/courses.component";
 import { SalesPurchaseComponent } from "./dashboard/sales-purchase/sales-purchase.component";
+//import { BarChart2Component } from "./dashboard/bar-chart2/bar-chart2";
+//import { BarChart2Component } from "./dashboard/bar-chart2/bar-chart2";
+
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, CommonAnalyicsComponent, SalesPurchaseComponent, CoursesComponent],

@@ -1,29 +1,236 @@
 <div class="row">
-  @for(item of commonData; track item){
-  <div class="col-sm-6 col-xl-3 col-lg-6 box-col-6">
-    <div class="card widget-1">
-      <div class="card-body">
-        <div class="widget-content">
-          <div class="widget-round {{ item.color }}">
-            <div class="bg-round stroke-icon svg-fill">
-              <svg>
-                <use attr.xlink:href="assets/svg/icon-sprite.svg#{{ item.icon }}"></use>
-              </svg>
-              <svg class="half-circle svg-fill">
-                <use href="assets/svg/icon-sprite.svg#halfcircle"></use>
-              </svg>
+ 
+  <div class="col-xl-2 col-sm-4">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <div class="header-top">
+          <h3>No. of variety</h3>
+          
+        </div>
+      </div>
+      <div class="card-body py-lg-3">
+        <ul class="user-list">
+          <li>
+            <div class="user-icon primary">
+              
             </div>
-          </div>
-          <div>
-            <h4>{{ item.amount }}</h4>
-            <span class="f-light">{{ item.title }}</span>
-          </div>
-        </div>
-        <div class="font-{{ item.color }} f-w-600">
-          <i class="icon-arrow-up icon-rotate me-1"></i><span>{{ item.percentage }}</span>
-        </div>
+            <div>
+              <h5 class="mb-1">178,098</h5>
+            </div>
+          </li>
+          <!-- <li>
+            <div class="user-icon success">
+              
+            </div>
+            
+          </li> -->
+        </ul>
       </div>
     </div>
   </div>
-  }
+
+
+
+
+
+  <div class="col-xl-3 col-sm-4">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <div class="header-top">
+          <h3>Opening Stock</h3>
+          
+        </div>
+      </div>
+      <div class="card-body py-lg-3">
+        <ul class="user-list">
+          <li>
+            <div class="user-icon primary">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">3053</h5><span class="font-primary d-flex align-items-center"></span>
+            </div>
+          </li>
+          <li>
+            <div class="user-icon success">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">1050.96</h5><span class="font-danger d-flex align-items-center"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="col-xl-3 col-sm-4">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <div class="header-top">
+          <h3>Receipt</h3>
+          
+        </div>
+      </div>
+      <div class="card-body py-lg-3">
+        <ul class="user-list">
+          <li>
+            <div class="user-icon primary">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">1471</h5><span class="font-primary d-flex align-items-center"></span>
+            </div>
+          </li>
+          <li>
+            <div class="user-icon success">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">539.86</h5><span class="font-danger d-flex align-items-center"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="col-xl-3 col-sm-4">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <div class="header-top">
+          <h3>Sales/Receipt Return</h3>
+          
+        </div>
+      </div>
+      <div class="card-body py-lg-3">
+        <ul class="user-list">
+          <li>
+            <div class="user-icon primary">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">0</h5><span class="font-primary d-flex align-items-center"></span>
+            </div>
+          </li>
+          <li>
+            <div class="user-icon success">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">0</h5><span class="font-danger d-flex align-items-center"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-xl-3 col-sm-4">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <div class="header-top">
+          <h3>Issue</h3>
+          
+        </div>
+      </div>
+      <div class="card-body py-lg-3">
+        <ul class="user-list">
+          <li>
+            <div class="user-icon primary">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">2147</h5><span class="font-primary d-flex align-items-center"></span>
+            </div>
+          </li>
+          <li>
+            <div class="user-icon success">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">782.81</h5><span class="font-danger d-flex align-items-center"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-xl-3 col-sm-4">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <div class="header-top">
+          <h3>Issue Return</h3>
+          
+        </div>
+      </div>
+      <div class="card-body py-lg-3">
+        <ul class="user-list">
+          <li>
+            <div class="user-icon primary">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">0</h5><span class="font-primary d-flex align-items-center"></span>
+            </div>
+          </li>
+          <li>
+            <div class="user-icon success">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">0</h5><span class="font-danger d-flex align-items-center"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-xl-3 col-sm-4">
+    <div class="card">
+      <div class="card-header card-no-border pb-0">
+        <div class="header-top">
+          <h3>Closing Stock</h3>
+          
+        </div>
+      </div>
+      <div class="card-body py-lg-3">
+        <ul class="user-list">
+          <li>
+            <div class="user-icon primary">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">2377</h5><span class="font-primary d-flex align-items-center"></span>
+            </div>
+          </li>
+          <li>
+            <div class="user-icon success">
+              
+            </div>
+            <div>
+              <h5 class="mb-1">808.31</h5><span class="font-danger d-flex align-items-center"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
 </div>

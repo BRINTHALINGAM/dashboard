@@ -11,7 +11,8 @@ export const commonData = [
         amount: '4200',
         title: 'Sales',
         percentage: '+70%',
-        color: ' primary'
+        color: ' primary',
+        
     },
     {
         icon: 'return-box',
