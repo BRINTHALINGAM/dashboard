@@ -1,23 +1,19 @@
-import { Component, Input } from "@angular/core";
-import * as SalesSummary from "../../../../shared/data/component/deshboard/charts";
-const types = ["area", "area", "area", "bar", "line", "area", "area"];
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: "app-sales-summary",
-  templateUrl: "./sales-summary.component.html",
-  styleUrls: ["./sales-summary.component.scss"],
+  selector: 'app-values',
+  templateUrl: './values.component.html',
+  styleUrl: './values.component.scss'
 })
-export class SalesSummaryComponent {
+export class ValuesComponent {
   @Input() public name: string | undefined;
-  @Input() public type: string | "area";
-
   primary_color = localStorage.getItem("primary_color") || "#717171";
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
     public salesChartdata :any = {
 chart: {
-  height: 250,
+  height: 280,
   type: 'bar',
   toolbar: {
       show: false

@@ -1,17 +1,15 @@
-import { Component, Input } from "@angular/core";
-import * as SalesSummary from "../../../../shared/data/component/deshboard/charts";
-const types = ["area", "area", "area", "bar", "line", "area", "area"];
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: "app-sales-summary",
-  templateUrl: "./sales-summary.component.html",
-  styleUrls: ["./sales-summary.component.scss"],
+  selector: 'app-sales-summary1',
+  templateUrl: './sales-summary1.component.html',
+  styleUrl: './sales-summary1.component.scss'
 })
-export class SalesSummaryComponent {
+export class SalesSummary1Component {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
 
-  primary_color = localStorage.getItem("primary_color") || "#717171";
+  primary_color = localStorage.getItem("primary_color") || "#35bfbf";
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
@@ -31,10 +29,10 @@ stroke: {
 },
 series: [{
   name: 'series1',
-  data: [160,30,25,15,10,10,10,10,10,10]
+  data: [18,1,1,1,1,1,1,1,1,1,1,1,1]
 }],
 xaxis: {
-  categories: ["COTTON", "POLYESTER", "VISCOSE", "MODAL", "LIVA ECO", "RECYCLE", "LIVA RIVI", "EXCEL", "THERMAL", "ANTI BACT"],
+  categories: ["TULSI", "SHRIY", "BALAJ", "GRASI", "KUSHA", "MAHES", "OMINO", "PATEL", "RONAK", "SHIVA", "SHREE", "SRI V","THE B"],
   labels: {
       style: {
           fontSize: "13px",
@@ -46,7 +44,7 @@ xaxis: {
 yaxis: {
   labels: {
       formatter: function (val: string) {
-          return val  + "0";
+          return val  + "k";
       },
       style: {
           fontSize: "14px",
@@ -76,3 +74,5 @@ legend: {
 colors: [this.primary_color, this.secondary_color]
 }
 }
+
+
