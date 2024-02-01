@@ -83,7 +83,7 @@ export var columnChart2: any = {
         vAxis: {
             format: "decimal"
         },
-        height: 400,
+        height: 280,
         width: '100%',
         colors: [primary_color, primary_color, "#51bb25"],
 

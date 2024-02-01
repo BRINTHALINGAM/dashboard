@@ -1,0 +1,34 @@
+<div class="card customer-chart">
+  <div class="card-header pb-0">
+    <div class="header-top">
+      <h3 class="m-0">Customer</h3>
+      <div class="card-header-right">
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-xl-4 col-lg-4">
+        <ul>
+          @for(Customerdetils of CustomerData; track Customerdetils){
+          <li class="d-flex align-items-center">
+            <div class="circle-dashed-{{Customerdetils.color}}"><span></span></div>
+            <div class="flex-grow-1">
+              <p>{{Customerdetils.type}}</p><span>{{Customerdetils.number}}</span>
+            </div>
+          </li>
+          }
+        </ul>
+      </div>
+      <div class="col-xl-8 col-lg-8">
+        <div id="customer-chart">
+          <apx-chart [series]="CustomerChatData.series" [chart]="CustomerChatData.chart"
+            [plotOptions]="CustomerChatData.plotOptions" [dataLabels]="CustomerChatData.dataLabels"
+            [legend]="CustomerChatData.legend" [responsive]="CustomerChatData.responsive" [grid]="CustomerChatData.grid"
+            [colors]="CustomerChatData.colors">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

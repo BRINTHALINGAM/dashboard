@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import * as chartData from '../../../../shared/data/component/charts/charts';
 
 @Component({
@@ -7,5 +7,6 @@ import * as chartData from '../../../../shared/data/component/charts/charts';
   styleUrl: './rmreceipt.component.scss'
 })
 export class RmreceiptComponent {
+  @Input() public name: string | undefined;
   public pieChart = chartData.pieChart;
 }

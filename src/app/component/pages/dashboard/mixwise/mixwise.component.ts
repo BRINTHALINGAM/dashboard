@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import * as chartData from '../../../../shared/data/component/charts/google-chart';
 
 @Component({
@@ -7,5 +7,6 @@ import * as chartData from '../../../../shared/data/component/charts/google-char
   styleUrl: './mixwise.component.scss'
 })
 export class MixwiseComponent {
+  @Input() public name: string | undefined;
   public pieChart2 = chartData.pieChart2;
 }

@@ -1,21 +1,19 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-sales-summary1',
-  templateUrl: './sales-summary1.component.html',
-  styleUrl: './sales-summary1.component.scss'
+  selector: 'app-values',
+  templateUrl: './values.component.html',
+  styleUrl: './values.component.scss'
 })
-export class SalesSummary1Component {
+export class ValuesComponent {
   @Input() public name: string | undefined;
-  @Input() public type: string | "area";
-
-  primary_color = localStorage.getItem("primary_color") || "#35bfbf";
+  primary_color = localStorage.getItem("primary_color") || "#717171";
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
     public salesChartdata :any = {
 chart: {
-  height: 250,
+  height: 280,
   type: 'bar',
   toolbar: {
       show: false
@@ -29,10 +27,10 @@ stroke: {
 },
 series: [{
   name: 'series1',
-  data: [18,1,1,1,1,1,1,1,1,1,1,1,1]
+  data: [160,30,25,15,10,10,10,10,10,10]
 }],
 xaxis: {
-  categories: ["TULSI", "SHRIY", "BALAJ", "GRASI", "KUSHA", "MAHES", "OMINO", "PATEL", "RONAK", "SHIVA", "SHREE", "SRI V","THE B"],
+  categories: ["COTTON", "POLYESTER", "VISCOSE", "MODAL", "LIVA ECO", "RECYCLE", "LIVA RIVI", "EXCEL", "THERMAL", "ANTI BACT"],
   labels: {
       style: {
           fontSize: "13px",
@@ -44,7 +42,7 @@ xaxis: {
 yaxis: {
   labels: {
       formatter: function (val: string) {
-          return val  + "k";
+          return val  + "0";
       },
       style: {
           fontSize: "14px",
@@ -74,5 +72,3 @@ legend: {
 colors: [this.primary_color, this.secondary_color]
 }
 }
-
-

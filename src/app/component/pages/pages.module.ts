@@ -1,3 +1,4 @@
+import { SalesSummary1Component } from './dashboard/sales-summary1/sales-summary1.component';
 
 import { themeSales } from './../../shared/data/component/forms/form-controls/mega-options';
 import { barChart, columnChart2 } from './../../shared/data/component/charts/charts';
@@ -14,10 +15,16 @@ import { CoursesComponent } from "./dashboard/courses/courses.component";
 import { SalesPurchaseComponent } from "./dashboard/sales-purchase/sales-purchase.component";
 import { ChartistModule } from "ng-chartist";
 import {Ng2GoogleChartsModule} from "Ng2-google-charts";
+import { RmreceiptComponent } from './dashboard/rmreceipt/rmreceipt.component';
+import { MixwiseComponent } from './dashboard/mixwise/mixwise.component';
+import { TopsuppliersComponent } from './dashboard/topsuppliers/topsuppliers.component';
+import { ValuesComponent } from './dashboard/values/values.component';
+import { ConsumptionComponent } from './dashboard/consumption/consumption.component';
 
 
 @NgModule({
-  declarations: [RMIDashboardComponent, SalesSummaryComponent, CommonAnalyicsComponent, SalesPurchaseComponent, CoursesComponent],
+  declarations: [RMIDashboardComponent, SalesSummaryComponent, CommonAnalyicsComponent, SalesPurchaseComponent, CoursesComponent, 
+    SalesSummary1Component,RmreceiptComponent,MixwiseComponent,TopsuppliersComponent,ValuesComponent,ConsumptionComponent],
   imports: [CommonModule, PagesRoutingModule, NgApexchartsModule,Ng2GoogleChartsModule],
 })
 export class PagesModule {}
