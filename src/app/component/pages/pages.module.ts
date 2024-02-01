@@ -24,7 +24,8 @@ import { ConsumptionComponent } from './dashboard/consumption/consumption.compon
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, CommonAnalyicsComponent, SalesPurchaseComponent, CoursesComponent, 
-    SalesSummary1Component,RmreceiptComponent,MixwiseComponent,TopsuppliersComponent,ValuesComponent,ConsumptionComponent],
+    SalesSummary1Component,RmreceiptComponent,MixwiseComponent,TopsuppliersComponent,ValuesComponent,ConsumptionComponent,
+  ],
   imports: [CommonModule, PagesRoutingModule, NgApexchartsModule,Ng2GoogleChartsModule],
 })
 export class PagesModule {}
