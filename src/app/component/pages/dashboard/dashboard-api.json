@@ -1,0 +1,28 @@
+http://172.16.16.52:8100/RMIDashboard/api/RMI/GetAvarageConsumption?divCode=01&fromDate=2023-12-01&toDate=2023-12-31
+[{"avgCons":"15","lastStockDate":"06/06/2024 00:00:00"}]
+
+http://172.16.16.52:8100/RMIDashboard/api/RMI/GetTopCardDetails?divCode=01&yearStart=2023-04-01&yearEnd=2024-03-31&fromDate=2023-12-01&toDate=2023-12-31&lotYear=2023
+[{"noOfVariety":"37","openingStkBales":"3053","openingStkValue":"1050.96","reciptBales":"1471","reciptValue":"539.87","sales":"260","reciptReturn":"70.65","issueBales":"1887","issueValue":"712.17","issueReturnBales":"0","issueReturnValue":".00","closingStkBales":"2377","closingStkValue":"808.01"}]
+
+http://172.16.16.52:8100/RMIDashboard/api/RMI/GetStockDetails?divCode=01&processingDate=2023-12-28&lotYear=2023
+[{"category":"ANTI BACTERIAL","stockValue":"1"},{"category":"COTTON","stockValue":"1610"},{"category":"EXCEL","stockValue":"1"},{"category":"LIVA ECO","stockValue":"27"},{"category":"LIVA REVIVA","stockValue":"2"},{"category":"MODAL","stockValue":"66"},{"category":"POLYESTER","stockValue":"334"},{"category":"RECYCLE PSF","stockValue":"14"},{"category":"THERMAL PSF","stockValue":"1"},{"category":"VISCOSE","stockValue":"320"}]
+
+http://172.16.16.52:8100/RMIDashboard/api/RMI/GetPendingOrderDetailsbySupplier?divCode=01&processingDate=2023-12-25
+[{"supplierName":"BALAJ","orderValue":"110"},{"supplierName":"GRASI","orderValue":"22"},{"supplierName":"SHRIY","orderValue":"300"},{"supplierName":"TULSI","orderValue":"18010"}]
+
+http//172.16.16.52:8100/RMIDashboard/api/RMI/GetMixConsumptionDetails?divCode=01&processingDate=2023-12-25
+[{"mixGroupName":"COTTON 100%","netKgs":"100.16"},{"mixGroupName":"ECO VERA ","netKgs":"9.49"},{"mixGroupName":"LIVAECO 100%","netKgs":"15.26"},{"mixGroupName":"MODAL 100%","netKgs":"12.66"},{"mixGroupName":"POLYESTER 100%","netKgs":"84.25"},{"mixGroupName":"RECYCLED POLYESTER 100%","netKgs":"2.92"},{"mixGroupName":"VISCOSE 100%","netKgs":"246.81"}]
+
+http://172.16.16.52:8100/RMIDashboard/api/RMI/GetReceiptDetailsbySupplier?divCode=01&processingDate=2023-12-25
+[{"supplierName":"RELIA","baleCount":"1482"},{"supplierName":"THE B","baleCount":"974"},{"supplierName":"GOVIN","baleCount":"1431"},{"supplierName":"MAHAV","baleCount":"300"},{"supplierName":"MANGL","baleCount":"420"}]
+
+http://172.16.16.52:8100/RMIDashboard/api/RMI/GetTopTenSuppliers?divCode=01&yearStart=2023-04-01&yearEnd=2024-03-31
+[{"supplierName":"GRASI","value":"9699.535417047","baleCount":"23393"},{"supplierName":"VST W","value":"1343.874471978","baleCount":"3105"},{"supplierName":"VISHV","value":"693.345143073","baleCount":"2360"},{"supplierName":"SHREE","value":"649.399497485","baleCount":"2270"},{"supplierName":"NANDA","value":"604.330144825","baleCount":"1990"},{"supplierName":"SHRIY","value":"462.465246570","baleCount":"1602"},{"supplierName":"SRI R","value":"426.264386750","baleCount":"1075"},{"supplierName":"SHRI ","value":"416.056231640","baleCount":"1060"},{"supplierName":"SAURA","value":"309.878893556","baleCount":"1113"},{"supplierName":"TIRUP","value":"282.703825432","baleCount":"910"}]
+
+http://172.16.16.52:8100/RMIDashboard/api/RMI/GetStockValueinLakhs?divCode=01&yearStart=2023-04-01&yearEnd=2024-03-31&fromDate=2023-12-01&toDate=2023-12-31&lotYear=2023
+[{"openingStkValue":"1050.96","reciptValue":"539.87","sales":"70.65","issueValue":"712.17","issueReturnValue":".00","closingStkValue":"808.01"}]
+
+http://172.16.16.52:8100/RMIDashboard/api/RMI/GetAvarageConsumption?divCode=01&fromDate=2023-12-01&toDate=2023-12-31
+[{"avgCons":"15","lastStockDate":"06/06/2024 00:00:00"}]
+
+create angular service class for above http api method and we need to update multiple component with sheduled time , please use http simulation for above url because this ip is only accessable via vpn
