@@ -7,7 +7,4 @@ import { commonData } from '../../../../shared/data/component/widget/general/gen
   styleUrls: ['./sales-purchase.component.scss']
 })
 export class SalesPurchaseComponent {
-
-  public commonData = commonData;
-
 }

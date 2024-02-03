@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import * as chartData from '../../../../shared/data/component/charts/charts';
+import * as chartData from '../../../../shared/data/component/charts/google-chart';
 
 @Component({
   selector: 'app-rmreceipt',
@@ -8,5 +8,5 @@ import * as chartData from '../../../../shared/data/component/charts/charts';
 })
 export class RmreceiptComponent {
   @Input() public name: string | undefined;
-  public pieChart = chartData.pieChart;
+  public pieChart2 = chartData.pieChart2;
 }
