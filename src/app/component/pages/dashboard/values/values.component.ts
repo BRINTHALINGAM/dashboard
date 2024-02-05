@@ -10,7 +10,8 @@ export class ValuesComponent {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
   salesChartdata :any
-  primary_color = localStorage.getItem("primary_color") || "#717171";
+
+  primary_color = localStorage.getItem("primary_color") || "#a4c639";
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
@@ -29,7 +30,8 @@ export class ValuesComponent {
 
     this.salesChartdata = {
 chart: {
-  height: 300,
+
+  height: 318,
   type: 'bar',
   toolbar: {
       show: false

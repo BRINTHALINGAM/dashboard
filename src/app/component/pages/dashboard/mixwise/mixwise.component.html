@@ -2,10 +2,10 @@
   <div class="card-header pb-0">
     <h3>{{name}}</h3>
   </div>
-  <div class="card-body apex-chart">
-    <div id="piechart">
-      <apx-chart [chart]="pieChart.chart" [colors]="pieChart.colors" [series]="pieChart.series"
-        [labels]="pieChart.labels" [responsive]="pieChart.responsive">
+  <div class="card-body">
+    <div id="basic-bar">
+      <apx-chart [chart]="barChart.chart" [plotOptions]="barChart.plotOptions" [dataLabels]="barChart.dataLabels"
+        [series]="barChart.series" [xaxis]="barChart.xaxis" [colors]="barChart.colors">
       </apx-chart>
     </div>
   </div>

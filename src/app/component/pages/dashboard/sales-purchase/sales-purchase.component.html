@@ -1,24 +1,4 @@
 <div class="row">
-
-  <div class="col-xl-2 col-sm-2" style="width: 14%">
-    <div class="card">
-      <div class="card-header card-no-border pb-0">
-        <div class="header-top">
-          <ul class="user-list">
-            <li>
-              <div style="text-align: right">
-                <h4 class="mb-1 txt-warning text-center" style="font-weight: bolder">{{ topCardDetails?.noOfVariety }}</h4>
-              </div>
-            </li>
-            <div>
-              <h3>78</h3><span class="f-light">bnbn</span>
-            </div>
-          </ul>
-          <!-- <div class="font-{{item.color}} f-w-600"><i
-              class="icon-arrow-up icon-rotate me-1"></i><span>{{item.percentage}}</span>
-          </div> -->
-        </div>
-
   @for(item of commonData; track item){
   <div class=" col-6 col-sm-6 col-xl-3 col-lg-4 box-col-6">
     <div class="card widget-1">
@@ -49,7 +29,6 @@
             <h3>{{item.num}}</h3><span class="f-light">{{item.title}}</span>
           </div>
        
-
       </div>
     </div>
   </div>
@@ -57,5 +36,3 @@
 }
   
   </div>
-  
-  

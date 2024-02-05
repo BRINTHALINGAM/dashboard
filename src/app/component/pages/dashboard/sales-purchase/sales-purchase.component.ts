@@ -6,6 +6,9 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
   templateUrl: "./sales-purchase.component.html",
   styleUrls: ["./sales-purchase.component.scss"],
 })
+
+//export class SalesPurchaseComponent {
+
 export class SalesPurchaseComponent implements OnInit {
   topCardDetails: any = null;
 

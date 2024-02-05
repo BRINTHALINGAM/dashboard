@@ -13,9 +13,9 @@ export class TopsuppliersComponent {
   @Input() public name: string | undefined;
   columnChart:any;
 
-  primary_color = localStorage.getItem("primary_color") || "#717171";
+  primary_color = localStorage.getItem("primary_color") || "#89ABE3";
 
-  secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
+  secondary_color = localStorage.getItem("secondary_color") || "#EA738D";
   
   constructor(private rmiService: RmiDashboardService) {}
 
@@ -31,7 +31,7 @@ export class TopsuppliersComponent {
     
      this.columnChart={
       chart: {
-        height: 350,
+        height: 300,
         type: 'bar',
         toolbar: {
             show: false

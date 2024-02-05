@@ -11,25 +11,29 @@ const types = ["area", "area", "area", "bar", "line", "area", "area"];
 export class SalesSummaryComponent {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
-  salesChartdata :any
-  primary_color = localStorage.getItem("primary_color") || "#717171";
 
-  secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
+  salesChartdata:any;
 
-  constructor(private rmiService:RmiDashboardService) {}
 
-  ngOnInit() : void {
+  constructor(private rmiService :RmiDashboardService) {}
+
+  ngOnInit() : void{
     this.rmiService.getStockDetails().subscribe((data) => {
-      this.barChart(data);
+      this.prepareChartData(data);
     })
   }
 
-  barChart(data:any[]): void {
-    const series = data.map((item) => Number(item.stockValue));
-    const category = data.map((item) => item.category);
-  
+  primary_color = localStorage.getItem("primary_color") || "#ffa500";
 
-    this.salesChartdata = {
+  secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
+
+  prepareChartData(data:any[]) : void {
+
+    const series=data.map((item) => Number(item.stockValue));
+    const labels=data.map((item) => item.category);
+
+
+    this.salesChartdata  = {
 chart: {
   height: 300,
   type: 'bar',
@@ -48,10 +52,10 @@ series: [{
   data: series
 }],
 xaxis: {
-  categories: category,
+  categories: labels,
   labels: {
       style: {
-          fontSize: "13px",
+          fontSize: "10px",
           colors: "#848789",
           fontFamily: "nunito, sans-serif",
       },
@@ -89,5 +93,5 @@ legend: {
 // },
 colors: [this.primary_color, this.secondary_color]
 }
-}
+  }
 }

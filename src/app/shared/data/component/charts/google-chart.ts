@@ -14,7 +14,7 @@ export var areaChart1: any = {
         title: 'Company Performance',
         hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
         vAxis: { minValue: 0 },
-        width: '100%',
+        //width: '100%',
         height: 400,
         colors: [primary_color, secondary_color],
         backgroundColor: 'transparent'
@@ -68,11 +68,17 @@ export var columnChart1: any = {
 export var columnChart2: any = {
     chartType: 'BarChart',
     dataTable: [
-        ["Year", "Sales", "Expenses", "Profit"],
-        ["2018", 1e3, 400, 250],
-        ["2019", 1170, 460, 300],
-        ["2020", 660, 1120, 400],
-        ["2021", 1030, 540, 450]
+        ["Year", "Sales", "profit"],
+        ["GRASI", 24000, 9000],
+        ["VST W", 3000, 2000],
+        ["VISHV", 2500, 1500],
+        ["SHREE", 2500, 1500],
+        ["NANDA", 2250, 1250],
+        ["SHRIY", 2250, 1000],
+        ["SRI R", 2000, 1000],
+        ["SHRI", 2000, 1000],
+        ["SAURA", 2000, 1000],
+        ["TRIUP", 1750, 750]
     ],
     options: {
         chart: {
@@ -312,7 +318,7 @@ export var pieChart2: any = {
     options: {
         title: 'My Daily Activities',
         width: '100%',
-        height: 300,
+        height: 265,
         colors: [primary_color, secondary_color, "#f8d62b", "#a927f9", "#51bb25",]
     }
 } 

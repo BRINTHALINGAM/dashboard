@@ -7,28 +7,13 @@
     </div>
   </div>
   <div class="card-body">
-    <div class="row">
-      <div class="col-xl-4 col-lg-4">
-        <ul>
-          @for(Customerdetils of CustomerChatData; track Customerdetils){
-          <li class="d-flex align-items-center">
-            <div class="circle-dashed-{{Customerdetils.color}}"><span></span></div>
-            <div class="flex-grow-1">
-              <p>{{Customerdetils.type}}</p><span>{{Customerdetils.number}}</span>
-            </div>
-          </li>
-          }
-        </ul>
-      </div>
-      <div class="col-xl-8 col-lg-8">
         <div id="customer-chart">
-          <apx-chart [series]="CustomerChatData.series" [chart]="CustomerChatData.chart"
-            [plotOptions]="CustomerChatData.plotOptions" [dataLabels]="CustomerChatData.dataLabels"
-            [legend]="CustomerChatData.legend" [responsive]="CustomerChatData.responsive" [grid]="CustomerChatData.grid"
-            [colors]="CustomerChatData.colors">
-          </apx-chart>
+          <ngx-gauge [type]="gaugeType" 
+           [value]="gaugeValue" 
+           [label]="gaugeLabel"  
+           [thresholds]="thresholdConfig">
+</ngx-gauge>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+</div> 
+ 

@@ -9,7 +9,7 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 })
 export class MixwiseComponent {
   @Input() public name: string | undefined;
-  pieChart : any;
+  barChart: any;
 
   constructor(private rmiService: RmiDashboardService) {}
 
@@ -18,32 +18,33 @@ export class MixwiseComponent {
       this.prepareChartData(data);
     });
   }
-  primary_color = localStorage.getItem("primary_color") || "#35bfbf";
-  secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
+  primary_color = localStorage.getItem("primary_color") || "#800080";
 
   prepareChartData(data: any[]): void {
     const series = data.map((item) => Number(item.netKgs));
     const labels = data.map((item) => item.mixGroupName);
-  this.pieChart={
-    chart: {
-      type: "pie",
+
+    this.barChart = {
+      chart: {
+        height: 250,
+        type: 'bar',
+        toolbar: {
+            show: false
+        }
     },
-    series: series,
-    labels: labels,
-    //  colors: ["#FF4560", "#00E396", "#008FFB", "#FEB019", "#775DD0"],
-    responsive: [
-      {
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200,
-          },
-          legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
-  };
-}
-}
+    plotOptions: {
+        bar: {
+            horizontal: true,
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    series: [{
+        data: series
+    }],
+    xaxis: {
+        categories:labels,
+    },
+    colors: [this.primary_color]
+  }}}

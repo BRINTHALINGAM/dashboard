@@ -44,8 +44,10 @@ export class RmiDashboardService {
   }
   getStockDetails(): Observable<any> {
     const mockResponse = [
-      {"category":"ANTI BACTERIAL","stockValue":"1"},{"category":"COTTON","stockValue":"1610"},{"category":"EXCEL","stockValue":"1"},{"category":"LIVA ECO","stockValue":"27"},{"category":"LIVA REVIVA","stockValue":"2"},{"category":"MODAL","stockValue":"66"},{"category":"POLYESTER","stockValue":"334"},{"category":"RECYCLE PSF","stockValue":"14"},{"category":"THERMAL PSF","stockValue":"1"},{"category":"VISCOSE","stockValue":"320"} /* More categories omitted for brevity */,
-    ];
+
+      {"category":"ANTI BACTERIAL","stockValue":"1"},{"category":"COTTON","stockValue":"1610"},{"category":"EXCEL","stockValue":"1"},{"category":"LIVA ECO","stockValue":"27"},{"category":"LIVA REVIVA","stockValue":"2"},{"category":"MODAL","stockValue":"66"},{"category":"POLYESTER","stockValue":"334"},{"category":"RECYCLE PSF","stockValue":"14"},{"category":"THERMAL PSF","stockValue":"1"},{"category":"VISCOSE","stockValue":"320"}]
+      /* More categories omitted for brevity */
+    ;
     return of(mockResponse);
   }
 
@@ -79,8 +81,8 @@ export class RmiDashboardService {
   }
 
   getStockValueinLakhs(): Observable<any> {
-    const mockResponse = [{"supplierName":"openingStkValue","salesValue":"1050.96"},{"supplierName":"reciptValue","salesValue":"539.87"},{"supplierName":"sales","salesValue":"70.65"},{"supplierName":"issueValue","salesValue":"712.17"},{"supplierName":"issueReturnValue","salesValue":".00"},{"supplierName":"closingStkValue","salesValue":"808.01"}]
 
+    const mockResponse = [{"supplierName":"openingStkValue","salesValue":"1050.96"},{"supplierName":"reciptValue","salesValue":"539.87"},{"supplierName":"sales","salesValue":"70.65"},{"supplierName":"issueValue","salesValue":"712.17"},{"supplierName":"issueReturnValue","salesValue":".00"},{"supplierName":"closingStkValue","salesValue":"808.01"}];
     return of(mockResponse);
   }
 
