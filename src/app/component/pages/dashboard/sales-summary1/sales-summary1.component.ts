@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 @Component({
   selector: 'app-sales-summary1',
@@ -8,14 +9,30 @@ import { Component, Input } from '@angular/core';
 export class SalesSummary1Component {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
+  salesChartdata:any;
 
-  primary_color = localStorage.getItem("primary_color") || "#35bfbf";
+
+  constructor(private rmiService :RmiDashboardService) {}
+
+  ngOnInit() : void{
+    this.rmiService.getPendingOrderDetailsbySupplier().subscribe((data) => {
+      this.prepareChartData(data);
+    })
+  }
+
+  primary_color = localStorage.getItem("primary_color") || "#008FFB";   // 008FFB - blue , FEB019 - yellow , 775DD0 - purple, FF4560-red , 00E396 -green
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
-    public salesChartdata :any = {
+  prepareChartData(data:any[]) : void {
+
+    const series=data.map((item) => Number(item.orderValue));
+    const labels=data.map((item) => item.supplierName);
+
+
+    this.salesChartdata  = {
 chart: {
-  height: 250,
+  height: 300,
   type: 'bar',
   toolbar: {
       show: false
@@ -29,10 +46,10 @@ stroke: {
 },
 series: [{
   name: 'series1',
-  data: [18,1,1,1,1,1,1,1,1,1,1,1,1]
+  data: series
 }],
 xaxis: {
-  categories: ["TULSI", "SHRIY", "BALAJ", "GRASI", "KUSHA", "MAHES", "OMINO", "PATEL", "RONAK", "SHIVA", "SHREE", "SRI V","THE B"],
+  categories: labels,
   labels: {
       style: {
           fontSize: "13px",
@@ -44,7 +61,7 @@ xaxis: {
 yaxis: {
   labels: {
       formatter: function (val: string) {
-          return val  + "k";
+          return val;
       },
       style: {
           fontSize: "14px",
@@ -73,6 +90,7 @@ legend: {
 // },
 colors: [this.primary_color, this.secondary_color]
 }
+  }
 }
 
 

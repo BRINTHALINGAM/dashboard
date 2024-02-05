@@ -44,19 +44,21 @@ export class RmiDashboardService {
   }
   getStockDetails(): Observable<any> {
     const mockResponse = [
-      { category: "ANTI BACTERIAL", stockValue: "1" },
-      { category: "COTTON", stockValue: "1610" } /* More categories omitted for brevity */,
-    ];
+      {"category":"ANTI BACTERIAL","stockValue":"1"},{"category":"COTTON","stockValue":"1610"},{"category":"EXCEL","stockValue":"1"},{"category":"LIVA ECO","stockValue":"27"},{"category":"LIVA REVIVA","stockValue":"2"},{"category":"MODAL","stockValue":"66"},{"category":"POLYESTER","stockValue":"334"},{"category":"RECYCLE PSF","stockValue":"14"},{"category":"THERMAL PSF","stockValue":"1"},{"category":"VISCOSE","stockValue":"320"}]
+      /* More categories omitted for brevity */
+    ;
     return of(mockResponse);
   }
 
   getPendingOrderDetailsbySupplier(): Observable<any> {
-    const mockResponse = [{ supplierName: "BALAJ", orderValue: "110" } /* More suppliers omitted for brevity */];
+    const mockResponse = [{"supplierName":"BALAJ","orderValue":"110"},{"supplierName":"GRASI","orderValue":"22"},{"supplierName":"SHRIY","orderValue":"300"},{"supplierName":"TULSI","orderValue":"18010"}]
+    /* More suppliers omitted for brevity */;
     return of(mockResponse);
   }
 
   getMixConsumptionDetails(): Observable<any> {
-    const mockResponse = [{ mixGroupName: "COTTON 100%", netKgs: "100.16" } /* More mix groups omitted for brevity */];
+    const mockResponse = [{"mixGroupName":"COTTON 100%","netKgs":"100.16"},{"mixGroupName":"ECO VERA ","netKgs":"9.49"},{"mixGroupName":"LIVAECO 100%","netKgs":"15.26"},{"mixGroupName":"MODAL 100%","netKgs":"12.66"},{"mixGroupName":"POLYESTER 100%","netKgs":"84.25"},{"mixGroupName":"RECYCLED POLYESTER 100%","netKgs":"2.92"},{"mixGroupName":"VISCOSE 100%","netKgs":"246.81"}]
+    /* More mix groups omitted for brevity */;
     return of(mockResponse);
   }
 
@@ -72,12 +74,13 @@ export class RmiDashboardService {
   }
 
   getTopTenSuppliers(): Observable<any> {
-    const mockResponse = [{ supplierName: "GRASI", value: "9699.535417047", baleCount: "23393" } /* More suppliers omitted for brevity */];
+    const mockResponse = [{"supplierName":"GRASI","value":"9699.535417047","baleCount":"23393"},{"supplierName":"VST W","value":"1343.874471978","baleCount":"3105"},{"supplierName":"VISHV","value":"693.345143073","baleCount":"2360"},{"supplierName":"SHREE","value":"649.399497485","baleCount":"2270"},{"supplierName":"NANDA","value":"604.330144825","baleCount":"1990"},{"supplierName":"SHRIY","value":"462.465246570","baleCount":"1602"},{"supplierName":"SRI R","value":"426.264386750","baleCount":"1075"},{"supplierName":"SHRI ","value":"416.056231640","baleCount":"1060"},{"supplierName":"SAURA","value":"309.878893556","baleCount":"1113"},{"supplierName":"TIRUP","value":"282.703825432","baleCount":"910"}]
+    /* More suppliers omitted for brevity */;
     return of(mockResponse);
   }
 
   getStockValueinLakhs(): Observable<any> {
-    const mockResponse = [{ openingStkValue: "1050.96", reciptValue: "539.87", sales: "70.65", issueValue: "712.17", issueReturnValue: ".00", closingStkValue: "808.01" }];
+    const mockResponse = [{"supplierName":"openingStkValue","salesValue":"1050.96"},{"supplierName":"reciptValue","salesValue":"539.87"},{"supplierName":"sales","salesValue":"70.65"},{"supplierName":"issueValue","salesValue":"712.17"},{"supplierName":"issueReturnValue","salesValue":".00"},{"supplierName":"closingStkValue","salesValue":"808.01"}];
     return of(mockResponse);
   }
 

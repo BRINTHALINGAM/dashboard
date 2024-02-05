@@ -1,3 +1,4 @@
+import { RmiDashboardService } from './../../../../services/rmi-dashboard.service';
 import { Component, Input } from "@angular/core";
 import * as SalesSummary from "../../../../shared/data/component/deshboard/charts";
 const types = ["area", "area", "area", "bar", "line", "area", "area"];
@@ -10,14 +11,30 @@ const types = ["area", "area", "area", "bar", "line", "area", "area"];
 export class SalesSummaryComponent {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
+  salesChartdata:any;
 
-  primary_color = localStorage.getItem("primary_color") || "#717171";
+
+  constructor(private rmiService :RmiDashboardService) {}
+
+  ngOnInit() : void{
+    this.rmiService.getStockDetails().subscribe((data) => {
+      this.prepareChartData(data);
+    })
+  }
+
+  primary_color = localStorage.getItem("primary_color") || "#ffa500";
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
-    public salesChartdata :any = {
+  prepareChartData(data:any[]) : void {
+
+    const series=data.map((item) => Number(item.stockValue));
+    const labels=data.map((item) => item.category);
+
+
+    this.salesChartdata  = {
 chart: {
-  height: 250,
+  height: 300,
   type: 'bar',
   toolbar: {
       show: false
@@ -31,13 +48,13 @@ stroke: {
 },
 series: [{
   name: 'series1',
-  data: [160,30,25,15,10,10,10,10,10,10]
+  data: series
 }],
 xaxis: {
-  categories: ["COTTON", "POLYESTER", "VISCOSE", "MODAL", "LIVA ECO", "RECYCLE", "LIVA RIVI", "EXCEL", "THERMAL", "ANTI BACT"],
+  categories: labels,
   labels: {
       style: {
-          fontSize: "13px",
+          fontSize: "10px",
           colors: "#848789",
           fontFamily: "nunito, sans-serif",
       },
@@ -46,7 +63,7 @@ xaxis: {
 yaxis: {
   labels: {
       formatter: function (val: string) {
-          return val  + "0";
+          return val;
       },
       style: {
           fontSize: "14px",
@@ -75,4 +92,5 @@ legend: {
 // },
 colors: [this.primary_color, this.secondary_color]
 }
+  }
 }
