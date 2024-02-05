@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { LayoutService } from '../../../../shared/services/layout/layout.service';
 
 
@@ -7,14 +7,25 @@ import { LayoutService } from '../../../../shared/services/layout/layout.service
   templateUrl: './theme.component.html',
   styleUrls: ['./theme.component.scss']
 })
-export class ThemeComponent {
+export class ThemeComponent implements OnInit{
 
-  public dark: boolean = this.layout.config.settings.layout_version == 'dark-only' ? true : false;
+  public dark: boolean;
 
-  constructor(public layout: LayoutService) { }
+  constructor(public layout: LayoutService) { 
+  
+     this.dark = localStorage.getItem('darkMode') === 'true';
+
+     this.applyDarkMode();
+  }
 
   layoutToggle() {
     this.dark = !this.dark;
+
+ 
+ localStorage.setItem('darkMode', this.dark.toString());
+ this.applyDarkMode();
+
+
     this.dark
       ? document.body.classList.add('dark-only')
       : document.body.classList.remove('dark-only');
@@ -22,6 +33,15 @@ export class ThemeComponent {
       ? 'dark-only'
       : 'light-only';
 
+  }
+
+
+  private applyDarkMode() {
+    if (this.dark) {
+      document.body.classList.add('dark-only');
+    } else {
+      document.body.classList.remove('dark-only');
+    }
   }
 
   ngOnInit(): void { }

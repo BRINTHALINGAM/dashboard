@@ -1,4 +1,5 @@
 <div class="row">
+
   <div class="col-xl-2 col-sm-2" style="width: 14%">
     <div class="card">
       <div class="card-header card-no-border pb-0">
@@ -17,187 +18,44 @@
               class="icon-arrow-up icon-rotate me-1"></i><span>{{item.percentage}}</span>
           </div> -->
         </div>
+
+  @for(item of commonData; track item){
+  <div class=" col-6 col-sm-6 col-xl-3 col-lg-4 box-col-6">
+    <div class="card widget-1">
+      <div class="card-body">
+        <div class="widget-content">
+          <div class="widget-round {{item.color}}">
+            <div class="bg-round stroke-icon svg-fill">
+              <svg>
+                <use attr.xlink:href="../assets/svg/icon-sprite.svg#{{item.icon}}"></use>
+              </svg>
+
+              <svg *ngIf="item.showAlertTriangle" xmlns="http://www.w3.org/2000/svg" style=" color: rgb(235, 81, 20);  position: relative; left: -10px;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle" >
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12" y2="17"></line>
+              </svg>
+          
+              <div [ngClass]="item.symbol" [style]="item.style" ></div>
+            
+
+        
+              <svg class="half-circle svg-fill">
+                <use href="assets/svg/icon-sprite.svg#halfcircle"></use>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <h3>{{item.num}}</h3><span class="f-light">{{item.title}}</span>
+          </div>
+       
+
       </div>
     </div>
   </div>
-
-  <div class="col-xl-2 col-sm-4" style="width: 14%">
-    <div class="card">
-      <div class="card-header card-no-border pb-0">
-        <div class="header-top">
-          <ul class="user-list">
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-primary">3053</h4>
-                <span class="font-primary d-flex align-items-center"></span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-secondary">1050.96</h4>
-                <span class="font-danger d-flex align-items-center"></span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="card-body py-lg-3">
-        <div class="d-flex align-items-center">
-          <div class="icofont icofont-scroll-bubble-right" style="font-size: 24px"></div>
-
-          <h4 style="margin-left: 10px; font-size: 15px">Opening Stock</h4>
-        </div>
-      </div>
-    </div>
   </div>
-
-  <div class="col-xl-2 col-sm-4" style="width: 14%">
-    <div class="card">
-      <div class="card-header card-no-border pb-0">
-        <div class="header-top">
-          <ul class="user-list">
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-primary">1471</h4>
-                <span class="font-primary d-flex align-items-center"></span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-secondary">539.86</h4>
-                <span class="font-danger d-flex align-items-center"></span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="card-body py-lg-3">
-        <div class="d-flex align-items-center">
-          <div class="icon-receipt" style="font-size: 24px"></div>
-
-          <h4 style="margin-left: 20px; font-size: 15px">Receipt</h4>
-        </div>
-      </div>
-    </div>
+}
+  
   </div>
-
-  <div class="col-xl-2 col-sm-4" style="width: 14%">
-    <div class="card">
-      <div class="card-header card-no-border pb-0">
-        <div class="header-top">
-          <ul class="user-list">
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-primary">0</h4>
-                <span class="font-primary d-flex align-items-center"></span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-secondary">0</h4>
-                <span class="font-danger d-flex align-items-center"></span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="card-body py-lg-3" style="width: 14%">
-        <div class="d-flex align-items-center text-nowrap">
-          <div class="icofont icofont-scroll-bubble-right" style="font-size: 24px"></div>
-
-          <h4 style="margin-left: 20px; font-size: 15px">SR-Return</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xl-2 col-sm-4" style="width: 14%">
-    <div class="card">
-      <div class="card-header card-no-border pb-0">
-        <div class="header-top">
-          <ul class="user-list">
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-primary">2147</h4>
-                <span class="font-primary d-flex align-items-center"></span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-secondary">782.81</h4>
-                <span class="font-danger d-flex align-items-center"></span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="card-body py-lg-3" style="width: 14%">
-        <div class="d-flex align-items-center">
-          <div class="icon-share" style="font-size: 24px"></div>
-
-          <h4 style="margin-left: 20px; font-size: 15px">Issue</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xl-2 col-sm-4" style="width: 14%">
-    <div class="card">
-      <div class="card-header card-no-border pb-0">
-        <div class="header-top">
-          <ul class="user-list">
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-primary">0</h4>
-                <span class="font-primary d-flex align-items-center"></span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-secondary">0</h4>
-                <span class="font-danger d-flex align-items-center"></span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="card-body py-lg-3">
-        <div class="d-flex align-items-center">
-          <div class="icon-share-alt" style="font-size: 24px"></div>
-
-          <h4 style="margin-left: 10px; font-size: 15px">Issue Return</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xl-2 col-sm-4" style="width: 14%">
-    <div class="card">
-      <div class="card-header card-no-border pb-0">
-        <div class="header-top">
-          <ul class="user-list">
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-primary">2377</h4>
-                <span class="font-primary d-flex align-items-center"></span>
-              </div>
-            </li>
-            <li>
-              <div>
-                <h4 class="mb-1" class="txt-secondary">808.31</h4>
-                <span class="font-danger d-flex align-items-center"></span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="card-body py-lg-3">
-        <div class="d-flex align-items-center">
-          <div class="icofont icofont-scroll-bubble-left" style="font-size: 24px"></div>
-
-          <h4 style="margin-left: 10px; font-size: 15px">Closing Stock</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  
+  

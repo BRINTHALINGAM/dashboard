@@ -103,10 +103,11 @@ export class ConsumptionComponent implements OnInit {
                       fontFamily: "Lato",
                       fontWeight: 500,
                        labels: 
-                      // {
-                      //     colors: ["#000000"],
-                      // },
+                      {
+                          colors: ["#000000"],
+                      },
                   },
+                  
                   itemMargin: {
                       horizontal: 10,
                       vertical: 1,
