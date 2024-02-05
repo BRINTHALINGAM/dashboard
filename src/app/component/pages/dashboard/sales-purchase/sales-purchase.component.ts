@@ -1,58 +1,22 @@
-import { Component } from '@angular/core';
-import { commonData } from '../../../../shared/data/component/widget/general/general';
+import { Component, OnInit } from "@angular/core";
+import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
 @Component({
-  selector: 'app-sales-purchase',
-  templateUrl: './sales-purchase.component.html',
-  styleUrls: ['./sales-purchase.component.scss']
+  selector: "app-sales-purchase",
+  templateUrl: "./sales-purchase.component.html",
+  styleUrls: ["./sales-purchase.component.scss"],
 })
-export class SalesPurchaseComponent {
+export class SalesPurchaseComponent implements OnInit {
+  topCardDetails: any = null; // Initialize to null or an appropriate default structure
 
-  public commonData =  [
-    {
-        icon: 'cart',
-        values: '17',
-        title: 'No. of Variety',
-        color: 'secondary'
-    },
-    {
-        icon: 'Home',
-        values: '3053 / 1050.96',
-        title: 'Opening Stock',
-        color: ' success',
-        
-    },
-    {
-        icon: 'rate',
-        values: '1471 / 539.86',
-        title: 'Receipt',
-        color: ' warning',
-        
-    },
-    {
-        icon: 'return-box',
-        values: '0 / 0',
-        title: 'SR-Return',
-        color: 'primary'
-    },
-    {
-        icon: 'arrowright',
-        values: '2147 / 782.81',
-        title: 'Issue',
-        color: 'secondary'
-    },
-    {
-        icon: 'rate',
-        values: '0 / 0',
-        title: 'Issue Return',
-        color: 'warning'
-    },
-    {
-        icon: 'new-order',
-        values: '2377 / 808.31',
-        title: 'Closing Stock',
-        color: 'success'
-    },
-];
+  constructor(private rmiService: RmiDashboardService) {}
 
+  ngOnInit() {
+    this.rmiService.topCardDetails$.subscribe((data) => {
+      // Assuming data[0] because your mockResponse is an array with one object
+      this.topCardDetails = data[0];
+    });
+
+    this.rmiService.getTopCardDetails(); // Triggers the BehaviorSubject to emit its current value
+  }
 }
