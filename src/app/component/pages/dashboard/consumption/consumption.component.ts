@@ -15,6 +15,8 @@ export class ConsumptionComponent  {
 
   @Input() name: string = "Consumption Details by Supplier"; // Default name if not provided
   donutChart: any;
+
+  
   
   gaugeType :NgxGaugeType= "semi";
     gaugeValue= 15;

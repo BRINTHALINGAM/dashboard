@@ -24,8 +24,8 @@ export class ValuesComponent {
   }
 
   barChart(data:any[]): void {
-    const series = data.map((item) => Number(item.salesValue));
-    const category = data.map((item) => item.supplierName);
+    let series = data.map((item) => Number(item.SalesValue));
+    let category = data.map((item) => item.SupplierName);
   
 
     this.salesChartdata = {

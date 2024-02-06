@@ -11,7 +11,6 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
 export class SalesPurchaseComponent implements OnInit {
   topCardDetails: any = null;
-
   constructor(private rmiService: RmiDashboardService) {}
 
   ngOnInit() {
@@ -22,6 +21,7 @@ export class SalesPurchaseComponent implements OnInit {
 
     this.rmiService.getTopCardDetails(); 
   }
+
    commonData = [
     {
         icon: 'new-order',
