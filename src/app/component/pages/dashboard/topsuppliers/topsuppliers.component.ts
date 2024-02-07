@@ -22,12 +22,13 @@ export class TopsuppliersComponent {
   ngOnInit() : void {
     this.rmiService.getTopTenSuppliers().subscribe((data) => {
       this.barChart(data);
+    
     })
   }
   barChart(data:any[]): void {
-    const supplier=data.map((item) => item.supplierName)
-    const value = data.map((item) => Number(item.value));
-    const count = data.map((item) => Number(item.baleCount));
+    let supplier=data.map((item) => item.SupplierName)
+    let value = data.map((item) => Number(item.Value));
+    let count = data.map((item) => Number(item.BaleCount));
     
      this.columnChart={
       chart: {

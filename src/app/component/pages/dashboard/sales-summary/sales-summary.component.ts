@@ -20,6 +20,7 @@ export class SalesSummaryComponent {
   ngOnInit() : void{
     this.rmiService.getStockDetails().subscribe((data) => {
       this.prepareChartData(data);
+     console.log(data)
     })
   }
 
@@ -29,9 +30,9 @@ export class SalesSummaryComponent {
 
   prepareChartData(data:any[]) : void {
 
-    const series=data.map((item) => Number(item.stockValue));
-    const labels=data.map((item) => item.category);
-
+    let series=data.map((item) => Number(item.stockValue));
+    let labels=data.map((item) => item.category);
+console.log(series)
 
     this.salesChartdata  = {
 chart: {
@@ -81,16 +82,6 @@ tooltip: {
 legend: {
   show: false,
 },
-// fill: {
-//   colors: [this.primary_color, this.secondary_color],
-//   type: "gradient",
-//   gradient: {
-//       shadeIntensity: 1,
-//       opacityFrom: 0.6,
-//       opacityTo: 0.4,
-//       stops: [0, 90, 100]
-//   },
-// },
 colors: [this.primary_color, this.secondary_color]
 }
   }

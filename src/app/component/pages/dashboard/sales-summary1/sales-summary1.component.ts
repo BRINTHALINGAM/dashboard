@@ -17,6 +17,7 @@ export class SalesSummary1Component {
   ngOnInit() : void{
     this.rmiService.getPendingOrderDetailsbySupplier().subscribe((data) => {
       this.prepareChartData(data);
+      console.log(data)
     })
   }
 
@@ -26,8 +27,8 @@ export class SalesSummary1Component {
 
   prepareChartData(data:any[]) : void {
 
-    const series=data.map((item) => Number(item.orderValue));
-    const labels=data.map((item) => item.supplierName);
+    let series=data.map((item) => Number(item.orderValue));
+    let labels=data.map((item) => item.supplierName);
 
 
     this.salesChartdata  = {

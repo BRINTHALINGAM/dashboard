@@ -24,8 +24,8 @@ export class RmreceiptComponent implements OnInit {
   }
 
   prepareChartData(data: any[]): void {
-    const series = data.map((item) => Number(item.baleCount));
-    const labels = data.map((item) => item.supplierName);
+    let series = data.map((item) => Number(item.BaleCount));
+    let labels = data.map((item) => item.SupplierName);
 
     this.pieChart = {
       chart: {

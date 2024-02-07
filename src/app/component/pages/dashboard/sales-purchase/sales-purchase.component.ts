@@ -10,20 +10,24 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
   styleUrls: ["./sales-purchase.component.scss"],
 })
 export class SalesPurchaseComponent implements OnInit {
-  topCardDetails: any = null;
+  topCardDetails: any;
+
 commonData:any[];
+
+
   constructor(private rmiService: RmiDashboardService) {}
 
   ngOnInit() {
-    this.rmiService.topCardDetails$.subscribe((data) => {
+    this.rmiService.getTopCardDetails().subscribe((data) => {
      
-      this.topCardDetails = data[0];
-    });
-
-    this.rmiService.getTopCardDetails(); 
+      this.preparedData(data)
   
-
+    });
+  }
+  preparedData(data:any):void{
+this.topCardDetails=data
     this.commonData = [
+
     {
         icon: 'new-order',
         num:this.topCardDetails.noOfVariety,
@@ -74,5 +78,4 @@ commonData:any[];
     
   ]
   
-}
-}
+}}
