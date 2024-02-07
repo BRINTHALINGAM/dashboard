@@ -24,6 +24,7 @@ export class RmiDashboardService {
   getTopCardDetails(): void {
     const mockResponse = [
       {
+        
         noOfVariety: "37",
         openingStkBales: "3053",
         openingStkValue: "1050.96",

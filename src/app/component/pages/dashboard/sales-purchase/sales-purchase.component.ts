@@ -1,17 +1,17 @@
+// sales-purchase.component.ts
 import { Component, OnInit } from "@angular/core";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
+
+
 
 @Component({
   selector: "app-sales-purchase",
   templateUrl: "./sales-purchase.component.html",
   styleUrls: ["./sales-purchase.component.scss"],
 })
-
-//export class SalesPurchaseComponent {
-
 export class SalesPurchaseComponent implements OnInit {
   topCardDetails: any = null;
-
+commonData:any[];
   constructor(private rmiService: RmiDashboardService) {}
 
   ngOnInit() {
@@ -21,11 +21,12 @@ export class SalesPurchaseComponent implements OnInit {
     });
 
     this.rmiService.getTopCardDetails(); 
-  }
-   commonData = [
+  
+
+    this.commonData = [
     {
         icon: 'new-order',
-        num: '178,098',
+        num:this.topCardDetails.noOfVariety,
         title: 'No. of variety',
         color: 'secondary'
     },
@@ -33,40 +34,40 @@ export class SalesPurchaseComponent implements OnInit {
     {
       symbol: 'icofont icofont-scroll-bubble-right',
       style: 'font-size: 25px; display: inline-block; border-radius: 50%; padding: 30px; color: rgb(80, 202, 196);',
-      num: '3053/1050.96', 
+      num: this.topCardDetails.openingStkBales+'/'+this.topCardDetails.openingStkValue, 
       title: 'Opening Stock',
       color: 'primary'
   },
    {
     symbol: 'icon-receipt',
     style: 'font-size: 24px; font-weight: lighter; display: inline-block; border-radius: 50%; padding: 30px; color: rgb(232, 175, 76);',
-    num: '1471/539.86',
+    num: this.topCardDetails.reciptBales+'/'+this.topCardDetails.reciptValue,
     title: 'Receipt',
     color: 'warning'
   }, 
   {
     icon: 'rate',
-    num: '0/0',
+    num: this.topCardDetails.sales+'/'+this.topCardDetails.reciptReturn,
    title: 'SR-Return',
      color: 'success'
   },
    {
     icon: 'issue-icon',  
     showAlertTriangle: true, 
-    num: '2147/782.81',
+    num: this.topCardDetails.issueBales+'/'+this.topCardDetails.issueValue,
     title: 'Issue',
     color: 'secondary'
   },
    {
     icon: 'return-box',
-    num: '0/0',
+    num: this.topCardDetails.issueReturnBales+'/'+this.topCardDetails.issueReturnValue,
     title: 'Issue Return',
     color: 'primary'
   },
   {
      symbol: 'icofont icofont-scroll-bubble-left',
      style: 'font-size: 25px; display: inline-block; border-radius: 50%; padding: 30px; color: rgb(232, 175, 76);',
-    num: '2377/808.31',
+    num: this.topCardDetails.closingStkBales+'/'+this.topCardDetails.closingStkValue,
     title: ' Closing Stock',
     color: 'warning'
   },
@@ -74,4 +75,4 @@ export class SalesPurchaseComponent implements OnInit {
   ]
   
 }
-
+}
