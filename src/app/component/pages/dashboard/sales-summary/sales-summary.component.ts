@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
 import * as SalesSummary from "../../../../shared/data/component/deshboard/charts";
+import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 const types = ["area", "area", "area", "bar", "line", "area", "area"];
 
 @Component({
@@ -11,13 +12,31 @@ export class SalesSummaryComponent {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
 
-  primary_color = localStorage.getItem("primary_color") || "#717171";
+  salesChartdata:any;
+
+
+  constructor(private rmiService :RmiDashboardService) {}
+
+  ngOnInit() : void{
+    this.rmiService.getStockDetails().subscribe((data) => {
+      this.prepareChartData(data);
+     
+    })
+  }
+
+  primary_color = localStorage.getItem("primary_color") || "#ffa500";
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
-    public salesChartdata :any = {
+  prepareChartData(data:any[]) : void {
+
+    let series=data.map((item) => Number(item.StockValue));
+    let labels=data.map((item) => item.Category);
+console.log(series)
+
+    this.salesChartdata  = {
 chart: {
-  height: 250,
+  height: 300,
   type: 'bar',
   toolbar: {
       show: false
@@ -31,13 +50,13 @@ stroke: {
 },
 series: [{
   name: 'series1',
-  data: [160,30,25,15,10,10,10,10,10,10]
+  data: series
 }],
 xaxis: {
-  categories: ["COTTON", "POLYESTER", "VISCOSE", "MODAL", "LIVA ECO", "RECYCLE", "LIVA RIVI", "EXCEL", "THERMAL", "ANTI BACT"],
+  categories: labels,
   labels: {
       style: {
-          fontSize: "13px",
+          fontSize: "10px",
           colors: "#848789",
           fontFamily: "nunito, sans-serif",
       },
@@ -46,7 +65,7 @@ xaxis: {
 yaxis: {
   labels: {
       formatter: function (val: string) {
-          return val  + "0";
+          return val;
       },
       style: {
           fontSize: "14px",
@@ -63,16 +82,7 @@ tooltip: {
 legend: {
   show: false,
 },
-// fill: {
-//   colors: [this.primary_color, this.secondary_color],
-//   type: "gradient",
-//   gradient: {
-//       shadeIntensity: 1,
-//       opacityFrom: 0.6,
-//       opacityTo: 0.4,
-//       stops: [0, 90, 100]
-//   },
-// },
 colors: [this.primary_color, this.secondary_color]
 }
+  }
 }

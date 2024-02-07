@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, of, timer } from "rxjs";
 import { switchMap } from "rxjs/operators";
+import { RmihttpService } from "./rmihttp.service";
 
 @Injectable({
   providedIn: "root",
@@ -8,12 +9,12 @@ import { switchMap } from "rxjs/operators";
 export class RmiDashboardService {
   private topCardDetailsSource = new BehaviorSubject<any[]>([]);
   topCardDetails$ = this.topCardDetailsSource.asObservable();
+  
 
-  constructor() {}
+  constructor(private rmihttp:RmihttpService) {}
 
   getAverageConsumption(): Observable<any> {
-    const mockResponse = [{ avgCons: "15", lastStockDate: "06/06/2024 00:00:00" }];
-    return of(mockResponse);
+    return this.rmihttp.getAvgConsumption()
   }
 
   // getTopCardDetails(): Observable<any> {
@@ -42,43 +43,30 @@ export class RmiDashboardService {
     // Instead of returning, we next the value into our BehaviorSubject
     this.topCardDetailsSource.next(mockResponse);
   }
+
   getStockDetails(): Observable<any> {
-    const mockResponse = [
-      { category: "ANTI BACTERIAL", stockValue: "1" },
-      { category: "COTTON", stockValue: "1610" } /* More categories omitted for brevity */,
-    ];
-    return of(mockResponse);
+    return this.rmihttp.getStock();
   }
+  // Assuming you're calling getStockDetails() somewhere else
 
   getPendingOrderDetailsbySupplier(): Observable<any> {
-    const mockResponse = [{ supplierName: "BALAJ", orderValue: "110" } /* More suppliers omitted for brevity */];
-    return of(mockResponse);
+    return this.rmihttp.getPending();
   }
 
   getMixConsumptionDetails(): Observable<any> {
-    const mockResponse = [{ mixGroupName: "COTTON 100%", netKgs: "100.16" } /* More mix groups omitted for brevity */];
-    return of(mockResponse);
+    return this.rmihttp.getMixConsumption();
   }
 
   getReceiptDetailsbySupplier(): Observable<any> {
-    const mockResponse = [
-      { supplierName: "RELIA", baleCount: "1482" },
-      { supplierName: "THE B", baleCount: "974" },
-      { supplierName: "GOVIN", baleCount: "1431" },
-      { supplierName: "MAHAV", baleCount: "300" },
-      { supplierName: "MANGL", baleCount: "420" },
-    ];
-    return of(mockResponse);
+    return this.rmihttp.getReceipt()
   }
 
   getTopTenSuppliers(): Observable<any> {
-    const mockResponse = [{ supplierName: "GRASI", value: "9699.535417047", baleCount: "23393" } /* More suppliers omitted for brevity */];
-    return of(mockResponse);
+    return this.rmihttp.getSuppliers()
   }
 
   getStockValueinLakhs(): Observable<any> {
-    const mockResponse = [{ openingStkValue: "1050.96", reciptValue: "539.87", sales: "70.65", issueValue: "712.17", issueReturnValue: ".00", closingStkValue: "808.01" }];
-    return of(mockResponse);
+    return this.rmihttp.getValues()
   }
 
   // Polling method for any data

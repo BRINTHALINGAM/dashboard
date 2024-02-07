@@ -20,11 +20,12 @@ import { MixwiseComponent } from './dashboard/mixwise/mixwise.component';
 import { TopsuppliersComponent } from './dashboard/topsuppliers/topsuppliers.component';
 import { ValuesComponent } from './dashboard/values/values.component';
 import { ConsumptionComponent } from './dashboard/consumption/consumption.component';
-
+import {NgxGaugeModule} from "ngx-gauge";
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, CommonAnalyicsComponent, SalesPurchaseComponent, CoursesComponent, 
-    SalesSummary1Component,RmreceiptComponent,MixwiseComponent,TopsuppliersComponent,ValuesComponent,ConsumptionComponent],
-  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule,Ng2GoogleChartsModule],
+    SalesSummary1Component,RmreceiptComponent,MixwiseComponent,TopsuppliersComponent,ValuesComponent,ConsumptionComponent,
+  ],
+  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule,Ng2GoogleChartsModule, NgxGaugeModule],
 })
 export class PagesModule {}
