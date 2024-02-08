@@ -8,7 +8,7 @@ export class RmihttpService {
 
   constructor(private http:HttpClient) { }
 
-  private url = "https://localhost:44384/api/Values/";
+  private url = "https://localhost:44384/api/values/";
 
   getTopCard()
   {

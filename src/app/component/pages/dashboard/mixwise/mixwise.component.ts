@@ -5,7 +5,7 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 @Component({
   selector: 'app-mixwise',
   templateUrl: './mixwise.component.html',
-  styleUrl: './mixwise.component.scss'
+  styleUrls: ['./mixwise.component.scss']
 })
 export class MixwiseComponent {
   @Input() public name: string | undefined;
@@ -21,30 +21,63 @@ export class MixwiseComponent {
   primary_color = localStorage.getItem("primary_color") || "#800080";
 
   prepareChartData(data: any[]): void {
+    if (!data || data.length === 0) {
+      // Handle the case where data is empty or undefined
+      // For example, you can set some default values or show a message
+      this.barChart = {
+        chart: {
+          height: 250,
+          type: 'bar',
+          toolbar: {
+            show: false
+          }
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        series: [{
+          data: [0]  // Set a default value or an empty array
+        }],
+        xaxis: {
+          categories: ['No Data'],  // Set default categories or labels
+        },
+        colors: [this.primary_color]
+      };
+      return;
+    }
+  
+    // Rest of your code to prepare the chart data
     const series = data.map((item) => Number(item.netKgs));
     const labels = data.map((item) => item.mixGroupName);
-
+  
     this.barChart = {
       chart: {
         height: 250,
         type: 'bar',
         toolbar: {
-            show: false
+          show: false
         }
-    },
-    plotOptions: {
+      },
+      plotOptions: {
         bar: {
-            horizontal: true,
+          horizontal: true,
         }
-    },
-    dataLabels: {
+      },
+      dataLabels: {
         enabled: false
-    },
-    series: [{
+      },
+      series: [{
         data: series
-    }],
-    xaxis: {
-        categories:labels,
-    },
-    colors: [this.primary_color]
-  }}}
+      }],
+      xaxis: {
+        categories: labels,
+      },
+      colors: [this.primary_color]
+    };
+  }
+}  

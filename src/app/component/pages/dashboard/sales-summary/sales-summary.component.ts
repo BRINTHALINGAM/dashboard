@@ -17,12 +17,13 @@ export class SalesSummaryComponent {
 
   constructor(private rmiService :RmiDashboardService) {}
 
-  ngOnInit() : void{
+  ngOnInit(): void {
     this.rmiService.getStockDetails().subscribe((data) => {
+      console.log(data); // Log the received data
       this.prepareChartData(data);
-     console.log(data)
-    })
+    });
   }
+  
 
   primary_color = localStorage.getItem("primary_color") || "#ffa500";
 
@@ -30,9 +31,13 @@ export class SalesSummaryComponent {
 
   prepareChartData(data:any[]) : void {
 
+    if (!data || data.length === 0) {
+      return;
+    }
+
     let series=data.map((item) => Number(item.stockValue));
     let labels=data.map((item) => item.category);
-console.log(series)
+console.log(series);
 
     this.salesChartdata  = {
 chart: {

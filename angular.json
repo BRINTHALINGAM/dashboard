@@ -18,8 +18,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            
             "allowedCommonJsDependencies": [
-              "feather-icons"
+              "feather-icons", "apexcharts"
             ],
             "outputPath": "dist/cion-angular-16",
             "index": "src/index.html",

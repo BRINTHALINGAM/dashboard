@@ -3,10 +3,10 @@
     <h3>{{name}}</h3>
   </div>
   <div class="card-body">
-    <apx-chart [chart]="columnChart.chart" [plotOptions]="columnChart.plotOptions"
-      [dataLabels]="columnChart.dataLabels" [stroke]="columnChart.stroke" [series]="columnChart.series"
-      [xaxis]="columnChart.xaxis" [yaxis]="columnChart.yaxis" [fill]="columnChart.fill"
-      [tooltip]="columnChart.tooltip" [colors]="columnChart.colors">
-   </apx-chart>
+    <apx-chart *ngIf="columnChart" [chart]="columnChart?.chart" [plotOptions]="columnChart?.plotOptions"
+      [dataLabels]="columnChart?.dataLabels" [stroke]="columnChart?.stroke" [series]="columnChart?.series"
+      [xaxis]="columnChart?.xaxis" [yaxis]="columnChart?.yaxis" [fill]="columnChart?.fill"
+      [tooltip]="columnChart?.tooltip" [colors]="columnChart?.colors">
+    </apx-chart>
  </div>
 </div>
