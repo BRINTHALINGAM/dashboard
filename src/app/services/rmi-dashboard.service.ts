@@ -17,32 +17,17 @@ export class RmiDashboardService {
     return this.rmihttp.getAvgConsumption()
   }
 
-  // getTopCardDetails(): Observable<any> {
-  // const mockResponse = [{ noOfVariety: "37", openingStkBales: "3053", openingStkValue: "1050.96", reciptBales: "1471", reciptValue: "539.87", sales: "260", reciptReturn: "70.65", issueBales: "1887", issueValue: "712.17", issueReturnBales: "0", issueReturnValue: ".00", closingStkBales: "2377", closingStkValue: "808.01" }];
-  //return of(mockResponse);
-  //}
-
-  getTopCardDetails(): void {
-    const mockResponse = [
-      {
-        noOfVariety: "37",
-        openingStkBales: "3053",
-        openingStkValue: "1050.96",
-        reciptBales: "1471",
-        reciptValue: "539.87",
-        sales: "260",
-        reciptReturn: "70.65",
-        issueBales: "1887",
-        issueValue: "712.17",
-        issueReturnBales: "0",
-        issueReturnValue: ".00",
-        closingStkBales: "2377",
-        closingStkValue: "808.01",
-      },
-    ];
-    // Instead of returning, we next the value into our BehaviorSubject
-    this.topCardDetailsSource.next(mockResponse);
+  getTopCardDetails(): Observable<any> {
+  return this.rmihttp.getTopCard()
   }
+
+  // getTopCardDetails(): void {
+  //   this.rmihttp.getTopCard().subscribe(
+  //     (response:any) => {
+  //       // Assuming that the response is an array of top card details
+  //       this.topCardDetailsSource.next(response);
+  //     })
+  // }
 
   getStockDetails(): Observable<any> {
     return this.rmihttp.getStock();

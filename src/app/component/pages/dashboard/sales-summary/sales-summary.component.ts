@@ -20,7 +20,7 @@ export class SalesSummaryComponent {
   ngOnInit() : void{
     this.rmiService.getStockDetails().subscribe((data) => {
       this.prepareChartData(data);
-     
+     console.log(data)
     })
   }
 
@@ -30,8 +30,8 @@ export class SalesSummaryComponent {
 
   prepareChartData(data:any[]) : void {
 
-    let series=data.map((item) => Number(item.StockValue));
-    let labels=data.map((item) => item.Category);
+    let series=data.map((item) => Number(item.stockValue));
+    let labels=data.map((item) => item.category);
 console.log(series)
 
     this.salesChartdata  = {

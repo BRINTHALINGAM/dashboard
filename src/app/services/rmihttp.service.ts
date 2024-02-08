@@ -8,8 +8,12 @@ export class RmihttpService {
 
   constructor(private http:HttpClient) { }
 
-  private url = "https://localhost:44380/api/Values/";
+  private url = "https://localhost:44384/api/Values/";
 
+  getTopCard()
+  {
+    return this.http.get(this.url+'GettopCardDetails')
+  }
   getStock()
   {
     return this.http.get(this.url+'GetStockDetails');
