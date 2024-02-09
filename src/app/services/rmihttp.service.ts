@@ -5,12 +5,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RmihttpService {
- apiUrl:any;
+
+ private baseUrl = "http://172.16.16.52:8100/RMIDashboard/api/RMI/";
 
   constructor(private http:HttpClient) { }
 
-  private Url = "https://localhost:44384/api/values/";
-  
   
 
   getTopCard(divCode: string, yearStart: string, yearEnd: string, fromDate: string, toDate: string, lotYear: string) {
@@ -22,9 +21,7 @@ export class RmihttpService {
     params = params.append('toDate', toDate);
     params = params.append('lotYear', lotYear);
 
-    return this.http.get(
-    'http://172.16.16.52:8100/RMIDashboard/api/RMI/GetTopCardDetails?divCode=01&yearStart=2023-04-01&yearEnd=2024-03-31&fromDate=2023-12-01&toDate=2023-12-31&lotYear=2023'
-    , { params: params });
+    return this.http.get( this.baseUrl + 'GetTopCardDetails', { params: params });
   }
   getStock(divCode: string,processingDate: string,lotYear:string )
   {
@@ -33,7 +30,7 @@ export class RmihttpService {
     params = params.append('processingDate', processingDate);
     params = params.append('lotYear', lotYear);
 
-    return this.http.get("http://172.16.16.52:8100/RMIDashboard/api/RMI/GetStockDetails?divCode=01&processingDate=2023-12-28&lotYear=2023",{params: params});
+    return this.http.get(this.baseUrl + 'GetStockDetails', { params: params });
   }
 
   getPending(divCode: string,processingDate: string)
@@ -42,7 +39,7 @@ export class RmihttpService {
     params=params.append('divCode', divCode);
     params = params.append('processingDate', processingDate);
 
-    return this.http.get("http://172.16.16.52:8100/RMIDashboard/api/RMI/GetPendingOrderDetailsbySupplier?divCode=01&processingDate=2023-12-25",{params: params})
+    return this.http.get(this.baseUrl + 'GetPendingOrderDetailsbySupplier', { params: params });
   }
 
   getReceipt(divCode: string,processingDate: string)
@@ -51,7 +48,7 @@ export class RmihttpService {
     params=params.append('divCode', divCode);
     params = params.append('processingDate', processingDate);
 
-    return this.http.get("http://172.16.16.52:8100/RMIDashboard/api/RMI/GetReceiptDetailsbySupplier?divCode=01&processingDate=2023-12-25",{params: params})
+    return this.http.get(this.baseUrl + 'GetReceiptDetailsbySupplier', { params: params });
   }
 
   getMixConsumption(divCode: string,processingDate: string)
@@ -59,7 +56,7 @@ export class RmihttpService {
     let  params=new HttpParams();
     params=params.append('divCode', divCode);
     params = params.append('processingDate', processingDate);
-    return this.http.get("http://172.16.16.52:8100/RMIDashboard/api/RMI/GetMixConsumptionDetails?divCode=01&processingDate=2023-12-25",{params: params})
+    return this.http.get(this.baseUrl + 'GetMixConsumptionDetails', { params: params });
   }
 
   getSuppliers(divCode: string,yearStart: string, yearEnd: string)
@@ -68,7 +65,7 @@ export class RmihttpService {
     params = params.append('divCode', divCode);
     params = params.append('yearStart', yearStart);
     params = params.append('yearEnd', yearEnd);
-    return this.http.get("http://172.16.16.52:8100/RMIDashboard/api/RMI/GetTopTenSuppliers?divCode=01&yearStart=2023-04-01&yearEnd=2024-03-31",{params: params})
+    return this.http.get(this.baseUrl + 'GetTopTenSuppliers', { params: params });
   }
 
   getValues(divCode: string, yearStart: string, yearEnd: string, fromDate: string, toDate: string, lotYear: string)
@@ -80,7 +77,7 @@ export class RmihttpService {
     params = params.append('fromDate', fromDate);
     params = params.append('toDate', toDate);
     params = params.append('lotYear', lotYear);
-    return this.http.get("http://172.16.16.52:8100/RMIDashboard/api/RMI/GetStockValueinLakhs?divCode=01&yearStart=2023-04-01&yearEnd=2024-03-31&fromDate=2023-12-01&toDate=2023-12-31&lotYear=2023",{params: params})
+    return this.http.get(this.baseUrl + 'GetStockValueinLakhs', { params: params });
   }
 
   getAvgConsumption(divCode: string,fromDate: string, toDate: string){
@@ -90,7 +87,7 @@ export class RmihttpService {
     params = params.append('fromDate', fromDate);
     params = params.append('toDate', toDate);
 
-    return this.http.get("http://172.16.16.52:8100/RMIDashboard/api/RMI/GetAvarageConsumption?divCode=01&fromDate=2023-12-01&toDate=2023-12-31",{params: params})
+    return this.http.get(this.baseUrl + 'GetAvarageConsumption', { params: params });
   }
 
 }
