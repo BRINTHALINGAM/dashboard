@@ -9,7 +9,7 @@ export class RmihttpService {
 
   constructor(private http:HttpClient) { }
 
-  private url = "https://localhost:44325/api/values/";
+  private Url = "https://localhost:44384/api/values/";
   
   
 

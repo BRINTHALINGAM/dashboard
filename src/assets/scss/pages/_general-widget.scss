@@ -413,6 +413,14 @@
     }
   }
 }
+/* Add a specific class for dark theme */
+.dark-only {
+  .widget-1 {
+    background-image: url('../../images/dashboard/widget-bg.png'); /* Specify the dark theme background image */
+    /* Other styles for the dark theme */
+  }
+}
+
 .widget-1 {
   background-size: cover;
   margin-bottom: 25px;
