@@ -26,9 +26,9 @@ export class TopsuppliersComponent {
     })
   }
   barChart(data:any[]): void {
-    let supplier=data.map((item) => item.SupplierName)
-    let value = data.map((item) => Number(item.Value));
-    let count = data.map((item) => Number(item.BaleCount));
+    let supplier=data.map((item) => (item.supplierName));
+    let value = data.map((item) => Number(item.value));
+    let count = data.map((item) => Number(item.baleCount));
     
      this.columnChart={
       chart: {

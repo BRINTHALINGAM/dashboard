@@ -25,7 +25,7 @@ commonData:any[];
     });
   }
   preparedData(data:any):void{
-this.topCardDetails=data
+this.topCardDetails=data[0]
     this.commonData = [
 
     {

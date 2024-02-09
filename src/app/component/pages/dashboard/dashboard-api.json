@@ -20,7 +20,7 @@ http://172.16.16.52:8100/RMIDashboard/api/RMI/GetTopTenSuppliers?divCode=01&year
 [{"supplierName":"GRASI","value":"9699.535417047","baleCount":"23393"},{"supplierName":"VST W","value":"1343.874471978","baleCount":"3105"},{"supplierName":"VISHV","value":"693.345143073","baleCount":"2360"},{"supplierName":"SHREE","value":"649.399497485","baleCount":"2270"},{"supplierName":"NANDA","value":"604.330144825","baleCount":"1990"},{"supplierName":"SHRIY","value":"462.465246570","baleCount":"1602"},{"supplierName":"SRI R","value":"426.264386750","baleCount":"1075"},{"supplierName":"SHRI ","value":"416.056231640","baleCount":"1060"},{"supplierName":"SAURA","value":"309.878893556","baleCount":"1113"},{"supplierName":"TIRUP","value":"282.703825432","baleCount":"910"}]
 
 http://172.16.16.52:8100/RMIDashboard/api/RMI/GetStockValueinLakhs?divCode=01&yearStart=2023-04-01&yearEnd=2024-03-31&fromDate=2023-12-01&toDate=2023-12-31&lotYear=2023
-[{"supplierName":"openingStkValue","salesValue":"1050.96"},{"supplierName":"reciptValue","salesValue":"539.87"},{"supplierName":"sales","salesValue":"70.65"},{"supplierName":"issueValue","salesValue":"712.17"},{"supplierName":"issueReturnValue","salesValue":".00"},{"supplierName":"closingStkValue","salesValue":"808.01"}]
+[{"openingStkValue":"1050.96","reciptValue":"539.87","sales":"70.65","issueValue":"712.17","issueReturnValue":".00","closingStkValue":"808.01"}]
 
 http://172.16.16.52:8100/RMIDashboard/api/RMI/GetAvarageConsumption?divCode=01&fromDate=2023-12-01&toDate=2023-12-31
 [{"avgCons":"15","lastStockDate":"06/06/2024 00:00:00"}]
