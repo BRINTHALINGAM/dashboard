@@ -2,16 +2,25 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, of, timer } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { RmihttpService } from "./rmihttp.service";
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: "root",
 })
 export class RmiDashboardService {
+  
+
+  constructor(private http: HttpClient,private rmihttp:RmihttpService) { }
+
+  getDataForToday(): Observable<any> {
+    return this.http.get<any>('your-api-url');
+  }
   private topCardDetailsSource = new BehaviorSubject<any[]>([]);
   topCardDetails$ = this.topCardDetailsSource.asObservable();
   
 
-  constructor(private rmihttp:RmihttpService) {}
+  //constructor(private rmihttp:RmihttpService) {}
 
   getAverageConsumption(): Observable<any> {
     const divCode = '01';

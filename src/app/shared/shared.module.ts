@@ -36,4 +36,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [CommonModule, SharedRoutingModule, NgbModule, ReactiveFormsModule, FormsModule, AngularSvgIconModule.forRoot(), TranslateModule.forRoot()],
   exports: [ContentComponent, FeathericonComponent, LoaderComponent, SvgIconComponent, BreadcrumbComponent, TapToTopComponent, TranslateModule, NgbModule],
 })
-export class SharedModule {}
+export class SharedModule {}
