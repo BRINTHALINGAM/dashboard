@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component,OnInit, NgZone } from '@angular/core';
+import { interval } from 'rxjs';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 @Component({
@@ -7,18 +7,27 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss']
 })
-export class DateComponent {
+export class DateComponent implements OnInit  {
   currentDateTime: string;
 
-  constructor(private rmiService: RmiDashboardService) {
-    this.getCurrentDateTime();
+  constructor(private rmiService: RmiDashboardService, private zone: NgZone) {
   }
+
+  ngOnInit(): void {
+    this.getCurrentDateTime();
+
+    
+    interval(1000).subscribe(() => {
+      this.zone.run(() => {
+        this.getCurrentDateTime();
+      });
+    });
+  }
+
 
   getCurrentDateTime(): void {
     const now = new Date();
     const p = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false } as const;
-      this.currentDateTime = now.toLocaleString('en-US', p).replace(" at ", ", ");
-  
+    this.currentDateTime = now.toLocaleString('en-US', p).replace(" at ", ", ");
   }
-  
 }
