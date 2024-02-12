@@ -1,19 +1,19 @@
 <div class="card customer-chart">
   <div class="card-header pb-0">
     <div class="header-top">
-      <h3 class="m-0">Customer</h3>
+      <h3 class="m-0">{{name}}</h3>
       <div class="card-header-right">
       </div>
     </div>
   </div>
   <div class="card-body">
-        <div id="customer-chart">
-          <ngx-gauge [type]="gaugeType" 
-           [value]="gaugeValue" 
-           [label]="gaugeLabel"  
-           [thresholds]="thresholdConfig">
-</ngx-gauge>
-        </div>
+    <div id="Incomechrt">
+
+      <ngx-gauge [type]="gaugeChart?.gaugeType" 
+           [value]="gaugeChart?.gaugeValue" 
+           [label]="gaugeChart?.gaugeLabel"  
+           >
+      </ngx-gauge>
       </div>
-</div> 
- 
+      </div>
+</div>

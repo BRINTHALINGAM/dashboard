@@ -13,19 +13,38 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 export class ConsumptionComponent  {
 
-  @Input() name: string = "Consumption Details by Supplier"; // Default name if not provided
-  donutChart: any;
 
+  @Input() name: string = "Consumption Details by Supplier"; // Default name if not provided
+  gaugeChart: any;
+
+    constructor(private rmiService :RmiDashboardService) {}
+
+  ngOnInit(): void {
+    this.rmiService.getAverageConsumption().subscribe((data) => {
+      console.log(data); // Log the received data
+      this.prepareChartData(data);
+    });
+  }
   
-  
-  gaugeType :NgxGaugeType= "semi";
-    gaugeValue= 15;
-    gaugeLabel = "Stock will Last Upto 06/06/2024";
-    thresholdConfig = {
+  prepareChartData(data:any[]) {
+
+    if (!data || data.length === 0) {
+      return;
+    }
+
+    let avg=data.map((item)=> Number(item.avgCons))
+    let lastStockDate=data.map((item) => item.lastStockDate)
+    console.log(lastStockDate)
+
+    this.gaugeChart={
+  gaugeType : "semi",
+    gaugeValue: avg,
+    gaugeLabel :lastStockDate,
+    thresholdConfig : {
       '0': {color: 'green'},
       '40': {color: 'orange'},
       '75.5': {color: 'red'}
-  };
-  
+  }}
+}
 
 }
