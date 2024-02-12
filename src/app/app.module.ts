@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, importProvidersFrom } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
@@ -13,7 +13,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ChartistModule } from "ng-chartist";
-
+import { NgxDaterangepickerBootstrapModule, NgxDaterangepickerLocaleService } from "ngx-daterangepicker-bootstrap";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -29,7 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    
+    NgxDaterangepickerBootstrapModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
@@ -40,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [DecimalPipe],
+  providers: [DecimalPipe, NgxDaterangepickerLocaleService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
