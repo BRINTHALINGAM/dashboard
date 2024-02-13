@@ -67,18 +67,6 @@ export class DateComponent  {
   datesUpdatedRange($event: Object) {
     console.log('range', $event);
   }
-  
-  
-  // selected: { startDate: Dayjs; endDate: Dayjs };
-  
-  // ranges: any = {
-  //   Today: [dayjs(), dayjs()],
-  //   Yesterday: [dayjs().subtract(1, "days"), dayjs().subtract(1, "days")],
-  //   "Last 7 Days": [dayjs().subtract(6, "days"), dayjs()],
-  //   "Last 30 Days": [dayjs().subtract(29, "days"), dayjs()],
-  //   "This Month": [dayjs().startOf("month"), dayjs().endOf("month")],
-  //   "Last Month": [dayjs().subtract(1, "month").startOf("month"), dayjs().subtract(1, "month").endOf("month")],
-  // };
 
 }
 
