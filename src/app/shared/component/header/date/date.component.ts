@@ -69,6 +69,7 @@ export class DateComponent  {
     const tooltip = this.tooltips.find((tt) => tt.date.isSame(m, 'day'));
     return tooltip ? tooltip.text : false;
   };
+
   datesUpdatedRange($event:any) {
     
         const fromDate = new Date($event.startDate.$d);

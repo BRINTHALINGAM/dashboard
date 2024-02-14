@@ -15,6 +15,12 @@ const routes: Routes = [
     component: ContentComponent,
     children: dashData,
   },
+
+  {
+    path:"",
+    redirectTo: "/pages/postspinning",
+    pathMatch:"full",
+  }
 ];
 
 @NgModule({
