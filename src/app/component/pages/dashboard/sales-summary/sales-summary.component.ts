@@ -15,11 +15,17 @@ export class SalesSummaryComponent {
 
   salesChartdata:any;
 
+  calendar:any
+
+
+  
 
   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
     this.dateService.dateEvent.subscribe((date)=>{
       console.log("sales",date)
-      this.processingDate=date;
+      this.calendar=date;
+      this.processingDate=this.calendar.formattedfromDate;
+      this.lotYear=this.calendar.lotYear;
       this.rmiService.getStockDetails(this.divCode,this.processingDate,this.lotYear).subscribe((data) => {
         console.log(data); // Log the received data
         this.prepareChartData(data);
@@ -29,14 +35,14 @@ export class SalesSummaryComponent {
 
    divCode:string = '01';
    processingDate:string;
-   lotYear:string = '2023';
+   lotYear:string;
 
-  ngOnInit(): void {
-    this.rmiService.getStockDetails(this.divCode,this.processingDate,this.lotYear).subscribe((data) => {
-      console.log(data); // Log the received data
-      this.prepareChartData(data);
-    });
-  }
+  // ngOnInit(): void {
+  //   this.rmiService.getStockDetails(this.divCode,this.processingDate,this.lotYear).subscribe((data) => {
+  //     console.log(data); // Log the received data
+  //     this.prepareChartData(data);
+  //   });
+  // }
   
 
   primary_color = localStorage.getItem("primary_color") || "#ffa500";

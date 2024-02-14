@@ -6,6 +6,6 @@ import { EventEmitter, Injectable } from '@angular/core';
 export class DateService {
 
   constructor() { }
-   dateEvent =new EventEmitter<any>();
+   dateEvent =new EventEmitter<object>();
 
 }

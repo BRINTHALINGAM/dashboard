@@ -1,5 +1,6 @@
 // sales-purchase.component.ts
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { DateService } from "src/app/services/date.service";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
 
@@ -9,21 +10,36 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
   templateUrl: "./sales-purchase.component.html",
   styleUrls: ["./sales-purchase.component.scss"],
 })
-export class SalesPurchaseComponent implements OnInit {
+export class SalesPurchaseComponent  {
   topCardDetails: any;
 
 commonData:any[];
 
+divCode:string='01';
+ yearStart:string='2023-04-01';
+ yearEnd:string='2024-03-31';
+ fromDate:string;
+  toDate:string;
+  lotYear:string;
 
-  constructor(private rmiService: RmiDashboardService) {}
+  calendar:any
 
-  ngOnInit() {
-    this.rmiService.getTopCardDetails().subscribe((data) => {
-     
-      this.preparedData(data)
-  
-    });
+  constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+    this.dateService.dateEvent.subscribe((date)=>{
+      console.log("sales",date)
+      this.calendar=date;
+      this.toDate=this.calendar.formattedtoDate;
+      this.fromDate=this.calendar.formattedfromDate;
+      this.lotYear=this.calendar.lotYear;
+      this.rmiService.getTopCardDetails(this.divCode, this.yearStart, this.yearEnd,this. fromDate,this. toDate, this.lotYear).subscribe((data) => {
+        console.log(data); // Log the received data
+        this.preparedData(data);
+      });
+    })
   }
+
+ 
+
   preparedData(data:any):void{
 this.topCardDetails=data[0]
     this.commonData = [

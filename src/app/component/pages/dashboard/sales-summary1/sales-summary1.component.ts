@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DateService } from 'src/app/services/date.service';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 @Component({
@@ -12,15 +13,21 @@ export class SalesSummary1Component {
   salesChartdata:any;
 
 
-  constructor(private rmiService :RmiDashboardService) {}
-
-  ngOnInit() : void{
-    this.rmiService.getPendingOrderDetailsbySupplier().subscribe((data) => {
-      this.prepareChartData(data);
-      console.log(data)
-    })
-  }
-
+  divCode:string ='01';
+  processingDate:string;
+ calendar:any
+  constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+   this.dateService.dateEvent.subscribe((date:any)=>{
+     console.log("sales",date)
+     this.calendar=date;
+     this.processingDate=this.calendar.formattedfromDate;
+     this.rmiService.getPendingOrderDetailsbySupplier(this.divCode,this.processingDate).subscribe((data) => {
+       this.prepareChartData(data);
+       console.log(data)
+     })
+   })
+ }
+ 
   primary_color = localStorage.getItem("primary_color") || "#008FFB";   // 008FFB - blue , FEB019 - yellow , 775DD0 - purple, FF4560-red , 00E396 -green
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";

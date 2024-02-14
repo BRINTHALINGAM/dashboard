@@ -72,11 +72,23 @@ export class DateComponent  {
 
   datesUpdatedRange($event:any) {
     
-        const startDate = new Date($event.startDate.$d);
-        const formattedStartDate = startDate.toISOString().slice(0, 10); // Format: YYYY-MM-DD
-        console.log('Formatted Start Date:', formattedStartDate);
-        this.dateService.dateEvent.emit(formattedStartDate);
+        const fromDate = new Date($event.startDate.$d);
+        const formattedfromDate = fromDate.toISOString().slice(0, 10); // Format: YYYY-MM-DD
+        console.log('Formatted Start Date:', formattedfromDate);
+
+        const lotYear = ($event.startDate.$y-1);
+        console.log('lotYear: ',lotYear);
+      
+
+        const toDate = ($event.endDate.$d);
+        const formattedtoDate = toDate.toISOString().slice(0, 10);
+        console.log('formatted To Date: ',formattedtoDate);
+
+    
+        
+        this.dateService.dateEvent.emit({formattedfromDate,lotYear,formattedtoDate});
     
 }
+
 }
 
