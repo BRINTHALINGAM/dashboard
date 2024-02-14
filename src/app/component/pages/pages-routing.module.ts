@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 
 import { RouterModule, Routes } from "@angular/router";
 import { RMIDashboardComponent } from "./dashboard/rmi-dashboard.component";
+import { PostspinningComponent } from "./postspinning/postspinning.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,22 @@ const routes: Routes = [
       
     ],
   },
+
+  {
+    path: "",
+    children: [
+      {
+        path: "postspinning",
+        component: PostspinningComponent,
+        data: {
+          title: "POST SPINNING",
+
+        },
+      },
+      
+    ],
+
+  }
 ];
 
 @NgModule({
