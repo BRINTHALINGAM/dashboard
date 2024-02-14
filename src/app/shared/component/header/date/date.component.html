@@ -1,5 +1,29 @@
-<select class="form-control" name="select">
-  <option value="opt1">{{ currentDateTime }}</option>
-</select>
-
-<input type="text" ngxDaterangepickerBootstrap [(ngModel)]="selected" [ranges]="ranges" class="form-control" />
+<!-- 
+<input type="text" ngxDaterangepickerBootstrap [(ngModel)]="selected" [ranges]="ranges" class="form-control" /> -->
+<input
+            type="text"
+            id="rangeCalendarTimeRight"
+            class="form-control"
+            style="box-shadow: none; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"
+            readonly
+            ngxDaterangepickerBootstrap
+            [(ngModel)]="selectedRangeCalendarTimeRight"
+            [drops]="dropsDown"
+            [opens]="opensRight"
+            [locale]="localeTime"
+            [ranges]="ranges"
+            [timePicker]="true"
+            [timePickerSeconds]="true"
+            [timePicker24Hour]="true"
+            [showCustomRangeLabel]="true"
+            [showCancel]="true"
+            [linkedCalendars]="true"
+            [alwaysShowCalendars]="false"
+            [showRangeLabelOnInput]="false"
+            [keepCalendarOpeningWithRange]="false"
+            [isTooltipDate]="isTooltipDate"
+            [isCustomDate]="isCustomDate"
+            [isInvalidDate]="isInvalidDate"
+            (datesUpdated)="datesUpdatedRange($event)"
+            aria-describedby="rangeCalendarTimeRightDesc"
+          />
