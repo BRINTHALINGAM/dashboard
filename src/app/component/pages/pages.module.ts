@@ -1,3 +1,4 @@
+import { CounteffComponent } from './postspinning/counteff/counteff.component';
 
 import { SalesSummary1Component } from "./dashboard/sales-summary1/sales-summary1.component";
 
@@ -27,11 +28,11 @@ import { MachineutilComponent } from './postspinning/machineutil/machineutil.com
 import { Rg1Component } from './postspinning/rg1/rg1.component';
 import { TopcardsComponent } from './postspinning/topcards/topcards.component';
 import { VarietyprodnComponent } from './postspinning/varietyprodn/varietyprodn.component';
-import { CounteffComponent } from "./postspinning/counteff/counteff.component";
 import { CountprodnComponent } from "./postspinning/countprodn/countprodn.component";
 
 @NgModule({
-  declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent],
+  declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
+  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent],
   imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule],
 })
 export class PagesModule {}
