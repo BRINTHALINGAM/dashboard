@@ -2,6 +2,7 @@ import { Component, Input } from "@angular/core";
 import * as chartData from "../../../../shared/data/component/charts/google-chart";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 import * as Chartist from 'chartist';
+import { DateService } from "src/app/services/date.service";
 
 
 @Component({
@@ -10,21 +11,33 @@ import * as Chartist from 'chartist';
   styleUrl: "./topsuppliers.component.scss",
 })
 export class TopsuppliersComponent {
+
   @Input() public name: string | undefined;
   columnChart:any;
+   
+   
+
 
   primary_color = localStorage.getItem("primary_color") || "#89ABE3";
 
   secondary_color = localStorage.getItem("secondary_color") || "#EA738D";
   
-  constructor(private rmiService: RmiDashboardService) {}
+ 
+  divCode:string = '01';
+   yearStart :string= '2023-04-01';
+   yearEnd:string = '2024-03-31';
 
-  ngOnInit() : void {
-    this.rmiService.getTopTenSuppliers().subscribe((data) => {
-      this.barChart(data);
-    
+  constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+    this.dateService.dateEvent.subscribe((date)=>{
+      console.log("sales",date)
+      
+      this.rmiService.getTopTenSuppliers(this.divCode, this.yearStart, this.yearEnd).subscribe((data) => {
+        console.log(data); // Log the received data
+        this.barChart(data);
+      });
     })
   }
+  
   barChart(data:any[]): void {
     let supplier=data.map((item) => (item.supplierName));
     let value = data.map((item) => Number(item.value));

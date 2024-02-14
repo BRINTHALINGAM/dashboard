@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgxGaugeAppend, NgxGaugeLabel, NgxGaugeValue } from 'ngx-gauge';
 import { NgxGaugeType } from 'ngx-gauge/gauge/gauge';
+import { DateService } from 'src/app/services/date.service';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 
@@ -17,14 +18,28 @@ export class ConsumptionComponent  {
   @Input() name: string = "Consumption Details by Supplier"; // Default name if not provided
   gaugeChart: any;
 
-    constructor(private rmiService :RmiDashboardService) {}
+   divCode:string = '01';
+   fromDate:string ;
+   toDate:string ;
 
-  ngOnInit(): void {
-    this.rmiService.getAverageConsumption().subscribe((data) => {
-      console.log(data); // Log the received data
-      this.prepareChartData(data);
-    });
+   calendar:any
+
+   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+    this.dateService.dateEvent.subscribe((date)=>{
+      console.log("sales",date)
+      this.calendar=date;
+      this.toDate=this.calendar.formattedtoDate;
+      this.fromDate=this.calendar.formattedfromDate;
+ 
+      this.rmiService.getAverageConsumption(this.divCode,this. fromDate,this. toDate).subscribe((data) => {
+        console.log(data); // Log the received data
+        this.prepareChartData(data);
+      });
+    })
   }
+
+
+ 
   
   prepareChartData(data:any[]) {
 

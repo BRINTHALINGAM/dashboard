@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DateService } from 'src/app/services/date.service';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 @Component({
@@ -6,7 +7,7 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
   templateUrl: './values.component.html',
   styleUrls: ['./values.component.scss']
 })
-export class ValuesComponent implements OnInit {
+export class ValuesComponent  {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
   salesChartdata: any;
@@ -14,13 +15,31 @@ export class ValuesComponent implements OnInit {
   primary_color = localStorage.getItem("primary_color") || "#a4c639";
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
-  constructor(private rmiService: RmiDashboardService) {}
+  divCode:string='01';
+  yearStart:string='2023-04-01';
+  yearEnd:string='2024-03-31';
+  fromDate:string;
+   toDate:string;
+   lotYear:string;
 
-  ngOnInit(): void {
-    this.rmiService.getStockValueinLakhs().subscribe((data) => {
-      this.barChart(data);
-    });
+
+   calendar:any
+
+  constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+    this.dateService.dateEvent.subscribe((date)=>{
+      console.log("sales",date)
+      this.calendar=date;
+      this.toDate=this.calendar.formattedtoDate;
+      this.fromDate=this.calendar.formattedfromDate;
+      this.lotYear=this.calendar.lotYear;
+      this.rmiService.getTopCardDetails(this.divCode, this.yearStart, this.yearEnd,this. fromDate,this. toDate, this.lotYear).subscribe((data) => {
+        console.log(data); // Log the received data
+        this.barChart(data);
+      });
+    })
   }
+
+ 
 
   barChart(data: any[]): void {
     const values = Object.values(data[0]); 

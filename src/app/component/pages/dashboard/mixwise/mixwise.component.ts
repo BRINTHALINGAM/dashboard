@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import * as chartData from '../../../../shared/data/component/charts/google-chart';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
+import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'app-mixwise',
@@ -10,14 +11,24 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 export class MixwiseComponent {
   @Input() public name: string | undefined;
   barChart: any;
-
-  constructor(private rmiService: RmiDashboardService) {}
-
-  ngOnInit(): void {
-    this.rmiService.getMixConsumptionDetails().subscribe((data) => {
-      this.prepareChartData(data);
-    });
+calendar:any
+   divCode:string ='01';
+   processingDate:string ;
+   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+    this.dateService.dateEvent.subscribe((date)=>{
+      console.log("sales",date)
+      this.calendar=date;
+      this.processingDate=this.calendar.formattedfromDate;
+     
+      this.rmiService.getMixConsumptionDetails(this.divCode,this.processingDate).subscribe((data) => {
+        console.log(data); // Log the received data
+        this.prepareChartData(data);
+      });
+    })
   }
+
+
+ 
   primary_color = localStorage.getItem("primary_color") || "#800080";
 
   prepareChartData(data: any[]): void {

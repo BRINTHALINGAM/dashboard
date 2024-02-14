@@ -14,95 +14,58 @@ export class RmiDashboardService {
 
   constructor(private http: HttpClient,private rmihttp:RmihttpService) { }
 
-  getDataForToday(): Observable<any> {
-    return this.http.get<any>('your-api-url');
-  }
-  private topCardDetailsSource = new BehaviorSubject<any[]>([]);
-  topCardDetails$ = this.topCardDetailsSource.asObservable();
+  // getDataForToday(): Observable<any> {
+  //   return this.http.get<any>('your-api-url');
+  // }
+  // private topCardDetailsSource = new BehaviorSubject<any[]>([]);
+  // topCardDetails$ = this.topCardDetailsSource.asObservable();
 
   currentDate:any;
   
 
 
-  getAverageConsumption(): Observable<any> {
-    const divCode = '01';
-    const fromDate = '2023-12-01';
-    const toDate = '2023-12-31';
-
-
+  getAverageConsumption( divCode:string,fromDate:string,toDate:string): Observable<any> {
+  
 
     return this.rmihttp.getAvgConsumption(divCode,fromDate,toDate)
   }
 
-  getTopCardDetails(): Observable<any> {
-    // Assuming you have default values or you can fetch these parameters from somewhere else
-    const divCode = '01';
-    const yearStart = '2023-04-01';
-    const yearEnd = '2024-03-31';
-    const fromDate = '2023-12-01';
-    const toDate = '2023-12-31';
-    const lotYear = '2023';
-
-    // Call getTopCard() with parameters
+  getTopCardDetails( divCode:string, yearStart:string,yearEnd:string,fromDate:string, toDate:string,lotYear:string  ): Observable<any> {
+   
     return this.rmihttp.getTopCard(divCode, yearStart, yearEnd, fromDate, toDate, lotYear);
   }
 
-  // getTopCardDetails(): void {
-  //   this.rmihttp.getTopCard().subscribe(
-  //     (response:any) => {
-  //       // Assuming that the response is an array of top card details
-  //       this.topCardDetailsSource.next(response);
-  //     })
-  // }
 
   getStockDetails(divCode:string,processingDate:string,lotYear:string): Observable<any> {
-   
-
+    
     return this.rmihttp.getStock(divCode, processingDate, lotYear);
   }
-  // Assuming you're calling getStockDetails() somewhere else
 
-  getPendingOrderDetailsbySupplier(): Observable<any> {
-    const divCode ='01';
-    const processingDate ='2023-12-25';
-
-
-
+  getPendingOrderDetailsbySupplier(divCode:string,processingDate:string): Observable<any> {
+    
     return this.rmihttp.getPending(divCode, processingDate);
   }
 
-  getMixConsumptionDetails(): Observable<any> {
-    const divCode ='01';
-    const processingDate ='2023-12-25';
+  getMixConsumptionDetails(divCode:string,processingDate:string): Observable<any> {
+   
     
     return this.rmihttp.getMixConsumption(divCode, processingDate);
   }
 
-  getReceiptDetailsbySupplier(): Observable<any> {
-    const divCode ='01';
-    const processingDate ='2023-12-25';
-
+  getReceiptDetailsbySupplier(divCode:string,processingDate:string): Observable<any> {
+   
 
     return this.rmihttp.getReceipt(divCode, processingDate);
   }
 
-  getTopTenSuppliers(): Observable<any> {
-    const divCode = '01';
-    const yearStart = '2023-04-01';
-    const yearEnd = '2024-03-31';
-
+  getTopTenSuppliers(divCode:string, yearStart:string,yearEnd:string): Observable<any> {
+   
     return this.rmihttp.getSuppliers(divCode,yearStart,yearEnd);
   }
 
-  getStockValueinLakhs(): Observable<any> {
-    const divCode = '01';
-    const yearStart = '2023-04-01';
-    const yearEnd = '2024-03-31';
-    const fromDate = '2023-12-01';
-    const toDate = '2023-12-31';
-    const lotYear = '2023';
-
-    return this.rmihttp.getValues(divCode,yearEnd,yearEnd,fromDate,toDate,lotYear);
+  getStockValueinLakhs(divCode:string, yearStart:string,yearEnd:string,fromDate:string, toDate:string,lotYear:string ): Observable<any> {
+   
+    return this.rmihttp.getValues(divCode,yearStart,yearEnd,fromDate,toDate,lotYear);
   }
 
   // Polling method for any data

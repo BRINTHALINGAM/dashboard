@@ -1,5 +1,6 @@
 
 import { Component, Input, OnInit } from "@angular/core";
+import { DateService } from "src/app/services/date.service";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
 
@@ -11,17 +12,27 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
 
 
-export class RmreceiptComponent implements OnInit {
+export class RmreceiptComponent {
   @Input() name: string = "Receipt Details by Supplier"; // Default name if not provided
   pieChart: any;
 
-  constructor(private rmiService: RmiDashboardService) {}
-
-  ngOnInit(): void {
-    this.rmiService.getReceiptDetailsbySupplier().subscribe((data) => {
-      this.prepareChartData(data);
-    });
+   divCode:string ='01';
+   processingDate:string;
+calendar:any
+   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+    this.dateService.dateEvent.subscribe((date)=>{
+      console.log("sales",date)
+      this.calendar=date;
+      this.processingDate=this.calendar.formattedfromDate;
+     
+      this.rmiService.getReceiptDetailsbySupplier(this.divCode,this.processingDate).subscribe((data) => {
+        console.log(data); // Log the received data
+        this.prepareChartData(data);
+      });
+    })
   }
+
+ 
 
   prepareChartData(data: any[]): void {
     console.log("----->>>");
