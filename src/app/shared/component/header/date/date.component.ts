@@ -1,20 +1,25 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Injectable, Output } from "@angular/core";
 import * as dayjs from "dayjs";
 import { Dayjs } from "dayjs";
+import { DateService } from "src/app/services/date.service";
 
 @Component({
   selector: "app-date",
   templateUrl: "./date.component.html",
   styleUrls: ["./date.component.scss"],
 })
+@Injectable({
+  providedIn: "root",
+})
 export class DateComponent  {
-
-  constructor() {
+  constructor(private dateService:DateService) {
     this.selectedRangeCalendarTimeRight = {
       startDate: dayjs().startOf('day'),
       endDate: dayjs().endOf('day'),
     };
   }
+
+
   dropsDown = 'down';
   opensRight = 'right';
   selectedRangeCalendarTimeRight: any;
@@ -64,11 +69,27 @@ export class DateComponent  {
     const tooltip = this.tooltips.find((tt) => tt.date.isSame(m, 'day'));
     return tooltip ? tooltip.text : false;
   };
-  datesUpdatedRange($event: Object) {
-    console.log('range', $event);
-  }
-  
 
+  datesUpdatedRange($event:any) {
+    
+        const startDate = new Date($event.startDate.$d);
+        const formattedStartDate = startDate.toISOString().slice(0, 10); // Format: YYYY-MM-DD
+        console.log('Formatted Start Date:', formattedStartDate);
+        this.dateService.dateEvent.emit(formattedStartDate);
+    
+}
+
+  
+  // selected: { startDate: Dayjs; endDate: Dayjs };
+  
+  // ranges: any = {
+  //   Today: [dayjs(), dayjs()],
+  //   Yesterday: [dayjs().subtract(1, "days"), dayjs().subtract(1, "days")],
+  //   "Last 7 Days": [dayjs().subtract(6, "days"), dayjs()],
+  //   "Last 30 Days": [dayjs().subtract(29, "days"), dayjs()],
+  //   "This Month": [dayjs().startOf("month"), dayjs().endOf("month")],
+  //   "Last Month": [dayjs().subtract(1, "month").startOf("month"), dayjs().subtract(1, "month").endOf("month")],
+  // };
 
 }
 

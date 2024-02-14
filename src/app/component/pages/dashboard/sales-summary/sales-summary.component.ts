@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import * as SalesSummary from "../../../../shared/data/component/deshboard/charts";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
+import { DateService } from "src/app/services/date.service";
 const types = ["area", "area", "area", "bar", "line", "area", "area"];
 
 @Component({
@@ -15,10 +16,23 @@ export class SalesSummaryComponent {
   salesChartdata:any;
 
 
-  constructor(private rmiService :RmiDashboardService) {}
+  constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+    this.dateService.dateEvent.subscribe((date)=>{
+      console.log("sales",date)
+      this.processingDate=date;
+      this.rmiService.getStockDetails(this.divCode,this.processingDate,this.lotYear).subscribe((data) => {
+        console.log(data); // Log the received data
+        this.prepareChartData(data);
+      });
+    })
+  }
+
+   divCode:string = '01';
+   processingDate:string;
+   lotYear:string = '2023';
 
   ngOnInit(): void {
-    this.rmiService.getStockDetails().subscribe((data) => {
+    this.rmiService.getStockDetails(this.divCode,this.processingDate,this.lotYear).subscribe((data) => {
       console.log(data); // Log the received data
       this.prepareChartData(data);
     });

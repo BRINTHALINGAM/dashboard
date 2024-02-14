@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { BehaviorSubject, Observable, of, timer } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { RmihttpService } from "./rmihttp.service";
 import { HttpClient } from '@angular/common/http';
+import { DateComponent } from "../shared/component/header/date/date.component";
 
 
 @Injectable({
@@ -18,9 +19,10 @@ export class RmiDashboardService {
   }
   private topCardDetailsSource = new BehaviorSubject<any[]>([]);
   topCardDetails$ = this.topCardDetailsSource.asObservable();
+
+  currentDate:any;
   
 
-  //constructor(private rmihttp:RmihttpService) {}
 
   getAverageConsumption(): Observable<any> {
     const divCode = '01';
@@ -53,10 +55,8 @@ export class RmiDashboardService {
   //     })
   // }
 
-  getStockDetails(): Observable<any> {
-    const divCode = '01';
-    const processingDate = '2023-12-28';
-    const lotYear = '2023';
+  getStockDetails(divCode:string,processingDate:string,lotYear:string): Observable<any> {
+   
 
     return this.rmihttp.getStock(divCode, processingDate, lotYear);
   }

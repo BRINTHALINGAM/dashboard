@@ -1,2 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/scss/app.scss";
+
+.ranges {
+  
+    ul {
+     
+       li {
+        button {
+         
+          color: rgb(160, 155, 155) ;
+         
+        }
+    }
+}
+}
+
+calendar{
+    div{
+       table{ 
+           thead{
+               tr{
+                 th{
+                   span{
+                      color: rgb(160, 155, 155) ;   
+                   }
+               }}
+           }    
+       }
+   }
+}
