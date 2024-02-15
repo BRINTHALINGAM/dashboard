@@ -12,7 +12,7 @@ export class CounteffComponent {
   
   @Input() name: string ;
   
-  chartOptions:any;
+  barChart:any;
    divCode:string='01'
    unitCode:string='A'
     date:string='2023-12-05'
@@ -32,11 +32,12 @@ export class CounteffComponent {
     let effPer=data.map((item:any)=>Number(item.effPer))
     let uptoEffPer=data.map((item:any)=> Number(item.uptoEffPer))
    
-    this.chartOptions = {
+    this.barChart = {
     series: [
       {
         name: "Efficiency %",
-        data: effPer
+        data: effPer,
+        
       },
       {
         name: "Upto Efficiency %",
@@ -49,10 +50,10 @@ export class CounteffComponent {
       height: 350,
       stacked: true,
       toolbar: {
-        show: true
+        show: false
       },
       zoom: {
-        enabled: true
+        enabled: false
       }
     },
     responsive: [
@@ -75,14 +76,17 @@ export class CounteffComponent {
     xaxis: {
       type: "category",
       categories: 
-        category
-      
+        category,
+        
     },
     legend: {
       position: "right",
       offsetY: 40
     },
-    fill: '#443266'
-  };
-}
+    fill: {
+      opacity: 1
+    },
+    colors: ['#C3C3E5','#443266']
+    };
+      }
 }

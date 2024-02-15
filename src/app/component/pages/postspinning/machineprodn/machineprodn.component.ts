@@ -46,10 +46,10 @@ this.chartOptions= {
       height: 350,
       stacked: true,
       toolbar: {
-        show: true
+        show: false
       },
       zoom: {
-        enabled: true
+        enabled: false
       }
     },
     responsive: [
@@ -82,7 +82,9 @@ this.chartOptions= {
     },
     fill: {
       opacity: 1
-    }
+    },
+    colors: ['#6599FF','#FF9900' ]
+
   };
         }
 }

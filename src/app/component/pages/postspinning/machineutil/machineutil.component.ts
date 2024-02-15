@@ -41,10 +41,10 @@ export class MachineutilComponent {
       height: 350,
       stacked: true,
       toolbar: {
-        show: true
+        show: false
       },
       zoom: {
-        enabled: true
+        enabled: false
       }
     },
     responsive: [
@@ -75,7 +75,8 @@ export class MachineutilComponent {
     },
     fill: {
       opacity: 1
-    }
+    },
+    colors: ['#99CC99' ,'#993300']
   };
 }
 }

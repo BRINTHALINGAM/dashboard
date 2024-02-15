@@ -48,10 +48,10 @@ export class CountprodnComponent {
           height: 350,
           stacked: true,
           toolbar: {
-            show: true
+            show: false
           },
           zoom: {
-            enabled: true
+            enabled: false
           }
         },
         responsive: [
@@ -81,7 +81,8 @@ export class CountprodnComponent {
         },
         fill: {
           opacity: 1
-        }
+        },
+        colors: ['#CCCC99' ,'#990033']
       };
 }
 
