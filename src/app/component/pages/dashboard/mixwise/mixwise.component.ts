@@ -32,36 +32,7 @@ calendar:any
   primary_color = localStorage.getItem("primary_color") || "#800080";
 
   prepareChartData(data: any[]): void {
-    if (!data || data.length === 0) {
-      // Handle the case where data is empty or undefined
-      // For example, you can set some default values or show a message
-      this.barChart = {
-        chart: {
-          height: 250,
-          type: 'bar',
-          toolbar: {
-            show: false
-          }
-        },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        series: [{
-          data: [0]  // Set a default value or an empty array
-        }],
-        xaxis: {
-          categories: ['No Data'],  // Set default categories or labels
-        },
-        colors: [this.primary_color]
-      };
-      return;
-    }
-  
+
     // Rest of your code to prepare the chart data
     const series = data.map((item) => Number(item.netKgs));
     const labels = data.map((item) => item.mixGroupName);
