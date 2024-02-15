@@ -84,6 +84,8 @@ export class DateComponent  {
         const formattedtoDate = toDate.toISOString().slice(0, 10);
         console.log('formatted To Date: ',formattedtoDate);
 
+      
+
     
         
         this.dateService.dateEvent.emit({formattedfromDate,lotYear,formattedtoDate});

@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class PosthttpService {
 
-  private baseUrl="http://172.16.16.52:8200/postsppingapi/api/";
+  private baseUrl="http://172.16.16.52:8100/api/YarnProdn/";
 
   constructor(private http:HttpClient) { }
 
