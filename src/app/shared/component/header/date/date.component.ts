@@ -68,10 +68,8 @@ export class DateComponent implements OnInit {
   };
 
   ngOnInit(){
-    // Load today's data when the component initializes
     this.loadTodayData();
 
-    // Subscribe to router events to reload data when navigating back to the component
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.loadTodayData();
@@ -91,7 +89,6 @@ export class DateComponent implements OnInit {
       lotYear: fromDate.getFullYear() - 1,
       formattedtoDate: toDate.toISOString().slice(0, 10)
     });
-    // You can also load any other data here if needed
   }
 
   datesUpdatedRange($event:any) {
@@ -107,6 +104,5 @@ export class DateComponent implements OnInit {
     console.log('formatted To Date: ',formattedtoDate);
 
     this.dateService.dateEvent.emit({formattedfromDate,lotYear,formattedtoDate});
-    // You can add further logic to handle date range changes if needed
   }
 }
