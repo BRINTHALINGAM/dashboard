@@ -21,6 +21,7 @@ export class RmreceiptComponent {
 calendar:any
    constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
     this.dateService.dateEvent.subscribe((date)=>{
+      console.log("reff",date)
       console.log("sales",date)
       this.calendar=date;
       this.processingDate=this.calendar.formattedfromDate;
@@ -35,9 +36,7 @@ calendar:any
  
 
   prepareChartData(data: any[]): void {
-    console.log("----->>>");
     console.log(data);
-    console.log(data.map((item) => Number(item.baleCount)));
     let series = data.map((item) => Number(item.baleCount));
     let labels = data.map((item) => item.supplierName);
 

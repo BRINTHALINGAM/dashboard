@@ -17,6 +17,7 @@ export class DateComponent  {
       startDate: dayjs().startOf('day'),
       endDate: dayjs().endOf('day'),
     };
+    this.dateService.dateEvent.emit(this.selectedRangeCalendarTimeRight)
   }
 
 
