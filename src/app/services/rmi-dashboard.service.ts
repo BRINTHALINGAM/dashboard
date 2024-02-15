@@ -14,12 +14,7 @@ export class RmiDashboardService {
 
   constructor(private http: HttpClient,private rmihttp:RmihttpService) { }
 
-  // getDataForToday(): Observable<any> {
-  //   return this.http.get<any>('your-api-url');
-  // }
-  // private topCardDetailsSource = new BehaviorSubject<any[]>([]);
-  // topCardDetails$ = this.topCardDetailsSource.asObservable();
-
+ 
   currentDate:any;
   
 
@@ -68,7 +63,7 @@ export class RmiDashboardService {
     return this.rmihttp.getValues(divCode,yearStart,yearEnd,fromDate,toDate,lotYear);
   }
 
-  // Polling method for any data
+
   pollData<T>(callback: () => Observable<T>, intervalMs: number): Observable<T> {
     return timer(0, intervalMs).pipe(switchMap(() => callback()));
   }
