@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Injectable, Output } from "@angular/core";
+import { Component, EventEmitter, Injectable, OnInit, Output } from "@angular/core";
+import { Router, NavigationEnd } from "@angular/router";
 import * as dayjs from "dayjs";
 import { Dayjs } from "dayjs";
 import { DateService } from "src/app/services/date.service";
@@ -11,20 +12,16 @@ import { DateService } from "src/app/services/date.service";
 @Injectable({
   providedIn: "root",
 })
-export class DateComponent  {
-  constructor(private dateService:DateService) {
-    this.selectedRangeCalendarTimeRight = {
-      startDate: dayjs().startOf('day'),
-      endDate: dayjs().endOf('day'),
-    };
-    this.dateService.dateEvent.emit(this.selectedRangeCalendarTimeRight)
-  }
-
+export class DateComponent implements OnInit {
+  constructor(
+    private dateService: DateService,
+    private router: Router
+  ) {}
 
   dropsDown = 'down';
   opensRight = 'right';
   selectedRangeCalendarTimeRight: any;
-   invalidDates: Dayjs[] = [];
+  invalidDates: Dayjs[] = [];
   ranges: any = {
     Today: [dayjs().startOf('day'), dayjs().endOf('day')],
     Yesterday: [
@@ -44,7 +41,6 @@ export class DateComponent  {
       dayjs().subtract(1, 'month').startOf('month'),
       dayjs().subtract(1, 'month').endOf('month'),
     ],
-    
   };
   tooltips = [
     { date: dayjs(), text: 'Today is just unselectable' },
@@ -71,25 +67,42 @@ export class DateComponent  {
     return tooltip ? tooltip.text : false;
   };
 
+  ngOnInit(){
+    this.loadTodayData();
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.loadTodayData();
+      }
+    });
+  }
+
+  loadTodayData() {
+    this.selectedRangeCalendarTimeRight = {
+      startDate: dayjs().startOf('day'),
+      endDate: dayjs().endOf('day'),
+    };
+    const fromDate = dayjs().startOf('day').toDate();
+    const toDate = dayjs().endOf('day').toDate();
+    this.dateService.dateEvent.emit({
+      formattedfromDate: fromDate.toISOString().slice(0, 10),
+      lotYear: fromDate.getFullYear() - 1,
+      formattedtoDate: toDate.toISOString().slice(0, 10)
+    });
+  }
+
   datesUpdatedRange($event:any) {
-    
-        const fromDate = new Date($event.startDate.$d);
-        const formattedfromDate = fromDate.toISOString().slice(0, 10); // Format: YYYY-MM-DD
-        console.log('Formatted Start Date:', formattedfromDate);
+    const fromDate = new Date($event.startDate.$d);
+    const formattedfromDate = fromDate.toISOString().slice(0, 10); // Format: YYYY-MM-DD
+    console.log('Formatted Start Date:', formattedfromDate);
 
-        const lotYear = ($event.startDate.$y-1);
-        console.log('lotYear: ',lotYear);
-      
+    const lotYear = ($event.startDate.$y-1);
+    console.log('lotYear: ',lotYear);
 
-        const toDate = ($event.endDate.$d);
-        const formattedtoDate = toDate.toISOString().slice(0, 10);
-        console.log('formatted To Date: ',formattedtoDate);
+    const toDate = ($event.endDate.$d);
+    const formattedtoDate = toDate.toISOString().slice(0, 10);
+    console.log('formatted To Date: ',formattedtoDate);
 
-    
-        
-        this.dateService.dateEvent.emit({formattedfromDate,lotYear,formattedtoDate});
-    
+    this.dateService.dateEvent.emit({formattedfromDate,lotYear,formattedtoDate});
+  }
 }
-
-}
-
