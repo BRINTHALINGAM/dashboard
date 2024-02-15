@@ -457,6 +457,11 @@ p {
 }
 
 // chartist chat 
+.ct-grid {
+  stroke: #0003;
+    stroke-width: 1px;
+    stroke-dasharray: 2px
+}
 .ct-series-a {
 
   .ct-slice-pie,
@@ -470,6 +475,7 @@ p {
   .ct-bar,
   .ct-slice-donut {
     stroke: var(--theme-default);
+    stroke-width: 10px;
   }
 }
 
@@ -480,6 +486,8 @@ p {
   .ct-bar,
   .ct-slice-donut {
     stroke: var(--theme-secondary);
+    stroke-width: 10px;
+
   }
 
   .ct-slice-pie,

@@ -22,8 +22,12 @@ export class PostDashboardService {
     return this.posthttp.getTopCardP(divCode, unitCode, date, section)
   }
 
-  getMachinewiseProdnDetails( divCode: string,unitCode: string,date: string,section: string  ): Observable<any> {
-   
+  getMachinewiseProdnDetails(  ): Observable<any> {
+    const divCode:string='01'
+   const unitCode:string='A'
+    const date:string='2023-12-05'
+   const section:string='A'
+
     return this.posthttp.getMachinewiseProdn(divCode, unitCode, date, section);
   }
 
@@ -43,8 +47,12 @@ export class PostDashboardService {
     return this.posthttp.getVarietywiseProdn(divCode, unitCode, date, section);
   }
 
-  getMachinewiseUtilDetails(divCode: string,unitCode: string,date: string,section: string): Observable<any> {
-   
+  getMachinewiseUtilDetails(): Observable<any> {
+    
+    const divCode:string='01'
+    const unitCode:string='A'
+     const date:string='2023-12-05'
+    const section:string='A'
 
     return this.posthttp.getMachinewiseUtil(divCode, unitCode, date, section);
   }

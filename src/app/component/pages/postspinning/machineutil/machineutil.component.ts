@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PostDashboardService } from 'src/app/services/post-dashboard.service';
 
 @Component({
   selector: 'app-machineutil',
@@ -6,28 +7,75 @@ import { Component } from '@angular/core';
   styleUrl: './machineutil.component.scss'
 })
 export class MachineutilComponent {
+  @Input() name: string ;
+
+  chartOptions:any;
+
+  constructor(private postDash:PostDashboardService) {}
+
+  ngOnInit()
+  {
+    this.postDash.getMachinewiseUtilDetails().subscribe((data) => {
+      console.log(data); // Log the received data
+      this.prepareChartData(data);
+  })}
+  prepareChartData(data:any){
+    let category=data.map((item:any)=>item.machine)
+    let utilPer=data.map((item:any)=>Number(item.utilPer))
+    let uptoutilPer=data.map((item:any)=> Number(item.uptoUtilPer))
   
- primary_color = localStorage.getItem('primary_color') || '#35bfbf';
- secondary_color = localStorage.getItem('secondary_color') || '#FF6150';
-  chart7: any = {
-    type: 'Bar',
-    data: {
-        labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7', 'Q8', 'Q9', 'Q10', 'Q11', 'Q13', 'Q14'],
-        series: [
-            [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300],
-            [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300],
-            [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300]
-        ]
+    this.chartOptions= {
+    series: [
+      {
+        name: "Utilisation",
+        data: utilPer
+      },
+      {
+        name: "Upto Utilisation",
+        data: uptoutilPer
+      },
+      
+    ],
+    chart: {
+      type: "bar",
+      height: 350,
+      stacked: true,
+      toolbar: {
+        show: true
+      },
+      zoom: {
+        enabled: true
+      }
     },
-    options: {
-        stackBars: true,
-        axisY: {
-            labelInterpolationFnc: function (value: any) {
-                return (value / 1000) + 'k';
-            }
-        },
-        height: 250,
-        colors: [this.primary_color, this.secondary_color]
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          legend: {
+            position: "bottom",
+            offsetX: -10,
+            offsetY: 0
+          }
+        }
+      }
+    ],
+    plotOptions: {
+      bar: {
+        horizontal: false
+      }
+    },
+    xaxis: {
+      type: "category",
+      categories: 
+            category      
+    },
+    legend: {
+      position: "right",
+      offsetY: 40
+    },
+    fill: {
+      opacity: 1
     }
-};
+  };
+}
 }
