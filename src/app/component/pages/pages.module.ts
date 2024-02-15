@@ -8,6 +8,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PagesRoutingModule } from "./pages-routing.module";
 
+
 import { RMIDashboardComponent } from "./dashboard/rmi-dashboard.component";
 import { NgApexchartsModule } from "ng-apexcharts";
 import { SalesSummaryComponent } from "./dashboard/sales-summary/sales-summary.component";
@@ -33,6 +34,6 @@ import { CountprodnComponent } from "./postspinning/countprodn/countprodn.compon
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
   CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent],
-  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule],
+  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule],
 })
 export class PagesModule {}
