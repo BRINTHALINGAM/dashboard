@@ -6,9 +6,16 @@
             <div class="widget-content">
               <div class="widget-round {{item.color}}">
                 <div class="bg-round stroke-icon svg-fill">
+               
                   <svg>
                     <use attr.xlink:href="assets/svg/icon-sprite.svg#{{item.icon}}"></use>
                   </svg>
+
+                  <div [ngClass]="item.symbol" [style]="item.style"></div>
+                 
+
+
+
                   <svg class="half-circle svg-fill">
                     <use href="assets/svg/icon-sprite.svg#halfcircle"></use>
                   </svg>
