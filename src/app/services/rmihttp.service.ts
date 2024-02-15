@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RmihttpService {
+  
+ 
 
  private baseUrl = "http://172.16.16.52:8100/RMIDashboard/api/RMI/";
 

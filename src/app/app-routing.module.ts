@@ -3,6 +3,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { ContentComponent } from "./shared/component/layout/content/content.component";
 import { dashData } from "./shared/routes/routes";
 
+
+
 const routes: Routes = [
   {
     path: "",
@@ -21,6 +23,8 @@ const routes: Routes = [
     redirectTo: "/pages/postspinning",
     pathMatch:"full",
   }
+  
+  
 ];
 
 @NgModule({
