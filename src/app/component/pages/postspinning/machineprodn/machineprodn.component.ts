@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PostDashboardService } from 'src/app/services/post-dashboard.service';
 
 
 @Component({
@@ -8,16 +9,35 @@ import { Component, Input } from '@angular/core';
 })
 export class MachineprodnComponent {
   @Input() name: string ;
+
+  chartOptions:any;
+
   
-chartOptions :any= {
+
+  constructor(private postDash:PostDashboardService) {}
+
+  ngOnInit()
+  {
+    this.postDash.getMachinewiseProdnDetails().subscribe((data) => {
+      console.log(data); // Log the received data
+      this.prepareChartData(data);
+  })}
+        
+  prepareChartData(data:any){
+    let category=data.map((item:any)=>item.machine)
+    let prdKgs=data.map((item:any)=>Number(item.prdkgs))
+    let uptoprdKgs=data.map((item:any)=> Number(item.uptoprdkgs))
+    console.log(prdKgs)
+    
+this.chartOptions= {
     series: [
       {
-        name: "PRODUCT A",
-        data: [44, 55, 41, 67, 22, 43]
+        name: "On Date Prodn",
+        data: prdKgs
       },
       {
-        name: "PRODUCT B",
-        data: [13, 23, 20, 8, 13, 27]
+        name: "UTD Prodn",
+        data: uptoprdKgs
       },
       
     ],
@@ -26,10 +46,10 @@ chartOptions :any= {
       height: 350,
       stacked: true,
       toolbar: {
-        show: true
+        show: false
       },
       zoom: {
-        enabled: true
+        enabled: false
       }
     },
     responsive: [
@@ -52,7 +72,8 @@ chartOptions :any= {
     xaxis: {
       type: "category",
       categories: 
-        ['LC01', 'LC02', 'LC03', 'LC04', 'LC05', 'LC06', 'LC07', 'LC08', 'LC09', 'LC10', 'LC11', 'LC12', 'LC13', 'LC14', 'LC15', 'LC16', 'LC17', 'LC18', 'LC19']
+        // ['LC01', 'LC02', 'LC03', 'LC04', 'LC05', 'LC06', 'LC07', 'LC08', 'LC09', 'LC10', 'LC11', 'LC12', 'LC13', 'LC14', 'LC15', 'LC16', 'LC17', 'LC18', 'LC19']
+        category
       
     },
     legend: {
@@ -61,7 +82,9 @@ chartOptions :any= {
     },
     fill: {
       opacity: 1
-    }
-  };
+    },
+    colors: ['#6599FF','#FF9900' ]
 
+  };
+        }
 }

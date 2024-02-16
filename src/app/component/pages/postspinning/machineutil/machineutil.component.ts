@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PostDashboardService } from 'src/app/services/post-dashboard.service';
 
 @Component({
   selector: 'app-machineutil',
@@ -7,16 +8,31 @@ import { Component, Input } from '@angular/core';
 })
 export class MachineutilComponent {
   @Input() name: string ;
- 
-  chartOptions :any= {
+
+  chartOptions:any;
+
+  constructor(private postDash:PostDashboardService) {}
+
+  ngOnInit()
+  {
+    this.postDash.getMachinewiseUtilDetails().subscribe((data) => {
+      console.log(data); // Log the received data
+      this.prepareChartData(data);
+  })}
+  prepareChartData(data:any){
+    let category=data.map((item:any)=>item.machine)
+    let utilPer=data.map((item:any)=>Number(item.utilPer))
+    let uptoutilPer=data.map((item:any)=> Number(item.uptoUtilPer))
+  
+    this.chartOptions= {
     series: [
       {
-        name: "PRODUCT A",
-        data: [44, 55, 41, 67, 22, 43]
+        name: "Utilisation",
+        data: utilPer
       },
       {
-        name: "PRODUCT B",
-        data: [13, 23, 20, 8, 13, 27]
+        name: "Upto Utilisation",
+        data: uptoutilPer
       },
       
     ],
@@ -25,10 +41,10 @@ export class MachineutilComponent {
       height: 350,
       stacked: true,
       toolbar: {
-        show: true
+        show: false
       },
       zoom: {
-        enabled: true
+        enabled: false
       }
     },
     responsive: [
@@ -51,8 +67,7 @@ export class MachineutilComponent {
     xaxis: {
       type: "category",
       categories: 
-        ['LC01', 'LC02', 'LC03', 'LC04', 'LC05', 'LC06', 'LC07', 'LC08', 'LC09', 'LC10', 'LC11', 'LC12', 'LC13', 'LC14', 'LC15', 'LC16', 'LC17', 'LC18', 'LC19']
-      
+            category      
     },
     legend: {
       position: "right",
@@ -60,6 +75,8 @@ export class MachineutilComponent {
     },
     fill: {
       opacity: 1
-    }
+    },
+    colors: ['#99CC99' ,'#993300']
   };
+}
 }

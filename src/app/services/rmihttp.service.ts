@@ -8,7 +8,7 @@ export class RmihttpService {
   
  
 
- private baseUrl = "http://172.16.16.52:8100/RMIDashboard/api/RMI/";
+ private baseUrl = "http://172.16.16.52:8100/RMI/api/RMI/";
 
   constructor(private http:HttpClient) { }
 

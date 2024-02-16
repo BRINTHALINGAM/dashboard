@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PostDashboardService } from 'src/app/services/post-dashboard.service';
 
 @Component({
   selector: 'app-counteff',
@@ -11,16 +12,36 @@ export class CounteffComponent {
   
   @Input() name: string ;
   
+  barChart:any;
+   divCode:string='01'
+   unitCode:string='A'
+    date:string='2023-12-05'
+   section:string='A'
+
+  constructor(private postDash:PostDashboardService) {}
+
+  ngOnInit()
+  {
+    this.postDash.getCountwiseEffDetails(this.divCode,this.unitCode,this.date,this.section).subscribe((data) => {
+      console.log(data); // Log the received data
+      this.prepareChartData(data);
+  })}
   
-   chartOptions :any= {
+  prepareChartData(data:any){
+    let category=data.map((item:any)=>item.shortCode)
+    let effPer=data.map((item:any)=>Number(item.effPer))
+    let uptoEffPer=data.map((item:any)=> Number(item.uptoEffPer))
+   
+    this.barChart = {
     series: [
       {
-        name: "PRODUCT A",
-        data: [44, 55, 41, 67, 22, 43]
+        name: "Efficiency %",
+        data: effPer,
+        
       },
       {
-        name: "PRODUCT B",
-        data: [13, 23, 20, 8, 13, 27]
+        name: "Upto Efficiency %",
+        data: uptoEffPer
       },
       
     ],
@@ -29,10 +50,10 @@ export class CounteffComponent {
       height: 350,
       stacked: true,
       toolbar: {
-        show: true
+        show: false
       },
       zoom: {
-        enabled: true
+        enabled: false
       }
     },
     responsive: [
@@ -55,8 +76,8 @@ export class CounteffComponent {
     xaxis: {
       type: "category",
       categories: 
-        ['LC01', 'LC02', 'LC03', 'LC04', 'LC05', 'LC06', 'LC07', 'LC08', 'LC09']
-      
+        category,
+        
     },
     legend: {
       position: "right",
@@ -64,6 +85,8 @@ export class CounteffComponent {
     },
     fill: {
       opacity: 1
-    }
-  };
+    },
+    colors: ['#C3C3E5','#443266']
+    };
+      }
 }
