@@ -76,7 +76,7 @@ export class MachineutilComponent {
     fill: {
       opacity: 1
     },
-    colors: ['#99CC99' ,'#993300']
+    // colors: ['#99CC99' , '#993300']
   };
 }
 }
