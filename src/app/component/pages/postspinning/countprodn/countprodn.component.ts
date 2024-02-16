@@ -82,7 +82,7 @@ export class CountprodnComponent {
         fill: {
           opacity: 1
         },
-        colors: ['#CCCC99' ,'#990033']
+        colors: ['#00A88F','#82C272' ]
       };
 }
 

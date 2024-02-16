@@ -28,10 +28,12 @@ export class Rg1Component {
  })}
  prepareChartData(data:any){
    
-      let series = Object.values(data[0])
+      let series = Object.values(data[0]).map((value)=>parseInt(String(value)))
       let labels = Object.keys(data[0])
+      console.log(series)
   
       this.pieChart = {
+
         chart: {
           width: 400,
           type: 'pie',
@@ -49,9 +51,8 @@ export class Rg1Component {
               }
           }
       }],
-      colors: ['#008FFB', '#FF4560', '#51bb25', '#a927f9', '#f8d62b']
+      colors: ['#D5255E','#F88FB2','#831246','#ED5C8B']
       };
-  
     }
   
   }

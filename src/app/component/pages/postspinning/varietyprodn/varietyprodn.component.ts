@@ -54,7 +54,7 @@ export class VarietyprodnComponent {
             }
         }
     }],
-    colors: ['#008FFB', '#FF4560', '#51bb25', '#a927f9', '#f8d62b']
+    colors: ['#249CFF','#1578CF']
     };
 
 }

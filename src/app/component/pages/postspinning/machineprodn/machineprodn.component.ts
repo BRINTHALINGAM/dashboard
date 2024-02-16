@@ -83,7 +83,7 @@ this.chartOptions= {
     fill: {
       opacity: 1
     },
-    colors: ['#6599FF','#FF9900' ]
+    colors: ['#FF8C00','#F4D03F' ]
 
   };
         }
