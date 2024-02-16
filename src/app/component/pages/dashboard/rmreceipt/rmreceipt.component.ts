@@ -15,6 +15,7 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 export class RmreceiptComponent {
   @Input() name: string = "Receipt Details by Supplier"; // Default name if not provided
   pieChart: any;
+  loadData:boolean=true
 
    divCode:string ='01';
    processingDate:string;
@@ -29,6 +30,7 @@ calendar:any
       this.rmiService.getReceiptDetailsbySupplier(this.divCode,this.processingDate).subscribe((data) => {
         console.log(data); // Log the received data
         this.prepareChartData(data);
+        this.loadData=false
       });
     })
   }

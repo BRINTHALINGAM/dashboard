@@ -16,6 +16,7 @@ export class TopsuppliersComponent {
   columnChart:any;
    
    
+  loadData:boolean=true
 
 
   primary_color = localStorage.getItem("primary_color") || "#89ABE3";
@@ -34,6 +35,7 @@ export class TopsuppliersComponent {
       this.rmiService.getTopTenSuppliers(this.divCode, this.yearStart, this.yearEnd).subscribe((data) => {
         console.log(data); // Log the received data
         this.barChart(data);
+        this.loadData=false
       });
     })
   }

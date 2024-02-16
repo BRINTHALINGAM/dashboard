@@ -12,15 +12,16 @@ export class MachineprodnComponent {
 
   chartOptions:any;
 
-  
+  loadData:boolean=true
+
 
   constructor(private postDash:PostDashboardService) {}
 
   ngOnInit()
   {
     this.postDash.getMachinewiseProdnDetails().subscribe((data) => {
-      console.log(data); // Log the received data
       this.prepareChartData(data);
+      this.loadData=false
   })}
         
   prepareChartData(data:any){
@@ -83,7 +84,7 @@ this.chartOptions= {
     fill: {
       opacity: 1
     },
-    colors: ['#6599FF','#FF9900' ]
+    colors: ['#FF8C00','#F4D03F' ]
 
   };
         }

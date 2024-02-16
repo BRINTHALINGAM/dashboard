@@ -11,6 +11,7 @@ export class SalesSummary1Component {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
   salesChartdata:any;
+  loadData:boolean=true
 
 
   divCode:string ='01';
@@ -18,12 +19,11 @@ export class SalesSummary1Component {
  calendar:any
   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
    this.dateService.dateEvent.subscribe((date:any)=>{
-     console.log("sales",date)
      this.calendar=date;
      this.processingDate=this.calendar.formattedfromDate;
      this.rmiService.getPendingOrderDetailsbySupplier(this.divCode,this.processingDate).subscribe((data) => {
        this.prepareChartData(data);
-       console.log(data)
+       this.loadData=false
      })
    })
  }

@@ -1,19 +1,20 @@
 <div class="card">
-  <div class="card-header pb-0">
-    <h3>{{name}}</h3>
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3 class="m-0">{{name}}</h3>
+    <loader *ngIf="loadData"></loader>
   </div>
-  <div class="card-body">
+  <div class="card-body pb-0">
     <div class="ct-10 flot-chart-container">
       <apx-chart
-      [series]="barChart.series"
-      [chart]="barChart.chart"
-      [dataLabels]="barChart.dataLabels"
-      [plotOptions]="barChart.plotOptions"
-      [responsive]="barChart.responsive"
-      [xaxis]="barChart.xaxis"
-      [legend]="barChart.legend"
-      [fill]="barChart.fill"
-      [colors]="barChart.colors"
+      [series]="barChart?.series"
+      [chart]="barChart?.chart"
+      [dataLabels]="barChart?.dataLabels"
+      [plotOptions]="barChart?.plotOptions"
+      [responsive]="barChart?.responsive"
+      [xaxis]="barChart?.xaxis"
+      [legend]="barChart?.legend"
+      [fill]="barChart?.fill"
+      [colors]="barChart?.colors"
     ></apx-chart>      </div>
   </div>
 </div>

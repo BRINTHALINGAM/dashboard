@@ -1,13 +1,16 @@
   <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex justify-content-between align-items-center">
       <h3 class="m-0">{{name}}</h3>
+      <loader *ngIf="loadData"></loader>
     </div>
+
     <div class="card-body p-0">
       <div id="area-line">
         <apx-chart [series]="salesChartdata?.series" [chart]="salesChartdata?.chart" [stroke]="salesChartdata?.stroke"
         [dataLabels]="salesChartdata?.dataLabels" [xaxis]="salesChartdata?.xaxis" [yaxis]="salesChartdata?.yaxis"
         [tooltip]="salesChartdata?.tooltip" [fill]="salesChartdata?.fill" [legend]="salesChartdata?.legend"
-        [colors]="salesChartdata?.colors"></apx-chart>
+        [colors]="salesChartdata?.colors"
+        [noData]="salesChartdata?.noData"></apx-chart>
       </div>
     </div>
   </div>

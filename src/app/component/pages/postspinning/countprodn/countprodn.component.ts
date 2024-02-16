@@ -17,14 +17,16 @@ export class CountprodnComponent {
    unitCode:string='A'
     date:string='2023-12-05'
    section:string='A'
+   loadData:boolean=true
+
 
     constructor(private postDash:PostDashboardService) {}
 
   ngOnInit()
   {
     this.postDash.getCountwiseProdnDetails(this.divCode,this.unitCode,this.date,this.section).subscribe((data) => {
-      console.log(data); // Log the received data
       this.prepareChartData(data);
+      this.loadData=false;
   })}
   prepareChartData(data:any){
     let category=data.map((item:any)=>item.shortCode)

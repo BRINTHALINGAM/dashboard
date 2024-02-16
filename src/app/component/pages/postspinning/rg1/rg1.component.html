@@ -1,11 +1,12 @@
 <div class="card">
-  <div class="card-header pb-0">
-    <h3>{{name}} </h3>
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3 class="m-0">{{name}}</h3>
+    <loader *ngIf="loadData"></loader>
   </div>
-  <div class="card-body apex-chart">
+  <div class="card-body apex-chart pb-0">
     <div id="piechart">
-      <apx-chart [chart]="pieChart.chart" [colors]="pieChart.colors" [series]="pieChart.series"
-        [labels]="pieChart.labels" [responsive]="pieChart.responsive">
+      <apx-chart  [chart]="pieChart?.chart" [colors]="pieChart?.colors" [series]="pieChart?.series"
+        [labels]="pieChart?.labels" [responsive]="pieChart?.responsive">
       </apx-chart>
     </div>
   </div>

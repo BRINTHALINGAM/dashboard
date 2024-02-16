@@ -30,10 +30,11 @@ import { Rg1Component } from './postspinning/rg1/rg1.component';
 import { TopcardsComponent } from './postspinning/topcards/topcards.component';
 import { VarietyprodnComponent } from './postspinning/varietyprodn/varietyprodn.component';
 import { CountprodnComponent } from "./postspinning/countprodn/countprodn.component";
+import { LoaderComponent } from './dashboard/loader/loader.component';
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
-  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent],
+  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent],
   imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule],
 })
 export class PagesModule {}

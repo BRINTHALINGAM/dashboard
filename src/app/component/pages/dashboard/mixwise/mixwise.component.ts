@@ -11,7 +11,9 @@ import { DateService } from 'src/app/services/date.service';
 export class MixwiseComponent {
   @Input() public name: string | undefined;
   barChart: any;
-calendar:any
+calendar:any;
+loadData:boolean=true
+
    divCode:string ='01';
    processingDate:string ;
    constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
@@ -23,6 +25,7 @@ calendar:any
       this.rmiService.getMixConsumptionDetails(this.divCode,this.processingDate).subscribe((data) => {
         console.log(data); // Log the received data
         this.prepareChartData(data);
+        this.loadData=false
       });
     })
   }

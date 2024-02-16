@@ -17,7 +17,7 @@ export class SalesSummaryComponent {
 
   calendar:any
 
-
+  loadData:boolean=true
   
 
   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
@@ -29,6 +29,7 @@ export class SalesSummaryComponent {
       this.rmiService.getStockDetails(this.divCode,this.processingDate,this.lotYear).subscribe((data) => {
         console.log(data); // Log the received data
         this.prepareChartData(data);
+        this.loadData=false;
       });
     })
   }

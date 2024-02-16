@@ -15,6 +15,7 @@ export class VarietyprodnComponent {
    secondary_color = localStorage.getItem('secondary_color') || '#FF6150';
 
    pieChart:any;
+   loadData:boolean=true
 
    divCode:string='01'
   unitCode:string='A'
@@ -26,8 +27,9 @@ export class VarietyprodnComponent {
  ngOnInit()
  {
    this.postDash.getVarietywiseProdnDetails(this.divCode,this.unitCode,this.date,this.section).subscribe((data) => {
-     console.log(data); // Log the received data
      this.prepareChartData(data);
+     this.loadData=false
+     
  })}
  prepareChartData(data:any){
     let category=data.map((item:any)=>item.varDesc)

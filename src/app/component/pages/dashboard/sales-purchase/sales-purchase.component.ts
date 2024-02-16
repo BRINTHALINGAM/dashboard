@@ -14,6 +14,7 @@ export class SalesPurchaseComponent  {
   topCardDetails: any;
 
 commonData:any[];
+loadData:boolean=true
 
 divCode:string='01';
  yearStart:string='2023-04-01';
@@ -34,6 +35,7 @@ divCode:string='01';
       this.rmiService.getTopCardDetails(this.divCode, this.yearStart, this.yearEnd,this. fromDate,this. toDate, this.lotYear).subscribe((data) => {
         console.log(data); // Log the received data
         this.preparedData(data);
+        this.loadData=false
       });
     })
   }

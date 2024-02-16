@@ -1,8 +1,9 @@
 <div class="card">
-  <div class="card-header pb-0">
-    <h3>{{name}}</h3>
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3 class="m-0">{{name}}</h3>
+    <loader *ngIf="loadData"></loader>
   </div>
-  <div class="card-body">
+  <div class="card-body p-0">
     <div id="basic-bar">
       <apx-chart [chart]="barChart?.chart" [plotOptions]="barChart?.plotOptions" [dataLabels]="barChart?.dataLabels"
         [series]="barChart?.series" [xaxis]="barChart?.xaxis" [colors]="barChart?.colors">

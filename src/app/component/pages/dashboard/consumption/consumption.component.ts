@@ -24,6 +24,8 @@ export class ConsumptionComponent  {
 
    calendar:any
 
+   loadData:boolean=true
+
    constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
     this.dateService.dateEvent.subscribe((date)=>{
       console.log("sales",date)
@@ -34,6 +36,7 @@ export class ConsumptionComponent  {
       this.rmiService.getAverageConsumption(this.divCode,this. fromDate,this. toDate).subscribe((data) => {
         console.log(data); // Log the received data
         this.prepareChartData(data);
+        this.loadData=false;
       });
     })
   }
@@ -52,14 +55,15 @@ export class ConsumptionComponent  {
     console.log(lastStockDate)
 
     this.gaugeChart={
-  gaugeType : "semi",
+      
+      gaugeType : "semi",
     gaugeValue: avg,
     gaugeLabel :lastStockDate,
     thresholdConfig : {
       '0': {color: 'green'},
       '40': {color: 'orange'},
       '75.5': {color: 'red'}
-  }}
-}
+  }}
 
-}
+    }
+  }

@@ -17,6 +17,7 @@ export class CounteffComponent {
    unitCode:string='A'
     date:string='2023-12-05'
    section:string='A'
+   loadData:boolean=true
 
   constructor(private postDash:PostDashboardService) {}
 
@@ -25,6 +26,7 @@ export class CounteffComponent {
     this.postDash.getCountwiseEffDetails(this.divCode,this.unitCode,this.date,this.section).subscribe((data) => {
       console.log(data); // Log the received data
       this.prepareChartData(data);
+      this.loadData=false;
   })}
   
   prepareChartData(data:any){

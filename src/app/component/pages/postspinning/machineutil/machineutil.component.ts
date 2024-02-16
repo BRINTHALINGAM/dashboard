@@ -10,14 +10,15 @@ export class MachineutilComponent {
   @Input() name: string ;
 
   chartOptions:any;
+  loadData:boolean=true
 
   constructor(private postDash:PostDashboardService) {}
 
   ngOnInit()
   {
     this.postDash.getMachinewiseUtilDetails().subscribe((data) => {
-      console.log(data); // Log the received data
       this.prepareChartData(data);
+      this.loadData=false
   })}
   prepareChartData(data:any){
     let category=data.map((item:any)=>item.machine)

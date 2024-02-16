@@ -14,6 +14,8 @@ export class Rg1Component {
    primary_color = localStorage.getItem('primary_color') || '#35bfbf';
    secondary_color = localStorage.getItem('secondary_color') || '#FF6150';
    pieChart:any;
+   loadData:boolean=true
+
 
    divCode:string='01'
    date:string='2023-12-05'
@@ -25,6 +27,7 @@ export class Rg1Component {
    this.postDash.getRG1ProdnDetails(this.divCode,this.date).subscribe((data) => {
      console.log(data); // Log the received data
      this.prepareChartData(data);
+     this.loadData=false;
  })}
  prepareChartData(data:any){
    
