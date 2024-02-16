@@ -12,7 +12,7 @@ const routes: Routes = [
         path: "rmi-dashboard",
         component: RMIDashboardComponent,
         data: {
-          title: "RMI DASHBOARD",
+          title: "RMI SPINNING",
           breadcrumb: "Default",
         },
       },
