@@ -1,5 +1,4 @@
 import { PostDashboardService } from 'src/app/services/post-dashboard.service';
-import { icon } from './../../../../shared/data/component/icons/flags';
 import { Component } from '@angular/core';
 import { DateService } from 'src/app/services/date.service';
 

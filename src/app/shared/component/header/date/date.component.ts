@@ -92,6 +92,7 @@ export class DateComponent implements OnInit {
   }
 
   datesUpdatedRange($event:any) {
+    
     const fromDate = new Date($event.startDate.$d);
     const formattedfromDate = fromDate.toISOString().slice(0, 10); // Format: YYYY-MM-DD
     console.log('Formatted Start Date:', formattedfromDate);
