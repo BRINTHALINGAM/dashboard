@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostDashboardService } from 'src/app/services/post-dashboard.service';
 import { ChartOptions } from 'src/app/shared/data/component/charts/charts';
 
@@ -22,7 +23,7 @@ export class VarietyprodnComponent {
    date:string='2023-12-05'
   section:string='A'
 
-   constructor(private postDash:PostDashboardService) {}
+   constructor(private postDash:PostDashboardService,private modalService:NgbModal) {}
 
  ngOnInit()
  {
@@ -31,6 +32,9 @@ export class VarietyprodnComponent {
      this.loadData=false
      
  })}
+ simpleModal(simpleContent: TemplateRef<NgbModal>) {
+  const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
+  }
  prepareChartData(data:any){
     let category=data.map((item:any)=>item.varDesc)
     let prdkgs=data.map((item:any)=>Number(item.prdkgs))

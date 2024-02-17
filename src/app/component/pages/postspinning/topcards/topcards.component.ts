@@ -102,6 +102,6 @@ commonData:any
 
 roundWithDecimal(value: number): string
 {
-  return (Math.round(value).toFixed(2))
+  return (Math.round((value*100)/100).toFixed(2))
 }
 }
