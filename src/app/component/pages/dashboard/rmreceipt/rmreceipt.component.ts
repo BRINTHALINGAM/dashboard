@@ -1,5 +1,6 @@
 
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, TemplateRef } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DateService } from "src/app/services/date.service";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
@@ -13,6 +14,12 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
 
 export class RmreceiptComponent {
+
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
+  }
+
+
   @Input() name: string = "Receipt Details by Supplier"; // Default name if not provided
   pieChart: any;
   loadData:boolean=true
@@ -20,7 +27,7 @@ export class RmreceiptComponent {
    divCode:string ='01';
    processingDate:string;
 calendar:any
-   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+   constructor(private rmiService :RmiDashboardService,private dateService:DateService,private modelService:NgbModal) {
     this.dateService.dateEvent.subscribe((date)=>{
       console.log("reff",date)
       console.log("sales",date)

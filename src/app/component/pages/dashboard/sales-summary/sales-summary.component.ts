@@ -1,7 +1,8 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, TemplateRef } from "@angular/core";
 import * as SalesSummary from "../../../../shared/data/component/deshboard/charts";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 import { DateService } from "src/app/services/date.service";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 const types = ["area", "area", "area", "bar", "line", "area", "area"];
 
 @Component({
@@ -13,6 +14,11 @@ export class SalesSummaryComponent {
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
 
+
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
+  }
+  
   salesChartdata:any;
 
   calendar:any
@@ -20,7 +26,8 @@ export class SalesSummaryComponent {
   loadData:boolean=true
   
 
-  constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+  constructor(private rmiService :RmiDashboardService,private dateService:DateService,private modelService:NgbModal) {
+    
     this.dateService.dateEvent.subscribe((date)=>{
       console.log("sales",date)
       this.calendar=date;

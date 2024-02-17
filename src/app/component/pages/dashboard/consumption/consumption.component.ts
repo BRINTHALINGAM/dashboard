@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxGaugeAppend, NgxGaugeLabel, NgxGaugeValue } from 'ngx-gauge';
 import { NgxGaugeType } from 'ngx-gauge/gauge/gauge';
 import { DateService } from 'src/app/services/date.service';
@@ -14,6 +15,11 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 export class ConsumptionComponent  {
 
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
+  }
+  
+
 
   @Input() name: string = "Consumption Details by Supplier"; // Default name if not provided
   gaugeChart: any;
@@ -26,7 +32,7 @@ export class ConsumptionComponent  {
 
    loadData:boolean=true
 
-   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+   constructor(private rmiService :RmiDashboardService,private dateService:DateService, private modelService:NgbModal ) {
     this.dateService.dateEvent.subscribe((date)=>{
       console.log("sales",date)
       this.calendar=date;

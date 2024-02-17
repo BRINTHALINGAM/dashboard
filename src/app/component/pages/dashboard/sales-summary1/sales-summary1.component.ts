@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DateService } from 'src/app/services/date.service';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
@@ -12,12 +13,15 @@ export class SalesSummary1Component {
   @Input() public type: string | "area";
   salesChartdata:any;
   loadData:boolean=true
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
+  }
 
 
   divCode:string ='01';
   processingDate:string;
  calendar:any
-  constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+  constructor(private rmiService :RmiDashboardService,private dateService:DateService,private modelService:NgbModal) {
    this.dateService.dateEvent.subscribe((date:any)=>{
      this.calendar=date;
      this.processingDate=this.calendar.formattedfromDate;

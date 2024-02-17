@@ -71,7 +71,7 @@ commonData:any
 },
  {
   symbol:'fa fa-file-text-o',
-  style: 'font-size: 24px; font-weight: lighter; display: inline-block; border-radius: 50%; padding: 30px; color: rgb(246, 60, 60);',
+  style: 'font-size: 20px; font-weight: lighter; display: inline-block; border-radius: 50%; padding: 30px; color: rgb(246, 60, 60);',
   // icon: 'rate',
   num:this.roundWithDecimal(this.topCardDetails.rg1TKgs) +'/'+this.roundWithDecimal(this.topCardDetails.rg1PKgs) , 
   title: 'UTD RG1 Prodn /UTD Packed Prodn',
