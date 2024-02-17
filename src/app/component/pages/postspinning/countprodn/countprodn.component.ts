@@ -1,6 +1,7 @@
 import { PostDashboardService } from 'src/app/services/post-dashboard.service';
 import { horizontalTimeline } from './../../../../shared/data/component/bonus-ui/timeline/timeline';
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 let primary_color = localStorage.getItem('primary_color') || '#35bfbf';
 let secondary_color = localStorage.getItem('secondary_color') || '#FF6150';
 
@@ -20,7 +21,7 @@ export class CountprodnComponent {
    loadData:boolean=true
 
 
-    constructor(private postDash:PostDashboardService) {}
+    constructor(private postDash:PostDashboardService,private modalService:NgbModal) {}
 
   ngOnInit()
   {
@@ -28,6 +29,9 @@ export class CountprodnComponent {
       this.prepareChartData(data);
       this.loadData=false;
   })}
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
+  }
   prepareChartData(data:any){
     let category=data.map((item:any)=>item.shortCode)
     let effPer=data.map((item:any)=>Number(item.prdkgs))

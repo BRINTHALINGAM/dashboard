@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostDashboardService } from 'src/app/services/post-dashboard.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class MachineutilComponent {
   chartOptions:any;
   loadData:boolean=true
 
-  constructor(private postDash:PostDashboardService) {}
+  constructor(private postDash:PostDashboardService,private modalService:NgbModal) {}
 
   ngOnInit()
   {
@@ -20,6 +21,9 @@ export class MachineutilComponent {
       this.prepareChartData(data);
       this.loadData=false
   })}
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
+  }
   prepareChartData(data:any){
     let category=data.map((item:any)=>item.machine)
     let utilPer=data.map((item:any)=>Number(item.utilPer))

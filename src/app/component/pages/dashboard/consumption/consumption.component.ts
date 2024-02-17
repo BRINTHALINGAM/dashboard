@@ -12,21 +12,22 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
   styleUrl: './consumption.component.scss'
 })
 
-export class ConsumptionComponent  {
+export class ConsumptionComponent  
+{
 
 
   @Input() name: string = "Consumption Details by Supplier"; // Default name if not provided
   gaugeChart: any;
+  divCode:string = '01';
+  fromDate:string ;
+  toDate:string ;
 
-   divCode:string = '01';
-   fromDate:string ;
-   toDate:string ;
+  calendar:any
 
-   calendar:any
+  loadData:boolean=true
 
-   loadData:boolean=true
-
-   constructor(private rmiService :RmiDashboardService,private dateService:DateService) {
+  constructor(private rmiService :RmiDashboardService,private dateService:DateService) 
+  {
     this.dateService.dateEvent.subscribe((date)=>{
       console.log("sales",date)
       this.calendar=date;
@@ -44,7 +45,8 @@ export class ConsumptionComponent  {
 
  
   
-  prepareChartData(data:any[]) {
+  prepareChartData(data:any[]) 
+  {
 
     if (!data || data.length === 0) {
       return;
@@ -54,16 +56,19 @@ export class ConsumptionComponent  {
     let lastStockDate=data.map((item) => item.lastStockDate)
     console.log(lastStockDate)
 
-    this.gaugeChart={
+    this.gaugeChart=
+    {
       
       gaugeType : "semi",
-    gaugeValue: avg,
-    gaugeLabel :lastStockDate,
-    thresholdConfig : {
-      '0': {color: 'green'},
-      '40': {color: 'orange'},
-      '75.5': {color: 'red'}
-  }}
-
+      gaugeValue: avg,
+      gaugeLabel :lastStockDate,
+      thresholdConfig : 
+      {
+        '0': {color: 'green'},
+        '40': {color: 'orange'},
+        '75.5': {color: 'red'}
+      }
     }
+
   }
+}
