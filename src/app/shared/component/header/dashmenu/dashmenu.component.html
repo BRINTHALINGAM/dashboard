@@ -1,22 +1,16 @@
 <div class="d-flex align-items-center">
   <div class="flex-grow-1">
-    <a [routerLink]="'/pages/rmi-dashboard'">
-      <span>RMI Spinning</span>
-    </a>
+    <a [routerLink]="'/pages/rmi-dashboard'"></a>
   </div>
   <div class="flex-grow-2">
-    <div><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+    <div class="dropdown">
+      <button class="btn btn-outline-primary dropdown-toggle" style="width: 160px; height: 37px; box-shadow: none; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Dashboard
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="min-width: unset;">
+        <a class="dropdown-item" [routerLink]="'/pages/rmi-dashboard'">RMI Spinning</a>
+        <a class="dropdown-item" [routerLink]="'/pages/postspinning'">Post Spinning</a>
+      </div>
+    </div>
   </div>
-  <div class="flex-grow-2">
-    <a [routerLink]="'pages/postspinning'">
-      <span>Post Spinning</span>
-    </a>
-  </div>
-  <div class="flex-grow-3">
-    <div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-  </div>
-  
 </div>
-
-  
-

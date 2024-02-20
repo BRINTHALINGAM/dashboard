@@ -73,8 +73,8 @@ export class ConsumptionComponent
         '0': {color: 'green'},
         '40': {color: 'orange'},
         '75.5': {color: 'red'}
-      }
-    }
+      }
+    }
 
-  }
+  }
 }

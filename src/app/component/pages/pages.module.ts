@@ -31,10 +31,11 @@ import { TopcardsComponent } from './postspinning/topcards/topcards.component';
 import { VarietyprodnComponent } from './postspinning/varietyprodn/varietyprodn.component';
 import { CountprodnComponent } from "./postspinning/countprodn/countprodn.component";
 import { LoaderComponent } from './dashboard/loader/loader.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
   CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent],
-  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule],
+  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule, DragDropModule],
 })
 export class PagesModule {}
