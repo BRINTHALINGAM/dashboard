@@ -4,7 +4,21 @@
     display: none; 
   }
   
-  .dropdown:hover .dropdown-menu {
-    display: block; 
-  }
-  
+ 
+.dropdown:hover .dropdown-menu {
+  display: block; 
+}
+
+/* Add this CSS to your stylesheet */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #007bff; /* Default dark color */
+  color: #fff; /* Default light text color */
+}
+
+/* Dark mode styles */
+.dark-mode .dropdown-item:hover,
+.dark-mode .dropdown-item:focus {
+  background-color: #0056b3; /* Dark mode background color */
+  color: #fff; /* Dark mode text color */
+}
