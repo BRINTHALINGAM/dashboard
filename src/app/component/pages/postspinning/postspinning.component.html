@@ -1,11 +1,36 @@
+<div class="row">
+  <div class="container-fluid">
+    <app-topcards></app-topcards>
+  </div>
+
 <div class="container-fluid dashboard_default">
-  <div class="drag-list" cdkDropList (cdkDropListDropped)="drop($event)">
-    <div class="row">
-      <ng-container *ngFor="let item of items">
-        <div [ngClass]="getGridClasses(item.size)" cdkDrag>
-          <ng-container *ngComponentOutlet="item.component" ></ng-container>
-        </div>
-      </ng-container>
+  <div class="row widget-grid">
+
+    <div class="col-xl-6 col-lg-6 col-sm-12 box-col-4">
+      <app-rg1 name="RG1 Stocks"></app-rg1>
     </div>
-  </div>
+
+    <div class="col-xl-6 col-lg-6 col-sm-12 box-col-4">
+      <app-varietyprodn name="Cotton"></app-varietyprodn>
+    </div>
+    
+    <div class="col-xl-6 col-lg-6 col-sm-12 box-col-4">
+      <app-countprodn name="Count Wise Production"></app-countprodn>
+    </div>
+
+    <div class="col-xl-6 col-lg-6 col-sm-12 box-col-4">
+      <app-counteff name="Count Wise Efficiency %"></app-counteff>
+    </div>
+
+    
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 box-col-4">
+      <app-machineprodn name="Autoconer Machine Wise Production"></app-machineprodn>
+    </div>
+
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 box-col-4">
+      <app-machineutil name="Machine Wise Utilisation %"></app-machineutil>
+    </div>
+    
+  </div>
+</div>
 </div>

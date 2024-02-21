@@ -1,13 +1,13 @@
 <div class="card customer-chart">
   <div class="card-header pb-0">
     <div class="header-top">
-      <h3 class="m-0">Avg. Consumption Bales/Day</h3>
+      <h3 class="m-0">{{name}}</h3>
       
       <i class="icon-fullscreen" (click)="simpleModal(simpleContent)" *ngIf="!loadData" style="cursor: pointer;"></i>      <ng-template #simpleContent let-modal>
         <div class="modal-dialog modal-fullscreen">
           <div class="modal-content">
             <div class="modal-header">
-              <h2 class="modal-title" id="myFullLargeModalLabel">Avg. Consumption Bales/Day</h2>
+              <h2 class="modal-title" id="myFullLargeModalLabel">{{name}}</h2>
               <button class="btn-close py-0" type="button" (click)="modal.dismiss('Cross click')"></button>
             </div>
 
