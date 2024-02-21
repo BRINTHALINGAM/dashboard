@@ -1,0 +1,22 @@
+.button-group {
+    display: flex;
+  }
+  
+  .print-button, .share-button, .close-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: #999;
+    
+  }
+  
+
+  .close-button:before {
+    content: '\00d7'; 
+    font-size: 18px;
+    color: #999;
+  }
+  
+  
+  
