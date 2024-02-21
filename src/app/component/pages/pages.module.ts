@@ -30,6 +30,7 @@ import { CountprodnComponent } from "./postspinning/countprodn/countprodn.compon
 import { LoaderComponent } from './dashboard/loader/loader.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
   CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent],
