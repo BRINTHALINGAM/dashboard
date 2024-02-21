@@ -1,8 +1,12 @@
 
-import { Component, Input, OnInit, TemplateRef } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { Component, Input, NgModule, OnInit, TemplateRef } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DateService } from "src/app/services/date.service";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
+import { SharedModule } from "src/app/shared/shared.module";
+
+
 
 
 @Component({
@@ -14,6 +18,17 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
 
 export class RmreceiptComponent {
+
+  fullscreenMode = false;
+
+ 
+
+
+
+  printChart() {
+    window.print(); // You can customize this function further if needed
+  }
+
 
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modelService.open(simpleContent,{fullscreen:true});

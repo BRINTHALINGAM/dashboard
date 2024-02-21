@@ -19,6 +19,9 @@ import { LoaderComponent } from "./component/loader/loader.component";
 import { DashmenuComponent } from "./component/header/dashmenu/dashmenu.component";
 import { DateComponent } from "./component/header/date/date.component";
 import { NgxDaterangepickerBootstrapModule, NgxDaterangepickerLocaleService } from "ngx-daterangepicker-bootstrap";
+import { ConsumptionComponent } from "../component/pages/dashboard/consumption/consumption.component";
+import { PagesModule } from "../component/pages/pages.module";
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -26,7 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [ContentComponent, HeaderComponent, FeathericonComponent, FooterComponent, ThemeComponent, ProfileComponent, SvgIconComponent, TapToTopComponent, LoaderComponent, DashmenuComponent, DateComponent],
-  imports: [NgxDaterangepickerBootstrapModule.forRoot(), CommonModule, SharedRoutingModule, NgbModule, ReactiveFormsModule, FormsModule, AngularSvgIconModule.forRoot(), TranslateModule.forRoot()],
+  imports: [NgxDaterangepickerBootstrapModule.forRoot(), CommonModule, SharedRoutingModule, NgbModule, ReactiveFormsModule, FormsModule, AngularSvgIconModule.forRoot(), TranslateModule.forRoot(),PagesModule],
   exports: [ContentComponent, FeathericonComponent, LoaderComponent, SvgIconComponent, TapToTopComponent, TranslateModule, NgbModule],
   providers: [NgxDaterangepickerLocaleService],
 })

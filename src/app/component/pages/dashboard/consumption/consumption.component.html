@@ -3,7 +3,9 @@
     <div class="header-top">
       <h3 class="m-0">{{name}}</h3>
       
-      <i class="icon-fullscreen" (click)="simpleModal(simpleContent)" *ngIf="!loadData" style="cursor: pointer;"></i>      <ng-template #simpleContent let-modal>
+      <i class="icon-fullscreen" (click)="simpleModal(simpleContent)" *ngIf="!loadData" style="cursor: pointer;"></i> 
+           <ng-template #simpleContent let-modal>
+          
         <div class="modal-dialog modal-fullscreen">
           <div class="modal-content">
             <div class="modal-header">

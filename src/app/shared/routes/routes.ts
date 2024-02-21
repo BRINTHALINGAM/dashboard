@@ -17,5 +17,14 @@ export const dashData: Routes = [
       title: "Sample-page",
       breadcrumb: "Sample-page",
     },
+    
+  },
+  {
+    path: "layout",
+    data: {
+      title: "sample-page",
+      breadcrumb: "sample-page",
+    },
+    loadChildren: () => import("../../shared/shared.module").then((m) => m.SharedModule),
   },
 ];

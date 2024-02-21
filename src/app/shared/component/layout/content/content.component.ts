@@ -44,7 +44,7 @@ export class ContentComponent {
     return (
       this.layout.config.settings.sidebar_type +
       ' ' +
-      this.layout.config.settings.layout.replace('layout', 'sidebar')
+      this.layout.config.settings.layout.replace('layout','')
 
     )
   }

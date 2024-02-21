@@ -1,9 +1,8 @@
+import { NgxPrintModule } from 'ngx-print';
 import { CounteffComponent } from './postspinning/counteff/counteff.component';
 
 import { SalesSummary1Component } from "./dashboard/sales-summary1/sales-summary1.component";
 
-import { themeSales } from "./../../shared/data/component/forms/form-controls/mega-options";
-import { barChart, columnChart2 } from "./../../shared/data/component/charts/charts";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PagesRoutingModule } from "./pages-routing.module";
@@ -21,8 +20,6 @@ import { TopsuppliersComponent } from "./dashboard/topsuppliers/topsuppliers.com
 import { ValuesComponent } from "./dashboard/values/values.component";
 import { ConsumptionComponent } from "./dashboard/consumption/consumption.component";
 import { NgxGaugeModule } from "ngx-gauge";
-import { NgxDaterangepickerBootstrapModule, NgxDaterangepickerLocaleService } from "ngx-daterangepicker-bootstrap";
-import { Dayjs } from "dayjs";
 import { PostspinningComponent } from "./postspinning/postspinning.component";
 import { MachineprodnComponent } from './postspinning/machineprodn/machineprodn.component';
 import { MachineutilComponent } from './postspinning/machineutil/machineutil.component';
@@ -31,10 +28,12 @@ import { TopcardsComponent } from './postspinning/topcards/topcards.component';
 import { VarietyprodnComponent } from './postspinning/varietyprodn/varietyprodn.component';
 import { CountprodnComponent } from "./postspinning/countprodn/countprodn.component";
 import { LoaderComponent } from './dashboard/loader/loader.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
   CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent],
-  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule],
+  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule,NgxPrintModule],
+  exports:[ConsumptionComponent,SalesSummaryComponent,MixwiseComponent,RmreceiptComponent,SalesPurchaseComponent,SalesSummary1Component,ValuesComponent,TopsuppliersComponent]
 })
 export class PagesModule {}

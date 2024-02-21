@@ -10,7 +10,8 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 @Component({
   selector: 'app-consumption',
   templateUrl: './consumption.component.html',
-  styleUrl: './consumption.component.scss'
+  styleUrl: './consumption.component.scss',
+  
 })
 
 export class ConsumptionComponent  

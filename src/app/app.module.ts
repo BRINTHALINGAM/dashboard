@@ -13,6 +13,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { NgApexchartsModule } from "ng-apexcharts";
 import { ChartistModule } from "ng-chartist";
+import {NgxPrintModule} from 'ngx-print';
 import { NgxDaterangepickerBootstrapModule, NgxDaterangepickerLocaleService } from "ngx-daterangepicker-bootstrap";
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    NgxPrintModule,
     NgxDaterangepickerBootstrapModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

@@ -1,3 +1,4 @@
+import { NgxPrintDirective, NgxPrintModule } from 'ngx-print';
 import { Component, Input, TemplateRef } from "@angular/core";
 import * as chartData from "../../../../shared/data/component/charts/google-chart";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
@@ -6,17 +7,21 @@ import { DateService } from "src/app/services/date.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 
+
 @Component({
   selector: "app-topsuppliers",
   templateUrl: "./topsuppliers.component.html",
   styleUrl: "./topsuppliers.component.scss",
 })
 export class TopsuppliersComponent {
+       
+   
+    
 
     simpleModal(simpleContent: TemplateRef<NgbModal>) {
         const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
       }
-    
+   
 
   @Input() public name: string | undefined;
   columnChart:any;
