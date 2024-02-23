@@ -1,8 +1,11 @@
+
 import { NgModule } from "@angular/core";
 
 import { RouterModule, Routes } from "@angular/router";
 import { RMIDashboardComponent } from "./dashboard/rmi-dashboard.component";
 import { PostspinningComponent } from "./postspinning/postspinning.component";
+import { CompactViewComponent } from "./compact-view/compact-view.component";
+
 
 const routes: Routes = [
   {
@@ -26,6 +29,7 @@ const routes: Routes = [
       {
         path: "postspinning",
         component: PostspinningComponent,
+       
         data: {
           title: "POST SPINNING",
 
@@ -34,7 +38,23 @@ const routes: Routes = [
       
     ],
 
-  }
+  },
+  {
+    path: "",
+    children: [
+      {
+        path: "compact",
+        component: CompactViewComponent,
+       
+        data: {
+          title: "Compact view",
+
+        },
+      },
+      
+    ],
+
+  },
 
 
   

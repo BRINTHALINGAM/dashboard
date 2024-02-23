@@ -30,11 +30,14 @@ import { CountprodnComponent } from "./postspinning/countprodn/countprodn.compon
 import { LoaderComponent } from './dashboard/loader/loader.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { FormsModule } from '@angular/forms';
+import { CompactViewComponent } from './compact-view/compact-view.component';
+
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
-  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent],
-  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule,NgxPrintModule],
+  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent,CompactViewComponent],
+  imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule,NgxPrintModule,FormsModule],
   exports:[ConsumptionComponent,SalesSummaryComponent,MixwiseComponent,RmreceiptComponent,SalesPurchaseComponent,SalesSummary1Component,ValuesComponent,TopsuppliersComponent]
 })
 export class PagesModule {}
