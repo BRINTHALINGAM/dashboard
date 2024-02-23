@@ -1,7 +1,6 @@
-import { Component, Input, TemplateRef } from '@angular/core';
+import {  Component, Input, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostDashboardService } from 'src/app/services/post-dashboard.service';
-import { ChartOptions } from 'src/app/shared/data/component/deshboard/charts';
 
 
 @Component({
@@ -9,7 +8,8 @@ import { ChartOptions } from 'src/app/shared/data/component/deshboard/charts';
   templateUrl: './rg1.component.html',
   styleUrl: './rg1.component.scss'
 })
-export class Rg1Component {
+export class Rg1Component  {
+
   @Input() name: string ;
 
    primary_color = localStorage.getItem('primary_color') || '#35bfbf';

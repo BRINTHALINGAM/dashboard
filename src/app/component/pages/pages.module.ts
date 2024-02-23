@@ -28,7 +28,6 @@ import { TopcardsComponent } from './postspinning/topcards/topcards.component';
 import { VarietyprodnComponent } from './postspinning/varietyprodn/varietyprodn.component';
 import { CountprodnComponent } from "./postspinning/countprodn/countprodn.component";
 import { LoaderComponent } from './dashboard/loader/loader.component';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
