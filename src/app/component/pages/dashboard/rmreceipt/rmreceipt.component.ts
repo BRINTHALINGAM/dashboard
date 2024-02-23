@@ -25,11 +25,6 @@ export class RmreceiptComponent {
 
 
 
-  printChart() {
-    window.print(); // You can customize this function further if needed
-  }
-
-
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
   }
