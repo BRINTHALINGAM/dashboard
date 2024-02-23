@@ -1,4 +1,3 @@
-
 import { CommonModule } from "@angular/common";
 import { Component, Input, NgModule, OnInit, TemplateRef } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -7,27 +6,18 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 import { SharedModule } from "src/app/shared/shared.module";
 
 
-
-
 @Component({
-  selector: "app-rmreceipt",
-  templateUrl: "./rmreceipt.component.html",
-  styleUrls: ["./rmreceipt.component.scss"],
+  selector: 'app-rmreceiptcv',
+  templateUrl: './rmreceiptcv.component.html',
+  styleUrl: './rmreceiptcv.component.scss'
 })
-
-
-
-export class RmreceiptComponent {
+export class RmreceiptcvComponent {
+  
 
   fullscreenMode = false;
 
  
 
-
-
-  printChart() {
-    window.print(); // You can customize this function further if needed
-  }
 
 
   simpleModal(simpleContent: TemplateRef<NgbModal>) {

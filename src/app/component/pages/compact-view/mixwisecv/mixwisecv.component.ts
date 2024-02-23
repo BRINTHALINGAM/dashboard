@@ -5,12 +5,11 @@ import { DateService } from 'src/app/services/date.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-mixwise',
-  templateUrl: './mixwise.component.html',
-  styleUrls: ['./mixwise.component.scss']
+  selector: 'app-mixwisecv',
+  templateUrl: './mixwisecv.component.html',
+  styleUrl: './mixwisecv.component.scss'
 })
-export class MixwiseComponent {
-
+export class MixwisecvComponent {
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
   }
@@ -72,4 +71,5 @@ loadData:boolean=true
       colors: [this.primary_color]
     };
   }
-}  
+
+}

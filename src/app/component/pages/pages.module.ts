@@ -32,11 +32,19 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { FormsModule } from '@angular/forms';
 import { CompactViewComponent } from './compact-view/compact-view.component';
+import { ConsumptioncvComponent } from './compact-view/consumptioncv/consumptioncv.component';
+import { MixwisecvComponent } from './compact-view/mixwisecv/mixwisecv.component';
+import { RmreceiptcvComponent } from './compact-view/rmreceiptcv/rmreceiptcv.component';
+import { SalesPurchasecvComponent } from './compact-view/sales-purchasecv/sales-purchasecv.component';
+import { SalesSummary1cvComponent } from './compact-view/sales-summary1cv/sales-summary1cv.component';
+import { SalesSummarycvComponent } from './compact-view/sales-summarycv/sales-summarycv.component';
+import { TopsupplierscvComponent } from './compact-view/topsupplierscv/topsupplierscv.component';
+import { ValuescvComponent } from './compact-view/valuescv/valuescv.component';
 
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
-  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent,CompactViewComponent],
+  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent,CompactViewComponent, ConsumptioncvComponent, MixwisecvComponent,RmreceiptcvComponent,SalesPurchasecvComponent,SalesSummary1cvComponent,SalesSummarycvComponent,TopsupplierscvComponent,ValuescvComponent],
   imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule,NgxPrintModule,FormsModule],
   exports:[ConsumptionComponent,SalesSummaryComponent,MixwiseComponent,RmreceiptComponent,SalesPurchaseComponent,SalesSummary1Component,ValuesComponent,TopsuppliersComponent]
 })
