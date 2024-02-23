@@ -23,15 +23,14 @@ const routes: Routes = [
     redirectTo: "/pages/postspinning",
     pathMatch:"full",
   },
-  // {
-  //   path:"",
 
-  //   redirectTo :'shared/component/header/customizer/template1',
-  //   pathMatch: "full",
+  {
+    path:"",
+    redirectTo: "/pages/compact",
+    pathMatch:"full",
+  },
 
-  
-  //   }
-  
+
   
 ];
 
