@@ -1,4 +1,3 @@
-
 import { CommonModule } from "@angular/common";
 import { Component, Input, NgModule, OnInit, TemplateRef } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -7,17 +6,13 @@ import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 import { SharedModule } from "src/app/shared/shared.module";
 
 
-
-
 @Component({
-  selector: "app-rmreceipt",
-  templateUrl: "./rmreceipt.component.html",
-  styleUrls: ["./rmreceipt.component.scss"],
+  selector: 'app-rmreceiptcv',
+  templateUrl: './rmreceiptcv.component.html',
+  styleUrl: './rmreceiptcv.component.scss'
 })
-
-
-
-export class RmreceiptComponent {
+export class RmreceiptcvComponent {
+  
 
   fullscreenMode = false;
 
@@ -25,6 +20,7 @@ export class RmreceiptComponent {
 
 
 
+<<<<<<< HEAD:src/app/component/pages/compact-view/rmreceipt/rmreceipt.component.ts
   printChart() {
     window.print(); 
 
@@ -35,6 +31,8 @@ export class RmreceiptComponent {
   }
 
 
+=======
+>>>>>>> b6aa8acf9edf67018c195fcfb90fa5d89d4e2699:src/app/component/pages/compact-view/rmreceiptcv/rmreceiptcv.component.ts
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
   }

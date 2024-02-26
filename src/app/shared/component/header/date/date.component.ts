@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Injectable, OnInit, Output } from "@angular/core";
+import { Component, Injectable, OnInit } from "@angular/core";
 import { Router, NavigationEnd } from "@angular/router";
 import * as dayjs from "dayjs";
 import { Dayjs } from "dayjs";
@@ -13,13 +13,17 @@ import { DateService } from "src/app/services/date.service";
   providedIn: "root",
 })
 export class DateComponent implements OnInit {
+
+
+
   constructor(
     private dateService: DateService,
-    private router: Router
+    private router: Router,
+
   ) {}
 
   dropsDown = 'down';
-  opensRight = 'right';
+  opensRight = 'left';
   selectedRangeCalendarTimeRight: any;
   invalidDates: Dayjs[] = [];
   ranges: any = {
@@ -50,7 +54,7 @@ export class DateComponent implements OnInit {
     firstDay: 1,
     startDate: dayjs().startOf('day'),
     endDate: dayjs().endOf('day'),
-    format: 'DD.MM.YYYY HH:mm:ss',
+    format: 'DD.MM.YYYY ',
     applyLabel: 'Apply',
     cancelLabel: 'Cancel',
     fromLabel: 'From',
@@ -78,18 +82,23 @@ export class DateComponent implements OnInit {
   }
 
   loadTodayData() {
-    this.selectedRangeCalendarTimeRight = {
-      startDate: dayjs().startOf('day'),
-      endDate: dayjs().endOf('day'),
-    };
-    const fromDate = dayjs().startOf('day').toDate();
-    const toDate = dayjs().endOf('day').toDate();
-    this.dateService.dateEvent.emit({
-      formattedfromDate: fromDate.toISOString().slice(0, 10),
-      lotYear: fromDate.getFullYear() - 1,
-      formattedtoDate: toDate.toISOString().slice(0, 10)
-    });
-  }
+   
+      this.selectedRangeCalendarTimeRight = {
+        startDate: dayjs().startOf('day'),
+        endDate: dayjs().endOf('day'),
+      };
+      const fromDate = dayjs().startOf('day').toDate();
+      const toDate = dayjs().endOf('day').toDate();
+      this.dateService.dateEvent.emit({
+        formattedfromDate:dayjs().format('YYYY-MM-DD'),
+        lotYear: fromDate.getFullYear() - 1,
+        formattedtoDate: toDate.toISOString().slice(0, 10)
+      });
+      console.log("Date...",toDate)
+    }
+  
+  
+  
 
   datesUpdatedRange($event:any) {
     

@@ -6,11 +6,12 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 const types = ["area", "area", "area", "bar", "line", "area", "area"];
 
 @Component({
-  selector: "app-sales-summary",
-  templateUrl: "./sales-summary.component.html",
-  styleUrls: ["./sales-summary.component.scss"],
+  selector: 'app-sales-summarycv',
+  templateUrl: './sales-summarycv.component.html',
+  styleUrl: './sales-summarycv.component.scss'
 })
-export class SalesSummaryComponent {
+export class SalesSummarycvComponent {
+  
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
 

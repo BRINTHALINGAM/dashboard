@@ -4,13 +4,12 @@ import { DateService } from 'src/app/services/date.service';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 @Component({
-  selector: 'app-values',
-  templateUrl: './values.component.html',
-  styleUrls: ['./values.component.scss']
+  selector: 'app-valuescv',
+  templateUrl: './valuescv.component.html',
+  styleUrl: './valuescv.component.scss'
 })
-export class ValuesComponent  {
-
-
+export class ValuescvComponent {
+  
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
   }

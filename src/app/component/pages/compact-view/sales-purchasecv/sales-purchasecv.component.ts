@@ -1,16 +1,13 @@
-// sales-purchase.component.ts
 import { Component } from "@angular/core";
 import { DateService } from "src/app/services/date.service";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 
-
-
 @Component({
-  selector: "app-sales-purchase",
-  templateUrl: "./sales-purchase.component.html",
-  styleUrls: ["./sales-purchase.component.scss"],
+  selector: 'app-sales-purchasecv',
+  templateUrl: './sales-purchasecv.component.html',
+  styleUrl: './sales-purchasecv.component.scss'
 })
-export class SalesPurchaseComponent  {
+export class SalesPurchasecvComponent {
   topCardDetails: any;
 
 commonData:any[];

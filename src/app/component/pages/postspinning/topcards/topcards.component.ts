@@ -22,12 +22,10 @@ commonData:any
   constructor(private postService :PostDashboardService,private dateService:DateService) {
 
     this.postService.getTopCardDetails(this.divCode,this. unitCode, this.date,this. section).subscribe((data) => {
-      console.log(data); // Log the received data
+      console.log(data);
       this.preparedData(data);
     });
-    // this.dateService.dateEvent.subscribe((date)=>{
-    //   console.log("spin",date) 
-    // })
+
   }
   preparedData(data:any):void{
     this.topCardDetails=data[0]
@@ -102,6 +100,6 @@ commonData:any
 
 roundWithDecimal(value: number): string
 {
-  return (Math.round((value*100)/100).toFixed(2))
+  return (Math.round(value).toFixed(2))
 }
 }

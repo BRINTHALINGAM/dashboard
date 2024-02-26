@@ -4,11 +4,12 @@ import { DateService } from 'src/app/services/date.service';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
 @Component({
-  selector: 'app-sales-summary1',
-  templateUrl: './sales-summary1.component.html',
-  styleUrl: './sales-summary1.component.scss'
+  selector: 'app-sales-summary1cv',
+  templateUrl: './sales-summary1cv.component.html',
+  styleUrl: './sales-summary1cv.component.scss'
 })
-export class SalesSummary1Component {
+export class SalesSummary1cvComponent {
+  
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
   salesChartdata:any;
@@ -106,4 +107,4 @@ colors: [this.primary_color, this.secondary_color]
 }
 
 
-
+  
