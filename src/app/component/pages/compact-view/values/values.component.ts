@@ -87,7 +87,7 @@ export class ValuesComponent  {
           },
           style: {
             fontSize: "14px",
-            colors: "$black",
+            colors: "#848789",
             fontFamily: "nunito, sans-serif",
           },
         },

@@ -26,7 +26,12 @@ export class RmreceiptComponent {
 
 
   printChart() {
-    window.print(); // You can customize this function further if needed
+    window.print(); 
+
+
+
+
+    
   }
 
 
