@@ -49,7 +49,7 @@ this.topCardDetails=data[0]
     {
         icon: 'new-order',
         num:this.topCardDetails.noOfVariety,
-        title: 'No. of variety',
+        title: 'No. of category',
         color: 'secondary'
     },
    
@@ -70,7 +70,7 @@ this.topCardDetails=data[0]
   {
     icon: 'rate',
     num: this.topCardDetails.sales+'/'+this.topCardDetails.reciptReturn,
-   title: 'SR-Return',
+   title: 'S/R Return',
      color: 'success'
   },
    {
