@@ -45,9 +45,21 @@ export class MachineutilComponent {
       type: "bar",
       height: 350,
       stacked: true,
-      toolbar: {
-        show: false
-      },
+      toolbar:
+        {
+          show:true,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Machinewise Utilization Chart',
+            }
+          },
+        },
       zoom: {
         enabled: false
       }
@@ -84,15 +96,5 @@ export class MachineutilComponent {
     // colors: ['#99CC99' , '#993300']
   };
 }
-ClickFun(){
-  if (navigator.share){
-    navigator.share({
-      title:"My copied link",
-      url:''
-    }).then(()=>{
-      console.log('Thanks for sharing');
-    })
-    .catch(console.error)
-  }
-}
+
 }

@@ -72,7 +72,18 @@ chart: {
   height: 300,
   type: 'bar',
   toolbar: {
-      show: false
+      show: true,
+      export: {
+        csv: {
+          filename: undefined,
+        },
+        svg: {
+          filename: undefined,
+        },
+        png: {
+          filename: 'Stock Chart',
+        }
+      },
   }
 },
 dataLabels: {
@@ -82,9 +93,9 @@ stroke: {
   curve: 'smooth'
 },
 series: [{
-  name: 'series1',
-  data: series
-}],
+  name: "Stock Value",
+  data: series,
+},],
 xaxis: {
   categories: labels,
   labels: {
@@ -93,6 +104,9 @@ xaxis: {
           colors: "#848789",
           fontFamily: "nunito, sans-serif",
       },
+  },
+  title: {
+    text: "Category",
   },
 },
 yaxis: {
@@ -106,6 +120,9 @@ yaxis: {
           fontFamily: "nunito, sans-serif",
       },
   },
+  title: {
+    text: "Stock Value",
+  },
 },
 tooltip: {
   x: {
@@ -118,15 +135,5 @@ legend: {
 colors: [this.primary_color, this.secondary_color]
 }
   }
-  ClickFun(){
-    if (navigator.share){
-      navigator.share({
-        title:this.name,
-        url:''
-      }).then(()=>{
-        console.log('Thanks for sharing');
-      })
-      .catch(console.error)
-    }
-  }
+  
 }

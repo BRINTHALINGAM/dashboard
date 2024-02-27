@@ -86,7 +86,7 @@ export class SalesSummary1cvComponent {
       },
       series: [
         {
-          name: "Stock Value",
+          name: "Order Value",
           data: series,
         },
       ],

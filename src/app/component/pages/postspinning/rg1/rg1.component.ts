@@ -42,8 +42,24 @@ export class Rg1Component  {
       this.pieChart = {
 
         chart: {
-          width: 400,
+          width: 550,
+          height:240,
           type: 'pie',
+          toolbar:
+        {
+          show:true,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'RG1 Production Chart',
+            }
+          },
+        },
       },
       labels:  labels,
       series:series,
@@ -62,17 +78,7 @@ export class Rg1Component  {
       };
     }
 
-    ClickFun(){
-      if (navigator.share){
-        navigator.share({
-          title:"My copied link",
-          url:''
-        }).then(()=>{
-          console.log('Thanks for sharing');
-        })
-        .catch(console.error)
-      }
-    }
+   
   
   }
 

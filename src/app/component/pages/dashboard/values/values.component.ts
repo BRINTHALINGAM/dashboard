@@ -39,7 +39,7 @@ export class ValuesComponent  {
       this.toDate=this.calendar.formattedtoDate;
       this.fromDate=this.calendar.formattedfromDate;
       this.lotYear=this.calendar.lotYear;
-      this.rmiService.getTopCardDetails(this.divCode, this.yearStart, this.yearEnd,this. fromDate,this. toDate, this.lotYear).subscribe((data) => {
+      this.rmiService.getStockValueinLakhs(this.divCode, this.yearStart, this.yearEnd,this. fromDate,this. toDate, this.lotYear).subscribe((data) => {
         this.barChart(data);
         this.loadData=false
       });
@@ -52,12 +52,32 @@ export class ValuesComponent  {
     const values = Object.values(data[0]); 
     const category = Object.keys(data[0]); 
 
+    const labels = category.map(item => {
+      const splitNames: string[] = item.split('V');
+      if (splitNames.length === 2) {
+        return splitNames[0];
+      } else {
+        return item;
+      }
+    });
+
     this.salesChartdata = {
       chart: {
         height: 318,
         type: 'bar',
         toolbar: {
-          show: false
+          show: true,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Values in Lakhs Chart',
+            }
+          },
         }
       },
       dataLabels: {
@@ -67,11 +87,11 @@ export class ValuesComponent  {
         curve: 'smooth'
       },
       series: [{
-        name: 'series1',
+        name: 'Stock Values',
         data: values
       }],
       xaxis: {
-        categories: category,
+        categories: labels,
         labels: {
           style: {
             fontSize: "13px",
@@ -79,6 +99,9 @@ export class ValuesComponent  {
             fontFamily: "nunito, sans-serif",
           },
         },
+        title:{
+          text:"Stocks"
+        }
       },
       yaxis: {
         labels: {
@@ -91,6 +114,9 @@ export class ValuesComponent  {
             fontFamily: "nunito, sans-serif",
           },
         },
+        title:{
+          text:"Stock Values"
+        }
       },
       tooltip: {
         x: {
@@ -103,15 +129,5 @@ export class ValuesComponent  {
       colors: [this.primary_color, this.secondary_color]
     };
   }
-  ClickFun(){
-    if (navigator.share){
-      navigator.share({
-        title:this.name,
-        url:''
-      }).then(()=>{
-        console.log('Thanks for sharing');
-      })
-      .catch(console.error)
-    }
-  }
+ 
 }

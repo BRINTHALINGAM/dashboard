@@ -52,7 +52,18 @@ loadData:boolean=true
         height: 250,
         type: 'bar',
         toolbar: {
-          show: false
+          show: true,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Mixwise Consumption Chart',
+            }
+          },
         }
       },
       plotOptions: {
@@ -68,19 +79,16 @@ loadData:boolean=true
       }],
       xaxis: {
         categories: labels,
+        title: {
+          text: "MixGroup Name ",
+        },
+      },
+      yaxis :{
+        title: {
+          text: "netKgs",
+        },
       },
       colors: [this.primary_color]
     };
   }
-  ClickFun(){
-    if (navigator.share){
-      navigator.share({
-        title:this.name,
-        url:''
-      }).then(()=>{
-        console.log('Thanks for sharing');
-      })
-      .catch(console.error)
-    }
-  }
 }  

@@ -44,8 +44,24 @@ export class VarietyprodnComponent {
     this.pieChart = {
 
       chart: {
-        width: 400,
+        width: 550,
+        height:240,
         type: 'pie',
+        toolbar:
+        {
+          show:true,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Varietywise Production Chart',
+            }
+          },
+        },
     },
     labels:  ['On Date Prodn', 'Upto Date Prodn'],
     series:[prdkgs[0],uptoprdkgs[0]],
@@ -65,16 +81,6 @@ export class VarietyprodnComponent {
 
 }
 
-ClickFun(){
-  if (navigator.share){
-    navigator.share({
-      title:"My copied link",
-      url:''
-    }).then(()=>{
-      console.log('Thanks for sharing');
-    })
-    .catch(console.error)
-  }
-}
+
 
 }

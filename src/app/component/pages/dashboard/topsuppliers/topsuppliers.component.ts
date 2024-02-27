@@ -55,14 +55,35 @@ export class TopsuppliersComponent {
     let supplier=data.map((item) => (item.supplierName));
     let value = data.map((item) => Number(item.value));
     let count = data.map((item) => Number(item.baleCount));
+
+    for(let i=0;i<value.length;i++)
+    {
+        value[i]=Math.round(value[i])
+    }
     
      this.columnChart={
       chart: {
         height: 300,
         type: 'bar',
         toolbar: {
-            show: false
+            show: true,
+            export: {
+              csv: {
+                filename: undefined,
+              },
+              svg: {
+                filename: undefined,
+              },
+              png: {
+                filename: 'Top 10 Suppliers Chart',
+              }
+            },
         }
+    },
+    legend: {
+      show: true,
+      position:'top',
+      horizontalAlign: 'left',
     },
     plotOptions: {
         bar: {
@@ -88,9 +109,14 @@ export class TopsuppliersComponent {
     }, ],
     xaxis: {
         categories: supplier,
+        title: {
+          text: "Supplier Name ",
+        },
     },
     yaxis: {
-        
+      title: {
+        text: "Bale count / Values ",
+      },
     },
     fill: {
         opacity: 1
@@ -106,15 +132,5 @@ export class TopsuppliersComponent {
     colors: [this.primary_color, this.secondary_color, '#51bb25']
 }
 }
-ClickFun(){
-    if (navigator.share){
-      navigator.share({
-        title:this.name,
-        url:''
-      }).then(()=>{
-        console.log('Thanks for sharing');
-      })
-      .catch(console.error)
-    }
-  }
+
 }

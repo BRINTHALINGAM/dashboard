@@ -61,8 +61,24 @@ calendar:any
 
     this.pieChart = {
       chart: {
-        width: 400,
+        width: 600,
+        height:250,
         type: 'pie',
+        toolbar:
+        {
+          show:true,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'RM Receipt Chart',
+            }
+          },
+        }
     },
     labels: labels,
     series: series,
@@ -80,16 +96,6 @@ calendar:any
     colors: ['#008FFB', '#FF4560', '#51bb25', '#a927f9', '#f8d62b']
     };
   }
-  ClickFun(){
-    if (navigator.share){
-      navigator.share({
-        title:this.name,
-        url:''
-      }).then(()=>{
-        console.log('Thanks for sharing');
-      })
-      .catch(console.error)
-    }
-  }
+  
 
 }
