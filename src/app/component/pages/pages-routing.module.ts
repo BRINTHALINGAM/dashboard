@@ -5,6 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { RMIDashboardComponent } from "./dashboard/rmi-dashboard.component";
 import { PostspinningComponent } from "./postspinning/postspinning.component";
 import { CompactViewComponent } from "./compact-view/compact-view.component";
+import { PostCompactComponent } from "./post-compact/post-compact.component";
 
 
 const routes: Routes = [
@@ -48,6 +49,23 @@ const routes: Routes = [
        
         data: {
           title: "Compact view",
+
+        },
+      },
+      
+    ],
+
+  },
+
+  {
+    path: "",
+    children: [
+      {
+        path: "postview",
+        component: PostCompactComponent,
+       
+        data: {
+          title: "Post compact view",
 
         },
       },

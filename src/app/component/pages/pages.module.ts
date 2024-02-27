@@ -39,11 +39,19 @@ import { SalesSummary1cvComponent } from './compact-view/sales-summary1cv/sales-
 import { SalesSummarycvComponent } from './compact-view/sales-summarycv/sales-summarycv.component';
 import { TopsupplierscvComponent } from './compact-view/topsupplierscv/topsupplierscv.component';
 import { ValuescvComponent } from './compact-view/valuescv/valuescv.component';
+import { PostCompactComponent } from './post-compact/post-compact.component';
+import { CounteffcvComponent } from './post-compact/counteffcv/counteffcv.component';
+import { CountprodncvComponent } from './post-compact/countprodncv/countprodncv.component';
+import { MachineprodncvComponent } from './post-compact/machineprodncv/machineprodncv.component';
+import { MachineutilcvComponent } from './post-compact/machineutilcv/machineutilcv.component';
+import { Rg1cvComponent } from './post-compact/rg1cv/rg1cv.component';
+import { TopcardscvComponent } from './post-compact/topcardscv/topcardscv.component';
+import { VarietyprodncvComponent } from './post-compact/varietyprodncv/varietyprodncv.component';
 
 
 @NgModule({
   declarations: [RMIDashboardComponent, SalesSummaryComponent, PostspinningComponent,SalesPurchaseComponent, SalesSummary1Component, RmreceiptComponent, MixwiseComponent, TopsuppliersComponent, ValuesComponent, ConsumptionComponent, CounteffComponent, 
-  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent,CompactViewComponent, ConsumptioncvComponent, MixwisecvComponent,RmreceiptcvComponent,SalesPurchasecvComponent,SalesSummary1cvComponent,SalesSummarycvComponent,TopsupplierscvComponent,ValuescvComponent],
+  CountprodnComponent, MachineprodnComponent,MachineutilComponent, Rg1Component,TopcardsComponent,VarietyprodnComponent,LoaderComponent,CompactViewComponent, ConsumptioncvComponent, MixwisecvComponent,RmreceiptcvComponent,SalesPurchasecvComponent,SalesSummary1cvComponent,SalesSummarycvComponent,TopsupplierscvComponent,ValuescvComponent,PostCompactComponent, CounteffcvComponent,CountprodncvComponent,MachineprodncvComponent, MachineutilcvComponent, Rg1cvComponent,TopcardscvComponent,VarietyprodncvComponent],
   imports: [CommonModule, PagesRoutingModule, NgApexchartsModule, Ng2GoogleChartsModule, NgxGaugeModule, ChartistModule,NgxPrintModule,FormsModule],
   exports:[ConsumptionComponent,SalesSummaryComponent,MixwiseComponent,RmreceiptComponent,SalesPurchaseComponent,SalesSummary1Component,ValuesComponent,TopsuppliersComponent]
 })
