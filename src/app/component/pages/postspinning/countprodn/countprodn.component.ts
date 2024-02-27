@@ -91,5 +91,17 @@ export class CountprodnComponent {
         colors: ['#00A88F','#82C272' ]
       };
 }
+ClickFun(){
+  if (navigator.share){
+    navigator.share({
+      title:"My copied link",
+      url:''
+    }).then(()=>{
+      console.log('Thanks for sharing');
+    })
+    .catch(console.error)
+  }
+}
+
 
 }

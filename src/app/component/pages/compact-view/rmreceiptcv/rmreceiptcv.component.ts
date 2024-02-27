@@ -20,7 +20,6 @@ export class RmreceiptcvComponent {
 
 
 
-<<<<<<< HEAD:src/app/component/pages/compact-view/rmreceipt/rmreceipt.component.ts
   printChart() {
     window.print(); 
 
@@ -31,8 +30,7 @@ export class RmreceiptcvComponent {
   }
 
 
-=======
->>>>>>> b6aa8acf9edf67018c195fcfb90fa5d89d4e2699:src/app/component/pages/compact-view/rmreceiptcv/rmreceiptcv.component.ts
+
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
   }
@@ -69,6 +67,7 @@ calendar:any
 
     this.pieChart = {
       chart: {
+        height:180,
         width: 400,
         type: 'pie',
     },

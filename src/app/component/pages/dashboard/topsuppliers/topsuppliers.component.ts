@@ -106,4 +106,15 @@ export class TopsuppliersComponent {
     colors: [this.primary_color, this.secondary_color, '#51bb25']
 }
 }
+ClickFun(){
+    if (navigator.share){
+      navigator.share({
+        title:this.name,
+        url:''
+      }).then(()=>{
+        console.log('Thanks for sharing');
+      })
+      .catch(console.error)
+    }
+  }
 }

@@ -92,4 +92,16 @@ this.chartOptions= {
 
   };
         }
+        ClickFun(){
+          if (navigator.share){
+            navigator.share({
+              title:"My copied link",
+              url:''
+            }).then(()=>{
+              console.log('Thanks for sharing');
+            })
+            .catch(console.error)
+          }
+        }
+
 }

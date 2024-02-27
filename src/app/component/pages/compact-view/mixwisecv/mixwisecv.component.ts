@@ -10,10 +10,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './mixwisecv.component.scss'
 })
 export class MixwisecvComponent {
-  simpleModal(simpleContent: TemplateRef<NgbModal>) {
-    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
-  }
+  chartData: any;
+  chartSeries: any;
+  chartLabels: any;
 
+ 
 
   @Input() public name: string | undefined;
   barChart: any;
@@ -42,34 +43,114 @@ loadData:boolean=true
 
   prepareChartData(data: any[]): void {
 
+    data.sort((a, b) => b.netKgs - a.netKgs);
+    this.chartData = data;
+
     // Rest of your code to prepare the chart data
     const series = data.map((item) => Number(item.netKgs));
     const labels = data.map((item) => item.mixGroupName);
-  
-    this.barChart = {
+    console.log(labels)
+
+    const category: (string | string[]) = labels.map(item => {
+      const splitNames: string[] = item.split(' ');
+      if (splitNames.length === 2) {
+        return splitNames;
+      } else {
+        return item;
+      }
+    });
+    console.log(category)
+
+    this.chartSeries = series;
+    this.chartLabels = category;
+
+    this.barChart = this.getChartData(
+      category.slice(0, 3),
+      series.slice(0, 3)
+    );
+  }
+
+  getChartData(category: string[], series: number[]): any{
+    return {
+      series: [
+        {
+          name: "netKgs",
+          data: series
+        }
+      ],
       chart: {
-        height: 250,
-        type: 'bar',
-        toolbar: {
-          show: false
+        height: 200,
+        type: "bar",
+        toolbar:{
+          show:false
         }
       },
+      colors: [
+        "#008FFB",
+        "#00E396",
+        "#FEB019",
+        "#FF4560",
+        "#775DD0",
+        "#546E7A",
+        "#26a69a",
+        "#D10CE8"
+      ],
       plotOptions: {
         bar: {
-          horizontal: true,
+          columnWidth: "45%",
+          distributed: true
         }
       },
       dataLabels: {
         enabled: false
       },
-      series: [{
-        data: series
-      }],
-      xaxis: {
-        categories: labels,
+      legend: {
+        show: false
       },
-      colors: [this.primary_color]
-    };
+      grid: {
+        show: false
+      },
+      xaxis: {
+        categories: category,
+        labels: {
+          style: {
+            colors: [
+              "#008FFB",
+              "#00E396",
+              "#FEB019",
+              "#FF4560",
+              "#775DD0",
+              "#546E7A",
+              "#26a69a",
+              "#D10CE8"
+            ],
+            fontSize: "12px"
+          }
+        },
+        title: {
+          text: "MixGroup Name ",
+        },
+      },
+      yaxis :{
+        title: {
+          text: "netKgs",
+        },
+      }
+
+    }
   }
+
+  close() {
+    this.prepareChartData(this.chartData);
+    // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
+    this.modelService.dismissAll();
+  }
+
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
+    this.barChart = this.getChartData(this.chartLabels, this.chartSeries);
+
+  }
+
 
 }

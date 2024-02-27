@@ -96,4 +96,16 @@ export class CounteffComponent {
     colors: ['#C3C3E5','#443266']
     };
       }
+      ClickFun(){
+        if (navigator.share){
+          navigator.share({
+            title:"My copied link",
+            url:''
+          }).then(()=>{
+            console.log('Thanks for sharing');
+          })
+          .catch(console.error)
+        }
+      }
+
 }

@@ -72,4 +72,15 @@ loadData:boolean=true
       colors: [this.primary_color]
     };
   }
+  ClickFun(){
+    if (navigator.share){
+      navigator.share({
+        title:this.name,
+        url:''
+      }).then(()=>{
+        console.log('Thanks for sharing');
+      })
+      .catch(console.error)
+    }
+  }
 }  

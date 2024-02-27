@@ -80,5 +80,16 @@ calendar:any
     colors: ['#008FFB', '#FF4560', '#51bb25', '#a927f9', '#f8d62b']
     };
   }
+  ClickFun(){
+    if (navigator.share){
+      navigator.share({
+        title:this.name,
+        url:''
+      }).then(()=>{
+        console.log('Thanks for sharing');
+      })
+      .catch(console.error)
+    }
+  }
 
 }

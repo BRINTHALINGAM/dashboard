@@ -103,4 +103,15 @@ export class ValuesComponent  {
       colors: [this.primary_color, this.secondary_color]
     };
   }
+  ClickFun(){
+    if (navigator.share){
+      navigator.share({
+        title:this.name,
+        url:''
+      }).then(()=>{
+        console.log('Thanks for sharing');
+      })
+      .catch(console.error)
+    }
+  }
 }

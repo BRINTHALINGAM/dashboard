@@ -61,6 +61,18 @@ export class Rg1Component  {
       colors: ['#D5255E','#F88FB2','#831246','#ED5C8B']
       };
     }
+
+    ClickFun(){
+      if (navigator.share){
+        navigator.share({
+          title:"My copied link",
+          url:''
+        }).then(()=>{
+          console.log('Thanks for sharing');
+        })
+        .catch(console.error)
+      }
+    }
   
   }
 

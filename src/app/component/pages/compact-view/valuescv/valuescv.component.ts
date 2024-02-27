@@ -10,14 +10,14 @@ import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 })
 export class ValuescvComponent {
   
-  simpleModal(simpleContent: TemplateRef<NgbModal>) {
-    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
-  }
-
   @Input() public name: string | undefined;
   @Input() public type: string | "area";
   salesChartdata: any;
   loadData:boolean=true
+
+  chartData: any;
+  chartSeries: any;
+  chartLabels: any;
 
   primary_color = localStorage.getItem("primary_color") || "#a4c639";
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
@@ -38,8 +38,8 @@ export class ValuescvComponent {
       this.toDate=this.calendar.formattedtoDate;
       this.fromDate=this.calendar.formattedfromDate;
       this.lotYear=this.calendar.lotYear;
-      this.rmiService.getTopCardDetails(this.divCode, this.yearStart, this.yearEnd,this. fromDate,this. toDate, this.lotYear).subscribe((data) => {
-        this.barChart(data);
+      this.rmiService.getStockValueinLakhs(this.divCode, this.yearStart, this.yearEnd,this. fromDate,this. toDate, this.lotYear).subscribe((data) => {
+        this.prepareChartData(data);
         this.loadData=false
       });
     })
@@ -47,59 +47,109 @@ export class ValuescvComponent {
 
  
 
-  barChart(data: any[]): void {
-    const values = Object.values(data[0]); 
-    const category = Object.keys(data[0]); 
-
-    this.salesChartdata = {
-      chart: {
-        height: 318,
-        type: 'bar',
-        toolbar: {
-          show: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: 'smooth'
-      },
-      series: [{
-        name: 'series1',
-        data: values
-      }],
-      xaxis: {
-        categories: category,
-        labels: {
-          style: {
-            fontSize: "13px",
-            colors: "#848789",
-            fontFamily: "nunito, sans-serif",
-          },
-        },
-      },
-      yaxis: {
-        labels: {
-          formatter: function (val: string) {
-            return val;
-          },
-          style: {
-            fontSize: "14px",
-            colors: "#848789",
-            fontFamily: "nunito, sans-serif",
-          },
-        },
-      },
-      tooltip: {
-        x: {
-          format: 'dd/MM/yy HH:mm'
-        },
-      },
-      legend: {
-        show: false,
-      },
-      colors: [this.primary_color, this.secondary_color]
-    };
+  prepareChartData(data: any[]): void {
+    function sortObjectProperties(obj: {[key: string]: string}): {[key: string]: string} {
+      const sortedKeys = Object.keys(obj).sort((a, b) => parseFloat(obj[b]) - parseFloat(obj[a]));
+      const sortedObject: {[key: string]: string} = {};
+      sortedKeys.forEach(key => {
+          sortedObject[key] = obj[key];
+      });
+      return sortedObject;
   }
+
+  const sortedData = data.map(obj => sortObjectProperties(obj));
+  this.chartData=sortedData
+
+    const values = Object.values(sortedData[0]); 
+    const category = Object.keys(sortedData[0]); 
+
+    this.chartSeries=values;
+    this.chartLabels=category;
+
+    const labels = category.map(item => {
+      const splitNames: string[] = item.split('V');
+      if (splitNames.length === 2) {
+        return splitNames[0];
+      } else {
+        return item;
+      }
+    });
+
+    this.salesChartdata = this.getChartData(
+      labels.slice(0, 3),
+      values.slice(0, 3)
+    );
+    }
+
+    getChartData(labels: string[], values: string[]): any {
+      return {
+        chart: {
+          height: 180,
+          type: 'bar',
+          toolbar: {
+            show: false
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        series: [{
+          name: 'Stock Values',
+          data: values
+        }],
+        xaxis: {
+          categories: labels,
+          labels: {
+            style: {
+              fontSize: "13px",
+              colors: "#848789",
+              fontFamily: "nunito, sans-serif",
+            },
+          },
+          title:{
+            text:"Stocks"
+          }
+        },
+        yaxis: {
+          labels: {
+            formatter: function (val: string) {
+              return val;
+            },
+            style: {
+              fontSize: "14px",
+              colors: "$black",
+              fontFamily: "nunito, sans-serif",
+            },
+          },
+          title:{
+            text:"Stock Values"
+          }
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
+          },
+        },
+        legend: {
+          show: false,
+        },
+        colors: [this.primary_color, this.secondary_color]
+      }
+    }
+
+    close() {
+      this.prepareChartData(this.chartData);
+      // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
+      this.modelService.dismissAll();
+    }
+
+
+    simpleModal(simpleContent: TemplateRef<NgbModal>) {
+      const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
+      this.salesChartdata = this.getChartData(this.chartLabels, this.chartSeries);
+    }
+
 }
