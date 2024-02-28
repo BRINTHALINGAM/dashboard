@@ -1,10 +1,131 @@
-<div class="card-container">
-  <div class="card" *ngFor="let data of commonData">
-    <!-- Card content -->
+
+
+
+<div class="card-group">
+  
+  <div class="card radius-10 border-start border-0 border-3 border-info " >
     <div class="card-body">
-      <i class="icon {{ data.icon }}" [ngStyle]="{ 'color': data.color }"></i>
-      <div class="card-number">{{ data.num }}</div>
-      <div class="card-title">{{ data.title }}</div>
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+          <h4 class="my-1 text-info" *ngIf="commonData && commonData.length>0">{{commonData[0].description}} </h4>
+
+          <p class="mb-0 text-secondary" > <b>No of Machines/ No of Counts</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white  ms-2 me-2 mt-2 p-2 "
+        >
+
+          <i class="fa fa-cloud size-18"></i>   
+             </div>
+      </div>
     </div>
   </div>
-</div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-danger">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-danger" *ngIf="commonData && commonData.length>0">{{commonData[1].description}} </h4>
+
+          <p class="mb-0 text-secondary"><b>On date Prodn./ UTD Prodn</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white   ms-2 me-2 mt-2 p-2">
+          <i class="icofont icofont-scroll-bubble-right size-18"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-success">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-success" *ngIf="commonData && commonData.length>0">{{commonData[2].description}} </h4>
+
+          <p class="mb-0 text-secondary" style="font-weight: bolder"><b>On Date Otherdepts prodn/ UTD Otherdept prodn</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white  ms-2 me-2 mt-2 p-2">
+          <i class="icon-receipt size-18"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-warning">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-warning" *ngIf="commonData && commonData.length>0">{{commonData[3].description}} </h4>
+
+          <p class="mb-0 text-secondary"><b>On Date Waste% / UTD Waste%</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white  ms-2 me-2 mt-2 p-2">
+          <i class="far fa-file-alt size-18"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-primary">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-danger" *ngIf="commonData && commonData.length>0">{{commonData[4].description}} </h4>
+
+          <p class="mb-0 text-secondary"><b>UTD RG1 Prodn /UTD Packed Prodn</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-pinky text-white  ms-2 me-2 mt-2 p-2">
+          <i class="icofont icofont-warning size-18"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-secondary">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-success" *ngIf="commonData && commonData.length>0">{{commonData[5].description}} </h4>
+
+          <p class="mb-0 text-secondary"><b>On Date Avg Count/UTD Avg Count</b> </p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-greeny text-white  ms-2 me-2 mt-2 p-2">
+          <i class="fas fa-reply size-18"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-end">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-primary" *ngIf="commonData && commonData.length>0" >{{commonData[6].description}} </h4>
+
+          <p class="mb-0 text-secondary"><b>On date Util./UTD all Util.</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-bluey text-white  ms-2 me-2 mt-2 p-2">
+          <i class="icofont icofont-scroll-bubble-left size-18"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card radius-10 border-start border-0 border-3 border-warning">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-warning" *ngIf="commonData && commonData.length>0">{{commonData[3].description}} </h4>
+
+          <p class="mb-0 text-secondary"><b>On date eff ./ Upto Date Eff .</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white  ms-2 me-2 mt-2 p-2">
+          <i class="far fa-file-alt size-18"></i></div>
+      </div>
+    </div>
+  </div>
+  
+    
