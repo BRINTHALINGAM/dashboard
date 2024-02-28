@@ -44,6 +44,7 @@ export class VarietyprodncvComponent {
     this.pieChart = {
 
       chart: {
+        height:160,
         width: 400,
         type: 'pie',
     },

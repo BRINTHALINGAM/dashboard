@@ -42,6 +42,7 @@ export class Rg1cvComponent {
       this.pieChart = {
 
         chart: {
+          height:143,
           width: 400,
           type: 'pie',
       },

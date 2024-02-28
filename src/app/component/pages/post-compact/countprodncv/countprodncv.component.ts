@@ -48,7 +48,7 @@ prepareChartData(data:any){
       ],
       chart: {
         type: "bar",
-        height: 350,
+        height: 150,
         stacked: true,
         toolbar: {
           show: false

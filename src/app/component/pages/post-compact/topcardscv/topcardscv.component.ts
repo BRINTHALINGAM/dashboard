@@ -14,7 +14,9 @@ export class TopcardscvComponent {
   section: string='A';
 
   topCardDetails: any;
-commonData:any
+commonData:any[];
+cardColors: string[] = ['#FF5733', '#33FF57', '#3333FF', '#FFFF33', '#33FFFF', '#FF33FF', '#FF5733', '#33FF57'];
+
 
 
 
