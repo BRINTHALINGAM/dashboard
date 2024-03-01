@@ -120,7 +120,15 @@ export class CounteffcvComponent {
             type: "category",
             categories: 
               category,
+              title:{
+                text:"Codes"
+              }
               
+          },
+          yaxis:{
+            title:{
+              text:"effPer"
+            }
           },
           legend: {
             position: "right",

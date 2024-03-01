@@ -104,7 +104,15 @@ getChartData(category: string[], effPer: number[],uptoEffPer:number[]): any{
     },
     xaxis: {
       type: "category",
-      categories: category
+      categories: category,
+      title:{
+        text:"Codes"
+      }
+    },
+    yaxis:{
+      title:{
+        text:"prdKgs"
+      }
     },
     legend: {
       position: "right",
