@@ -101,12 +101,15 @@ xaxis: {
   labels: {
       style: {
           fontSize: "10px",
-          colors: "#848789",
+          colors: "$black",
           fontFamily: "nunito, sans-serif",
       },
   },
   title: {
     text: "Category",
+    style: {
+      colors:"$black"
+    }
   },
 },
 yaxis: {

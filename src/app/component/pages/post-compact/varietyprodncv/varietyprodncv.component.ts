@@ -32,9 +32,7 @@ export class VarietyprodncvComponent {
      this.loadData=false
      
  })}
- simpleModal(simpleContent: TemplateRef<NgbModal>) {
-  const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
-  }
+
  prepareChartData(data:any){
     let category=data.map((item:any)=>item.varDesc)
     let prdkgs=data.map((item:any)=>Number(item.prdkgs))
@@ -44,8 +42,23 @@ export class VarietyprodncvComponent {
     this.pieChart = {
 
       chart: {
+        height:160,
         width: 400,
         type: 'pie',
+        toolbar: {
+          show: true,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Variety Production Chart',
+            }
+          },
+        },
     },
     labels:  ['On Date Prodn', 'Upto Date Prodn'],
     series:[prdkgs[0],uptoprdkgs[0]],
@@ -64,4 +77,12 @@ export class VarietyprodncvComponent {
     };
 
 }
+close() {
+  this.modalService.dismissAll();
+}
+simpleModal(simpleContent: TemplateRef<NgbModal>) {
+  const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
+  this.pieChart.chart.height=500;
+  this.pieChart.chart.width=550
+  }
 }

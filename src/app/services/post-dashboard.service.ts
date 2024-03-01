@@ -7,6 +7,7 @@ import { Observable, switchMap, timer } from 'rxjs';
   providedIn: 'root'
 })
 export class PostDashboardService {
+ 
 
   
 
@@ -22,7 +23,7 @@ export class PostDashboardService {
     return this.posthttp.getTopCardP(divCode, unitCode, date, section)
   }
 
-  getMachinewiseProdnDetails(  ): Observable<any> {
+  getMachinewiseProdnDetails(): Observable<any> {
     const divCode:string='01'
    const unitCode:string='A'
     const date:string='2023-12-05'

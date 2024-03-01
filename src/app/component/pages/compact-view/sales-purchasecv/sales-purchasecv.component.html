@@ -1,19 +1,113 @@
-<p style="text-align: right; margin-top: 0;">Quantity in bales/Values in lakhs</p>
 
+<div class="card-group">
+  
+  <div class="card radius-10 border-start border-0 border-3 border-info " >
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+          <h4 class="my-1 text-info" *ngIf="commonData && commonData.length>0">{{commonData[0].description}} </h4>
 
+          <p class="mb-0 text-secondary" style="font-weight: bolder"> <b>No.of_Category</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white  ms-2 me-2 mt-2 p-2 "
+        >
 
-<!-- <i class="fa fa-plus"></i> -->
-<div class="row">
-  <div class="col" *ngFor="let card of commonData">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">
-          
-          
-          {{ card.title }}
-        </h5>
-        <p class="card-text">{{ card.num }}</p>
+          <i class="fa fa-cloud size-18"></i>   
+             </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-danger">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-danger" *ngIf="commonData && commonData.length>0">{{commonData[1].description}} </h4>
+
+          <p class="mb-0 text-secondary" style="font-weight: bolder"><b>Opening_Stock</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white   ms-2 me-2 mt-2 p-2">
+          <i class="icofont icofont-scroll-bubble-right size-18"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-success">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-success" *ngIf="commonData && commonData.length>0">{{commonData[2].description}} </h4>
+
+          <p class="mb-0 text-secondary" style="font-weight: bolder"><b>Receipt</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white  ms-2 me-2 mt-2 p-2">
+          <i class="icon-receipt size-18"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-warning">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-warning" *ngIf="commonData && commonData.length>0">{{commonData[3].description}} </h4>
+
+          <p class="mb-0 text-secondary" style="font-weight: bolder"><b>S/R_Return</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white  ms-2 me-2 mt-2 p-2">
+          <i class="far fa-file-alt size-18"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-primary">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-danger" *ngIf="commonData && commonData.length>0">{{commonData[4].description}} </h4>
+
+          <p class="mb-0 text-secondary" style="font-weight: bolder"><b>Issue</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-pinky text-white  ms-2 me-2 mt-2 p-2">
+          <i class="icofont icofont-warning size-18"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-secondary">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-success" *ngIf="commonData && commonData.length>0">{{commonData[5].description}} </h4>
+
+          <p class="mb-0 text-secondary" style="font-weight: bolder"><b>Issue_Return</b> </p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-greeny text-white  ms-2 me-2 mt-2 p-2">
+          <i class="fas fa-reply size-18"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card radius-10 border-start border-0 border-3 border-end">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <div style="margin-left: -12px;">
+
+          <h4 class="my-1 text-primary" *ngIf="commonData && commonData.length>0" >{{commonData[6].description}} </h4>
+
+          <p class="mb-0 text-secondary" style="font-weight: bolder"><b>Closing_Stock</b></p>
+        </div>
+        <div class="widgets-icons-2 rounded-circle bg-gradient-bluey text-white  ms-2 me-2 mt-2 p-2">
+          <i class="icofont icofont-scroll-bubble-left size-18"></i>
+        </div>
+      </div>
+    </div>
+  </div>

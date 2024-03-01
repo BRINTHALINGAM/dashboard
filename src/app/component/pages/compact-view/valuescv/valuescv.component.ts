@@ -84,7 +84,7 @@ export class ValuescvComponent {
     getChartData(labels: string[], values: string[]): any {
       return {
         chart: {
-          height: 180,
+          height:180,
           type: 'bar',
           toolbar: {
             show: false
