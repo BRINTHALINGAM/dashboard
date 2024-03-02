@@ -10,6 +10,10 @@ import { PostDashboardService } from 'src/app/services/post-dashboard.service';
 export class MachineutilcvComponent {
   @Input() name: string;
 
+  chartData: any;
+  chartUtilPer: any;
+  chartLabels: any;
+  chartUptoUtilPer: any;
   chartOptions: any;
   loadData: boolean = true;
 
@@ -22,29 +26,43 @@ export class MachineutilcvComponent {
     });
   }
 
-  simpleModal(simpleContent: TemplateRef<NgbModal>) {
-    const modalRef = this.modalService.open(simpleContent, { fullscreen: true });
-  }
+ 
 
-  prepareChartData(data: any) {
+  prepareChartData(data: any[]) {
+
+    data.sort((a, b) => b.uptoUtilPer - a.uptoUtilPer);
+    this.chartData = data;
+
     let category = data.map((item: any) => item.machine);
     let utilPer = data.map((item: any) => Number(item.utilPer));
     let uptoutilPer = data.map((item: any) => Number(item.uptoUtilPer));
 
-    // Slice the data to show only the first 4 values initially
-    let displayedCategory = category.slice(0, 4);
-    let displayedUtilPer = utilPer.slice(0, 4);
-    let displayedUptoutilPer = uptoutilPer.slice(0, 4);
+  this.chartLabels=category;
+  this.chartUtilPer=utilPer;
+  this.chartUptoUtilPer=uptoutilPer;
 
-    this.chartOptions = {
+  this.chartOptions = this.getChartData(
+    category.slice(0, 3),
+    utilPer.slice(0, 3),
+    uptoutilPer.slice(0, 3)
+  );
+  }
+
+  getChartData(
+    category: string[],
+    utilPer: number[],
+    uptoutilPer: number[]
+  ): any {
+
+    return {
       series: [
         {
           name: "Utilisation",
-          data: displayedUtilPer
+          data: utilPer
         },
         {
           name: "Upto Utilisation",
-          data: displayedUptoutilPer
+          data: uptoutilPer
         }
       ],
       chart: {
@@ -52,7 +70,18 @@ export class MachineutilcvComponent {
         height: 130,
         stacked: true,
         toolbar: {
-          show: false
+          show: true,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Machinewise Utilization Chart',
+            }
+          },
         },
         zoom: {
           enabled: true // Enable zooming
@@ -77,7 +106,15 @@ export class MachineutilcvComponent {
       },
       xaxis: {
         type: "category",
-        categories: displayedCategory
+        categories: category,
+        title:{
+          text:"Machines"
+        }
+      },
+      yaxis:{
+        title:{
+          text:"UtilPer"
+        }
       },
       legend: {
         position: "right",
@@ -87,6 +124,18 @@ export class MachineutilcvComponent {
         opacity: 1
       },
       // colors: ['#99CC99' , '#993300']
-    };
+    }
   }
+
+  close() {
+    this.prepareChartData(this.chartData);
+    // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
+    this.modalService.dismissAll();
+  }
+
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modalService.open(simpleContent, { fullscreen: true });
+    this.chartOptions=this.getChartData(this.chartLabels,this.chartUtilPer,this.chartUptoUtilPer)
+    this.chartOptions.chart.height=300
+  }
 }

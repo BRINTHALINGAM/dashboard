@@ -61,7 +61,7 @@ calendar:any
 
     this.pieChart = {
       chart: {
-        width: 600,
+        width: 570,
         height:250,
         type: 'pie',
         toolbar:

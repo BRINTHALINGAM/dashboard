@@ -1,11 +1,11 @@
-import { Component, Input, TemplateRef } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PostDashboardService } from 'src/app/services/post-dashboard.service';
+import { Component, Input, TemplateRef } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { PostDashboardService } from "src/app/services/post-dashboard.service";
 
 @Component({
-  selector: 'app-counteffcv',
-  templateUrl: './counteffcv.component.html',
-  styleUrl: './counteffcv.component.scss'
+  selector: "app-counteffcv",
+  templateUrl: "./counteffcv.component.html",
+  styleUrl: "./counteffcv.component.scss",
 })
 export class CounteffcvComponent {
   chartData: any;
@@ -22,17 +22,26 @@ export class CounteffcvComponent {
    section:string='A'
    loadData:boolean=true
 
-  constructor(private postDash:PostDashboardService,private modalService:NgbModal) {}
 
-  ngOnInit()
-  {
-    this.postDash.getCountwiseEffDetails(this.divCode,this.unitCode,this.date,this.section).subscribe((data) => {
-      console.log(data); // Log the received data
-      this.prepareChartData(data);
-      this.loadData=false;
-  })}
+  constructor(
+    private postDash: PostDashboardService,
+    private modalService: NgbModal
+  ) {}
 
- 
+  ngOnInit() {
+    this.postDash
+      .getCountwiseEffDetails(
+        this.divCode,
+        this.unitCode,
+        this.date,
+        this.section
+      )
+      .subscribe((data) => {
+        console.log(data); // Log the received data
+        this.prepareChartData(data);
+        this.loadData = false;
+      });
+  }
 
   prepareChartData(data:any[]){
 
@@ -73,7 +82,18 @@ export class CounteffcvComponent {
             height: 150,
             stacked: true,
             toolbar: {
-              show: false
+              show: true,
+              export: {
+                csv: {
+                  filename: undefined,
+                },
+                svg: {
+                  filename: undefined,
+                },
+                png: {
+                  filename: 'Countwise Efficiency Chart',
+                }
+              },
             },
             zoom: {
               enabled: false
@@ -100,7 +120,15 @@ export class CounteffcvComponent {
             type: "category",
             categories: 
               category,
+              title:{
+                text:"Codes"
+              }
               
+          },
+          yaxis:{
+            title:{
+              text:"effPer"
+            }
           },
           legend: {
             position: "right",
@@ -122,5 +150,7 @@ export class CounteffcvComponent {
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
     this.barChart = this.getChartData(this.chartLabels, this.chartSeries,this.chartUpto);
+    this.barChart.chart.height=300;
+
   }
       }

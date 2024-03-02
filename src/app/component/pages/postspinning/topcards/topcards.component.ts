@@ -98,8 +98,7 @@ commonData:any
 ]
 }
 
-roundWithDecimal(value: number): string
-{
-  return (Math.round(value).toFixed(2))
+roundWithDecimal(value: number): number {
+  return Math.round(value * 100) / 100; 
 }
 }

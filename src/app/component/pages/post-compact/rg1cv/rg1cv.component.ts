@@ -30,9 +30,7 @@ export class Rg1cvComponent {
      this.prepareChartData(data);
      this.loadData=false;
  })}
- simpleModal(simpleContent: TemplateRef<NgbModal>) {
-  const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
-  }
+ 
  prepareChartData(data:any){
    
       let series = Object.values(data[0]).map((value)=>parseInt(String(value)))
@@ -45,6 +43,20 @@ export class Rg1cvComponent {
           height:143,
           width: 400,
           type: 'pie',
+          toolbar: {
+            show: true,
+            export: {
+              csv: {
+                filename: undefined,
+              },
+              svg: {
+                filename: undefined,
+              },
+              png: {
+                filename: 'RG1 Chart',
+              }
+            },
+          },
       },
       labels:  labels,
       series:series,
@@ -62,5 +74,11 @@ export class Rg1cvComponent {
       colors: ['#D5255E','#F88FB2','#831246','#ED5C8B']
       };
     }
-  
+    close() {
+      this.modalService.dismissAll();
+    }
+    simpleModal(simpleContent: TemplateRef<NgbModal>) {
+      const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
+      this.pieChart.chart.height=500
+      }
   }
