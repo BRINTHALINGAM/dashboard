@@ -142,6 +142,6 @@ export class MachineprodncvComponent {
       this.chartUptoprdkgs
     );
     this.chartOptions.chart.height=350
-    this.chartOptions.cahrt.toolbar.show=true;
+    this.chartOptions.chart.toolbar.show=true;
   }
 }
