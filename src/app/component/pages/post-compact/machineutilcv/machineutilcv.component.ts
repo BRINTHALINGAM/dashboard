@@ -67,7 +67,7 @@ export class MachineutilcvComponent {
       ],
       chart: {
         type: "bar",
-        height: 130,
+        height: 150,
         stacked: true,
         toolbar: {
           show: true,

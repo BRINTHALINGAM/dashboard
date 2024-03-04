@@ -78,7 +78,18 @@ export class TopsupplierscvComponent {
                   height: 200,
                   type: 'bar',
                   toolbar: {
-                      show: false
+                    show: false,
+                    export: {
+                      csv: {
+                        filename: undefined,
+                      },
+                      svg: {
+                        filename: undefined,
+                      },
+                      png: {
+                        filename: 'Top 10 Suppliers  Chart',
+                      }
+                    },
                   },
               },
               legend: {
@@ -145,6 +156,9 @@ export class TopsupplierscvComponent {
       simpleModal(simpleContent: TemplateRef<NgbModal>) {
           const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
           this.columnChart = this.getChartData(this.chartLabels, this.chartValue,this.chartCount);
+          this.columnChart.chart.height=350;
+          this.columnChart.chart.toolbar.show=true;
+          this.columnChart.legend.horizontalAlign='left';
   
       }
   

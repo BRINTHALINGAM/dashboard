@@ -73,6 +73,17 @@ export class SalesSummary1cvComponent {
         type: "bar",
         toolbar: {
           show: false,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Pending Order Chart',
+            }
+          },
         },
         zoom: {
           enabled: false,
@@ -142,5 +153,7 @@ export class SalesSummary1cvComponent {
       fullscreen: true,
     });
     this.salesChartdata = this.getChartData(this.chartLabels, this.chartSeries);
+    this.salesChartdata.chart.toolbar.show=true;
+    this.salesChartdata.chart.height=350;
   }
 }

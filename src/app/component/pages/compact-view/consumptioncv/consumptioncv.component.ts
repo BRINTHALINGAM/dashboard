@@ -21,7 +21,7 @@ export class ConsumptioncvComponent {
   
   
     @Input() name: string = "Consumption Details by Supplier"; // Default name if not provided
-    gaugeChart: any;
+    salesChartdata: any;
     divCode:string = '01';
     fromDate:string ;
     toDate:string ;
@@ -60,19 +60,30 @@ export class ConsumptioncvComponent {
       let lastStockDate=data.map((item) => item.lastStockDate)
       console.log(lastStockDate)
   
-      this.gaugeChart=
+      this.salesChartdata=
       {
         
-        gaugeType : "semi",
-        gaugeValue: avg,
-        gaugeLabel :lastStockDate,
-        thresholdConfig : 
-        {
-          '0': {color: 'green'},
-          '40': {color: 'orange'},
-          '75.5': {color: 'red'}
-        }
+      //   gaugeType : "semi",
+      //   gaugeValue: avg,
+      //   gaugeLabel :lastStockDate,
+      //   thresholdConfig : 
+      //   {
+      //     '0': {color: 'green'},
+      //     '40': {color: 'orange'},
+      //     '75.5': {color: 'red'}
+      //   }
+
+        chart:{
+          height:100,
+          type:"radialBar"
+        },
+        series:valueToPercent(avg)
+
+
       }
+  function valueToPercent (value:any) {
+    return (value * 100) / avg[0]
+  } 
   
     }
   }

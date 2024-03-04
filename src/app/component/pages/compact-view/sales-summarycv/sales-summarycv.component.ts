@@ -80,7 +80,18 @@ export class SalesSummarycvComponent {
         height: 150,
         type: "bar",
         toolbar: {
-          show:false,
+          show: false,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Stock Chart',
+            }
+          },
         },
         zoom:
         {
@@ -151,7 +162,9 @@ export class SalesSummarycvComponent {
     
     const modalRef = this.modelService.open(simpleContent, { fullscreen: true });
     this.salesChartdata = this.getChartData(this.chartLabels, this.chartSeries);
-
+    this.salesChartdata.chart.toolbar.show=true;
+    this.salesChartdata.chart.height=350;
+    
   }
 
 

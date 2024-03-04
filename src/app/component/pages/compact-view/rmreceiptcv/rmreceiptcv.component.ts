@@ -31,9 +31,7 @@ export class RmreceiptcvComponent {
 
 
 
-  simpleModal(simpleContent: TemplateRef<NgbModal>) {
-    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
-  }
+ 
 
 
   @Input() name: string = "Receipt Details by Supplier"; // Default name if not provided
@@ -70,6 +68,20 @@ calendar:any
         height:180,
         width: 400,
         type: 'pie',
+        toolbar: {
+          show: false,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'RM Receipt Chart',
+            }
+          },
+        },
     },
     labels: labels,
     series: series,
@@ -87,5 +99,13 @@ calendar:any
     colors: ['#008FFB', '#FF4560', '#51bb25', '#a927f9', '#f8d62b']
     };
   }
+  close() {
+    this.modelService.dismissAll();
+  }
 
+  simpleModal(simpleContent: TemplateRef<NgbModal>) {
+    const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
+    this.pieChart.chart.toolbar.show=true;
+    this.pieChart.chart.height=500;
+  }
 }

@@ -81,9 +81,20 @@ loadData:boolean=true
       chart: {
         height: 200,
         type: "bar",
-        toolbar:{
-          show:false
-        }
+        toolbar: {
+          show: false,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Mixwise Consumption  Chart',
+            }
+          },
+        },
       },
       colors: [
         "#008FFB",
@@ -142,13 +153,14 @@ loadData:boolean=true
 
   close() {
     this.prepareChartData(this.chartData);
-    // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
     this.modelService.dismissAll();
   }
 
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
     this.barChart = this.getChartData(this.chartLabels, this.chartSeries);
+    this.barChart.chart.height=500;
+    this.barChart.chart.toolbar.show=true;
 
   }
 
