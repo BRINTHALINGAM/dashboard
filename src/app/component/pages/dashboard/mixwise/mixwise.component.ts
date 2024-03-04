@@ -30,7 +30,7 @@ loadData:boolean=true
       this.processingDate=this.calendar.formattedfromDate;
      
       this.rmiService.getMixConsumptionDetails(this.divCode,this.processingDate).subscribe((data) => {
-        console.log(data); // Log the received data
+        console.log(data); 
         this.prepareChartData(data);
         this.loadData=false
       });
@@ -43,7 +43,6 @@ loadData:boolean=true
 
   prepareChartData(data: any[]): void {
 
-    // Rest of your code to prepare the chart data
     const series = data.map((item) => Number(item.netKgs));
     const labels = data.map((item) => item.mixGroupName);
   

@@ -67,7 +67,7 @@ export class MachineutilcvComponent {
       ],
       chart: {
         type: "bar",
-        height: 130,
+        height: 150,
         stacked: true,
         toolbar: {
           show: false,
@@ -137,6 +137,6 @@ export class MachineutilcvComponent {
     const modalRef = this.modalService.open(simpleContent, { fullscreen: true });
     this.chartOptions=this.getChartData(this.chartLabels,this.chartUtilPer,this.chartUptoUtilPer)
     this.chartOptions.chart.height=300
-    this.chartOptions.cahrt.toolbar.show=true;
+    this.chartOptions.chart.toolbar.show=true;
   }
 }

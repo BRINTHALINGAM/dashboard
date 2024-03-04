@@ -87,7 +87,18 @@ export class ValuescvComponent {
           height:180,
           type: 'bar',
           toolbar: {
-            show: false
+            show: false,
+            export: {
+              csv: {
+                filename: undefined,
+              },
+              svg: {
+                filename: undefined,
+              },
+              png: {
+                filename: 'Values in Lakhs Chart',
+              }
+            },
           }
         },
         dataLabels: {
@@ -142,7 +153,6 @@ export class ValuescvComponent {
 
     close() {
       this.prepareChartData(this.chartData);
-      // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
       this.modelService.dismissAll();
     }
 
@@ -150,6 +160,8 @@ export class ValuescvComponent {
     simpleModal(simpleContent: TemplateRef<NgbModal>) {
       const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
       this.salesChartdata = this.getChartData(this.chartLabels, this.chartSeries);
+      this.salesChartdata.chart.height=300;
+      this.salesChartdata.chart.toolbar.show=true;
     }
 
 }

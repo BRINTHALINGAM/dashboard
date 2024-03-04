@@ -1,5 +1,4 @@
 import { Component, Input, TemplateRef } from '@angular/core';
-import * as chartData from '../../../../shared/data/component/charts/google-chart';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 import { DateService } from 'src/app/services/date.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -30,7 +29,7 @@ loadData:boolean=true
       this.processingDate=this.calendar.formattedfromDate;
      
       this.rmiService.getMixConsumptionDetails(this.divCode,this.processingDate).subscribe((data) => {
-        console.log(data); // Log the received data
+        console.log(data); 
         this.prepareChartData(data);
         this.loadData=false
       });
@@ -46,7 +45,6 @@ loadData:boolean=true
     data.sort((a, b) => b.netKgs - a.netKgs);
     this.chartData = data;
 
-    // Rest of your code to prepare the chart data
     const series = data.map((item) => Number(item.netKgs));
     const labels = data.map((item) => item.mixGroupName);
     console.log(labels)
@@ -81,9 +79,20 @@ loadData:boolean=true
       chart: {
         height: 200,
         type: "bar",
-        toolbar:{
-          show:false
-        }
+        toolbar: {
+          show: false,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Mixwise Consumption  Chart',
+            }
+          },
+        },
       },
       colors: [
         "#008FFB",
@@ -142,13 +151,14 @@ loadData:boolean=true
 
   close() {
     this.prepareChartData(this.chartData);
-    // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
     this.modelService.dismissAll();
   }
 
   simpleModal(simpleContent: TemplateRef<NgbModal>) {
     const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
     this.barChart = this.getChartData(this.chartLabels, this.chartSeries);
+    this.barChart.chart.height=500;
+    this.barChart.chart.toolbar.show=true;
 
   }
 

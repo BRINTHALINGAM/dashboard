@@ -1,7 +1,5 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgxGaugeAppend, NgxGaugeLabel, NgxGaugeValue } from 'ngx-gauge';
-import { NgxGaugeType } from 'ngx-gauge/gauge/gauge';
 import { DateService } from 'src/app/services/date.service';
 import { RmiDashboardService } from 'src/app/services/rmi-dashboard.service';
 
@@ -23,7 +21,7 @@ export class ConsumptionComponent
   
 
 
-  @Input() name: string = "Consumption Details by Supplier"; // Default name if not provided
+  @Input() name: string = "Consumption Details by Supplier"; 
   gaugeChart: any;
   divCode:string = '01';
   fromDate:string ;
@@ -42,7 +40,7 @@ export class ConsumptionComponent
       this.fromDate=this.calendar.formattedfromDate;
  
       this.rmiService.getAverageConsumption(this.divCode,this. fromDate,this. toDate).subscribe((data) => {
-        console.log(data); // Log the received data
+        console.log(data); 
         this.prepareChartData(data);
         this.loadData=false;
       });
@@ -78,15 +76,9 @@ export class ConsumptionComponent
     }
 
   }
-ClickFun(){
-  if (navigator.share){
-    navigator.share({
-      title:this.name,
-      url:''
-    }).then(()=>{
-      console.log('Thanks for sharing');
-    })
-    .catch(console.error)
-    }
-  }
+
+close() {
+  this.modelService.dismissAll();
+}
+
 }

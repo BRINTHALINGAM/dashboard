@@ -1,8 +1,5 @@
-import { NgxPrintDirective, NgxPrintModule } from 'ngx-print';
 import { Component, Input, TemplateRef } from "@angular/core";
-import * as chartData from "../../../../shared/data/component/charts/google-chart";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
-import * as Chartist from 'chartist';
 import { DateService } from "src/app/services/date.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
@@ -39,7 +36,7 @@ export class TopsupplierscvComponent {
         console.log("sales",date)
         
         this.rmiService.getTopTenSuppliers(this.divCode, this.yearStart, this.yearEnd).subscribe((data) => {
-          console.log(data); // Log the received data
+          console.log(data);
           this.prepareChartData(data);
           this.loadData=false
         });
@@ -78,7 +75,18 @@ export class TopsupplierscvComponent {
                   height: 200,
                   type: 'bar',
                   toolbar: {
-                      show: false
+                    show: false,
+                    export: {
+                      csv: {
+                        filename: undefined,
+                      },
+                      svg: {
+                        filename: undefined,
+                      },
+                      png: {
+                        filename: 'Top 10 Suppliers  Chart',
+                      }
+                    },
                   },
               },
               legend: {
@@ -138,13 +146,15 @@ export class TopsupplierscvComponent {
        
       close() {
           this.prepareChartData(this.chartData);
-          // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
           this.modelService.dismissAll();
         }
   
       simpleModal(simpleContent: TemplateRef<NgbModal>) {
           const modalRef = this.modelService.open(simpleContent,{fullscreen:true});
           this.columnChart = this.getChartData(this.chartLabels, this.chartValue,this.chartCount);
+          this.columnChart.chart.height=350;
+          this.columnChart.chart.toolbar.show=true;
+          this.columnChart.legend.horizontalAlign='left';
   
       }
   

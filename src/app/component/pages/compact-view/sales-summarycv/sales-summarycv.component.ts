@@ -1,5 +1,4 @@
 import { Component, Input, TemplateRef } from "@angular/core";
-import * as SalesSummary from "../../../../shared/data/component/deshboard/charts";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
 import { DateService } from "src/app/services/date.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -38,7 +37,7 @@ export class SalesSummarycvComponent {
       this.rmiService
         .getStockDetails(this.divCode, this.processingDate, this.lotYear)
         .subscribe((data) => {
-          console.log(data); // Log the received data
+          console.log(data); 
           this.prepareChartData(data);
           this.loadData = false;
           
@@ -58,29 +57,36 @@ export class SalesSummarycvComponent {
       return;
     }
 
-    // Sort data by stockValue
     data.sort((a, b) => b.stockValue - a.stockValue);
     this.chartData=data
 
-    // Extract series and labels
     let series = data.map((item) => Number(item.stockValue));
     let labels = data.map((item) => item.category);
 
     this.chartSeries=series;
     this.chartLabels=labels;
     
-    // Prepare chart data with minimum values
     this.salesChartdata = this.getChartData(labels.slice(0, 5), series.slice(0, 5));
   }
 
-  // Function to get chart data
   getChartData(labels: string[], series: number[]): any {
     return {
       chart: {
         height: 150,
         type: "bar",
         toolbar: {
-          show:false,
+          show: false,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Stock Chart',
+            }
+          },
         },
         zoom:
         {
@@ -143,7 +149,6 @@ export class SalesSummarycvComponent {
   close()
   {
     this.prepareChartData(this.chartData)
-    // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
     this.modelService.dismissAll();
   }
 
@@ -151,7 +156,9 @@ export class SalesSummarycvComponent {
     
     const modalRef = this.modelService.open(simpleContent, { fullscreen: true });
     this.salesChartdata = this.getChartData(this.chartLabels, this.chartSeries);
-
+    this.salesChartdata.chart.toolbar.show=true;
+    this.salesChartdata.chart.height=350;
+    
   }
 
 

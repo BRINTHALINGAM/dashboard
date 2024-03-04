@@ -38,7 +38,7 @@ export class SalesSummary1cvComponent {
     });
   }
 
-  primary_color = localStorage.getItem("primary_color") || "#008FFB"; // 008FFB - blue , FEB019 - yellow , 775DD0 - purple, FF4560-red , 00E396 -green
+  primary_color = localStorage.getItem("primary_color") || "#008FFB"; 
 
   secondary_color = localStorage.getItem("secondary_color") || "#FF6150";
 
@@ -47,25 +47,21 @@ export class SalesSummary1cvComponent {
       return;
     }
 
-    // Sort data by stockValue
     data.sort((a, b) => b.orderValue - a.orderValue);
     this.chartData = data;
 
-    // Extract series and labels
     let series = data.map((item) => Number(item.orderValue));
     let labels = data.map((item) => item.supplierName);
 
     this.chartSeries = series;
     this.chartLabels = labels;
 
-    // Prepare chart data with minimum values
     this.salesChartdata = this.getChartData(
       labels.slice(0, 5),
       series.slice(0, 5)
     );
   }
 
-  // Function to get chart data
   getChartData(labels: string[], series: number[]): any {
     return {
       chart: {
@@ -73,6 +69,17 @@ export class SalesSummary1cvComponent {
         type: "bar",
         toolbar: {
           show: false,
+          export: {
+            csv: {
+              filename: undefined,
+            },
+            svg: {
+              filename: undefined,
+            },
+            png: {
+              filename: 'Pending Order Chart',
+            }
+          },
         },
         zoom: {
           enabled: false,
@@ -133,7 +140,6 @@ export class SalesSummary1cvComponent {
 
   close() {
     this.prepareChartData(this.chartData);
-    // this.salesChartdata = this.getChartData(this.chartLabels.slice(0, 5), this.chartSeries.slice(0, 5));
     this.modelService.dismissAll();
   }
 
@@ -142,5 +148,7 @@ export class SalesSummary1cvComponent {
       fullscreen: true,
     });
     this.salesChartdata = this.getChartData(this.chartLabels, this.chartSeries);
+    this.salesChartdata.chart.toolbar.show=true;
+    this.salesChartdata.chart.height=350;
   }
 }

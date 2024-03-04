@@ -1,10 +1,8 @@
 
-import { CommonModule } from "@angular/common";
 import { Component, Input, NgModule, OnInit, TemplateRef } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DateService } from "src/app/services/date.service";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
-import { SharedModule } from "src/app/shared/shared.module";
 
 
 
@@ -30,7 +28,7 @@ export class RmreceiptComponent {
   }
 
 
-  @Input() name: string = "Receipt Details by Supplier"; // Default name if not provided
+  @Input() name: string = "Receipt Details by Supplier"; 
   pieChart: any;
   loadData:boolean=true
 
@@ -45,7 +43,7 @@ calendar:any
       this.processingDate=this.calendar.formattedfromDate;
      
       this.rmiService.getReceiptDetailsbySupplier(this.divCode,this.processingDate).subscribe((data) => {
-        console.log(data); // Log the received data
+        console.log(data); 
         this.prepareChartData(data);
         this.loadData=false
       });

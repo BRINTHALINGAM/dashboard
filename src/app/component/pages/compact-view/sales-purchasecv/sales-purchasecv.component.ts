@@ -1,4 +1,3 @@
-// sales-purchase.component.ts
 import { Component } from "@angular/core";
 import { DateService } from "src/app/services/date.service";
 import { RmiDashboardService } from "src/app/services/rmi-dashboard.service";
