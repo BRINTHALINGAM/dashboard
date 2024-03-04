@@ -46,7 +46,7 @@ export class VarietyprodncvComponent {
         width: 400,
         type: 'pie',
         toolbar: {
-          show: true,
+          show: false,
           export: {
             csv: {
               filename: undefined,
@@ -84,5 +84,6 @@ simpleModal(simpleContent: TemplateRef<NgbModal>) {
   const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
   this.pieChart.chart.height=500;
   this.pieChart.chart.width=550
+  this.pieChart.chart.toolbar.show=true;
   }
 }

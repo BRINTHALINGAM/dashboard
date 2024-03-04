@@ -44,7 +44,7 @@ export class Rg1cvComponent {
           width: 400,
           type: 'pie',
           toolbar: {
-            show: true,
+            show: false,
             export: {
               csv: {
                 filename: undefined,
@@ -80,5 +80,6 @@ export class Rg1cvComponent {
     simpleModal(simpleContent: TemplateRef<NgbModal>) {
       const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
       this.pieChart.chart.height=500
+      this.pieChart.chart.toolbar.show=true;
       }
   }
