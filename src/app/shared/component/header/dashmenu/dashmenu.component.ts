@@ -11,6 +11,14 @@ export class DashmenuComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
+  isRmiOrCompactRoute(): boolean {
+    
+    const currentRoute = this.router.url;
+
+    return currentRoute === '/pages/rmi-dashboard' || currentRoute === '/pages/compact';
+  }
+
+
   ngOnInit(): void {
   }
 
