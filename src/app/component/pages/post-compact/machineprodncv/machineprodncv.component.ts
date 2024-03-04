@@ -69,7 +69,7 @@ export class MachineprodncvComponent {
         height: 150,
         stacked: true,
         toolbar: {
-          show: true,
+          show: false,
           export: {
             csv: {
               filename: undefined,
@@ -142,5 +142,6 @@ export class MachineprodncvComponent {
       this.chartUptoprdkgs
     );
     this.chartOptions.chart.height=350
+    this.chartOptions.cahrt.toolbar.show=true;
   }
 }

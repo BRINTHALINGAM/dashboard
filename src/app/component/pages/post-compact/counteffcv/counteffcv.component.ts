@@ -82,7 +82,7 @@ export class CounteffcvComponent {
             height: 150,
             stacked: true,
             toolbar: {
-              show: true,
+              show: false,
               export: {
                 csv: {
                   filename: undefined,
@@ -151,6 +151,7 @@ export class CounteffcvComponent {
     const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
     this.barChart = this.getChartData(this.chartLabels, this.chartSeries,this.chartUpto);
     this.barChart.chart.height=300;
+  this.barChart.chart.toolbar.show=true;
 
   }
       }

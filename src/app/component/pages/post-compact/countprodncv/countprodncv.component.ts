@@ -68,7 +68,7 @@ getChartData(category: string[], effPer: number[],uptoEffPer:number[]): any{
       height: 150,
       stacked: true,
       toolbar: {
-        show: true,
+        show: false,
         export: {
           csv: {
             filename: undefined,
@@ -135,6 +135,7 @@ simpleModal(simpleContent: TemplateRef<NgbModal>) {
   const modalRef = this.modalService.open(simpleContent,{fullscreen:true});
   this.chartOptions = this.getChartData(this.chartLabels, this.chartSeries,this.chartUpto);
   this.chartOptions.chart.height=300;
+  this.chartOptions.chart.toolbar.show=true;
   }
 }
 

@@ -70,7 +70,7 @@ export class MachineutilcvComponent {
         height: 130,
         stacked: true,
         toolbar: {
-          show: true,
+          show: false,
           export: {
             csv: {
               filename: undefined,
@@ -137,5 +137,6 @@ export class MachineutilcvComponent {
     const modalRef = this.modalService.open(simpleContent, { fullscreen: true });
     this.chartOptions=this.getChartData(this.chartLabels,this.chartUtilPer,this.chartUptoUtilPer)
     this.chartOptions.chart.height=300
+    this.chartOptions.cahrt.toolbar.show=true;
   }
 }
