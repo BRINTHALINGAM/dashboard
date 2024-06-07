@@ -32,19 +32,17 @@ constructor(private postService :PostDashboardService,private dateService:DateSe
     preparedData(data:any):void{
       this.topCardDetails=data[0]
       this.commonData = [   
-     { description: this.roundWithDecimal(this.topCardDetails.totMachine)+'/'+this.roundWithDecimal(this.topCardDetails.totCount)},
-      { description:this.roundWithDecimal(this.topCardDetails.prdkgs) + '/' + this.roundWithDecimal(this.topCardDetails.uptoPrdkgs)},
-      {  description:  this.roundWithDecimal(this.topCardDetails. othProdn) +'/'+this.roundWithDecimal(this.topCardDetails.uptoOthProdn)},
-      {description: this.roundWithDecimal(this.topCardDetails.wasteper) +'/'+ this.roundWithDecimal(this.topCardDetails.wasteper)},
-      { description:this.roundWithDecimal(this.topCardDetails.rg1TKgs) +'/'+this.roundWithDecimal(this.topCardDetails.rg1PKgs)  },
-      {  description:this.roundWithDecimal(this.topCardDetails.avgCnt) +'/'+this.roundWithDecimal(this.topCardDetails.uptoAvgCnt)},
-      { description: this.roundWithDecimal(this.topCardDetails.utilPer)  +'/'+this.roundWithDecimal(this.topCardDetails.uptoUtilPer) },
-      { description:  this.roundWithDecimal(this.topCardDetails.effPer)  +'/'+this.roundWithDecimal(this.topCardDetails.uptoEffPer)  },
+     { description: this.roundWithDecimal(this.topCardDetails.totMachine),data:this.roundWithDecimal(this.topCardDetails.totCount)},
+      { description:this.roundWithDecimal(this.topCardDetails.prdkgs),data: this.roundWithDecimal(this.topCardDetails.uptoPrdkgs)},
+      {  description:  this.roundWithDecimal(this.topCardDetails. othProdn) ,data:this.roundWithDecimal(this.topCardDetails.uptoOthProdn)},
+      {description: this.roundWithDecimal(this.topCardDetails.wasteper) ,data:this.roundWithDecimal(this.topCardDetails.wasteper)},
+      { description:this.roundWithDecimal(this.topCardDetails.rg1TKgs),data:this.roundWithDecimal(this.topCardDetails.rg1PKgs)  },
+      {  description:this.roundWithDecimal(this.topCardDetails.avgCnt) ,data:this.roundWithDecimal(this.topCardDetails.uptoAvgCnt)},
+      { description: this.roundWithDecimal(this.topCardDetails.utilPer),data:this.roundWithDecimal(this.topCardDetails.uptoUtilPer) },
+      { description:  this.roundWithDecimal(this.topCardDetails.effPer) ,data:this.roundWithDecimal(this.topCardDetails.uptoEffPer)  },
 
       
-    ];
-    
-  
+    ]; 
 }
 
 roundWithDecimal(value: number): number {
